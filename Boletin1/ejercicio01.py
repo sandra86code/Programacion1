@@ -22,7 +22,6 @@ while cateto2<=0:
 '''Teorema de Pitágonas:
 hipotenusa**2 = (cateto1**2) + (cateto2**2)
 '''
-hipotenusa = 0
 hipotenusa = sqrt(cateto1**2 + cateto2**2)
 
 #Mostrar resultado por consola
