@@ -6,7 +6,7 @@
  @enunciado: 
  Dados los catetos de un triángulo rectángulo, calcular su hipotenusa.
 '''
-import math 
+
 from math import sqrt
 
 #Pedir datos y comprobación de que sean mayor de 0
