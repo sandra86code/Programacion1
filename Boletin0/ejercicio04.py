@@ -14,11 +14,11 @@ from turtle import *
 
 turtle = Turtle()
 
-nombre = input("What's your name?")
-edad = int(input("How old are you?"))
+nombre = input("What's your name? ")
+edad = int(input("How old are you? "))
 
 while edad<0:
-    edad = int(input("How old are you?"))
+    edad = int(input("How old are you? "))
     
 print("Hola, " + nombre)
 

@@ -13,6 +13,6 @@ from turtle import *
 
 turtle = Turtle()
 
-nombre = input("What is your name?")
+nombre = input("What is your name? ")
 
 turtle.forward(90)

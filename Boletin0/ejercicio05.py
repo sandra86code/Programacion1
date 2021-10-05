@@ -5,9 +5,9 @@
  @nombre: Boletin 0 - Ejercicio 5 
  @enunciado: 
  Vamos a hacer un programa que nos pregunte la edad:
- - Si la edad es menor de 25 aÒos, nos debe pintar una flecha de color rojo.
+ - Si la edad es menor de 25 a√±os, nos debe pintar una flecha de color rojo.
  - Si la edad es menor de 50, nos debe pintar una flecha de color azul.
- - Para los dem·s datos, debe pintar una fleja de color verde.
+ - Para los dem√°s datos, debe pintar una fleja de color verde.
  
 '''
 

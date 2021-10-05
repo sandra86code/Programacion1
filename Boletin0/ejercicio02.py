@@ -9,5 +9,5 @@
 
 '''
 
-nombre = input("What is your name?")
+nombre = input("What is your name? ")
 print("Hola " + nombre)
