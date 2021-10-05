@@ -1,6 +1,7 @@
 """
- @autor: Sandra Ruiz JimÃ©nez
+ @autor: Sandra Ruiz Jiménez
  @fecha: Oct 5, 2021
- @nombre: 
+ @nombre: Ejercicio 1
  @enunciado: 
  """
+
