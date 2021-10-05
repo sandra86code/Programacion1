@@ -1,8 +1,6 @@
-'''
-# coding: utf-8 
- @autor: Sandra Ruiz Jiménez
+"""
+ @autor: Sandra Ruiz JimÃ©nez
  @fecha: Oct 5, 2021
- @nombre: Boletin - Ejercicio 
+ @nombre: 
  @enunciado: 
-'''
-
+ """
