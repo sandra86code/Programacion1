@@ -6,8 +6,6 @@
 y lo saluda.
 Luego mostrará el mensaje al nombre pidiéndole dos 
 números y los sumará y los restará.
-
-por ver el cambio
  """
 
 
