@@ -56,6 +56,7 @@ for i in range (len(listaMonedas)):
     #Comprobamos datos
     while cantidadMoneda<0:
         cantidadMoneda=int(input("Error. Indroduce la cantidad de monedas de "+ str(listaMonedas[i]) + ": "))
+    
     sumaCentimos+=cantidadMoneda*valorEnCentimos[i]
     
 #Calculamos los euros y los céntimos que tenemos

@@ -17,13 +17,20 @@ from math import sqrt
 #Pedir datos
 num=int(input("Dime un número: "))
 
-#Comprobación de positivos
+#Calcular la raíz cúbica
 if num>=0:
-    #Calcular la raíz cuadrada
+    raizCubica=num**(1/3)
+else:
+    raizCubica=(-num)**(1/3)
+    raizCubica=-raizCubica
+print("La raíz cúbica de %s es %s" %(num, raizCubica))    
+
+#Calcular la raíz cuadrada
+if num>=0:
     raizCuadrada=sqrt(num)
     print("La raíz cuadrada de %s es %s" %(num, round(raizCuadrada,3)))
-    #Calcular la raíz cúbica
-    raizCubica=num**(1/3)
-    print("La raíz cúbica de %s es %s" %(num, round(raizCubica,3)))
 else:
-    print("Error. Debe introducir un número mayor o igual que 0")
+    print("La raíz cuadrada de un número negativo no tiene solución real.")
+
+    
+    

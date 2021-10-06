@@ -10,3 +10,25 @@ exponente. Pueden ocurrir tres cosas:
 ◦ El exponente sea 0, el resultado es 1.
 ◦ El exponente sea negativo, el resultado es 1/potencia con el exponente positivo.
 '''
+
+
+#Petición de datos
+base=int(input("Introduce la base: "))
+exponente=int(input("Introduce el exponente: "))
+
+#Cambio exponente negativo a positivo y creación de variable interruptor
+signo=""
+if exponente<0:
+    exponente=-exponente
+    signo="negativo"
+    
+#Calculo potencia
+potencia=1
+for i in range(exponente):
+    potencia*=base
+        
+#Muestra de resultado por consola
+if signo=="negativo":
+    potencia=1/potencia
+
+print("La potencia es %s" %(potencia))
