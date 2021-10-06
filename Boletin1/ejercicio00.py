@@ -3,7 +3,8 @@
  @autor: Sandra Ruiz Jiménez
  @fecha: Oct 5, 2021
  @nombre: Boletin 1 - Ejercicio 0
- @enunciado: Primer programa que pregunta el nombre del usuario 
+ @enunciado: 
+Primer programa que pregunta el nombre del usuario 
 y lo saluda.
 Luego mostrará el mensaje al nombre pidiéndole dos 
 números y los sumará y los restará.
