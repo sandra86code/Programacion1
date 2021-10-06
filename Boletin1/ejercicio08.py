@@ -8,6 +8,7 @@
 pedirnos cuantas monedas tenemos de 2e, 1e, 50 céntimos, 20 céntimos o 10 céntimos).
 '''
 
+'''
 #Pedir datos y comprobar que sean correctos
 monedasDosEuros=int(input("Introduzca la cantidad de monedas de 2€: "))
 while monedasDosEuros<0:
@@ -35,6 +36,32 @@ totalCentimos=(monedasDosEuros*200) + (monedasEuro*100) + (monedas50Cent*50) + (
 #Calculamos los euros y los céntimos
 euros=totalCentimos//100
 centimos=totalCentimos%100
+
+#Mostramos los resultados por consola
+print("La cantidad introducida corresponde con %s € con %s céntimos." %(euros, centimos))
+
+
+'''
+#Solución con listas
+
+#Declaración listas
+listaMonedas=["2 €", "1 €", "50 céntimos", "20 céntimos", "10 céntimos"]
+
+valorEnCentimos=[200,100,50,20,10]
+
+#Recorremos listas con bucle y declaramos variable contadora de la suma
+sumaCentimos=0
+for i in range (len(listaMonedas)):
+    cantidadMoneda=int(input("Indroduce la cantidad de monedas de "+ str(listaMonedas[i]) + ": "))
+    #Comprobamos datos
+    while cantidadMoneda<0:
+        cantidadMoneda=int(input("Error. Indroduce la cantidad de monedas de "+ str(listaMonedas[i]) + ": "))
+    sumaCentimos+=cantidadMoneda*valorEnCentimos[i]
+    
+#Calculamos los euros y los céntimos que tenemos
+#Calculamos los euros y los céntimos
+euros=sumaCentimos//100
+centimos=sumaCentimos%100
 
 #Mostramos los resultados por consola
 print("La cantidad introducida corresponde con %s € con %s céntimos." %(euros, centimos))
