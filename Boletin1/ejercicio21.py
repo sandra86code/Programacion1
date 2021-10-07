@@ -13,16 +13,18 @@ cantidadNumPrimos=int(input("¿Cuántos números primos quieres mostrar? "))
 while cantidadNumPrimos<=0:
     cantidadNumPrimos=int(input("Error. ¿Cuántos números primos quieres mostrar? "))
     
-num=1000
+
 primos=[]
 
+divisors=0
+
 while len(primos)!=cantidadNumPrimos:
-    divisor=0
-    for i in range(2, num):
-        for j in range (2, num//2+1):
+    
+    for i in range(2, 20):
+        for j in range (2, i):
             if i%j==0:
-                 divisor+=1
-        if divisor in {1,2}:
+                 divisors+=1
+        if divisors==0:
             primos.append(i)
     
 print(primos)
