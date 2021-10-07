@@ -12,19 +12,22 @@ números primos que queremos mostrar.
 cantidadNumPrimos=int(input("¿Cuántos números primos quieres mostrar? "))
 while cantidadNumPrimos<=0:
     cantidadNumPrimos=int(input("Error. ¿Cuántos números primos quieres mostrar? "))
-    
-
+     
+ 
 primos=[]
-
+num=20
 divisors=0
+ 
 
-while len(primos)!=cantidadNumPrimos:
-    
-    for i in range(2, 20):
-        for j in range (2, i):
-            if i%j==0:
-                 divisors+=1
-        if divisors==0:
-            primos.append(i)
-    
+
+for i in range(2, num):
+    for j in range (2, i):
+        if i%j==0:
+            divisors+=1
+    if divisors==0:
+        primos.append(i)
+    divisors=0
+    if cantidadNumPrimos==len(primos):
+        i=num-1
+        
 print(primos)
