@@ -7,3 +7,21 @@
  Escribir un programa que imprima todos los números pares entre dos números que se le
 pidan al usuario
 '''
+
+#Petición de datos
+numA=int(input("Introduzca un número: "))
+numB=int(input("Introduzca otro número "))
+
+#Comprobar cuál es el límite inferior y el límite superior del bucle
+if numA<numB:
+    #Bucle entre límite interior y superior
+    for i in range(numA+1, numB):
+        #Cálculo e impresión de números pares
+        if i%2==0:
+            print(i)
+else:
+    #Bucle entre límite interior y superior
+    for i in range(numB+1, numA):
+        #Cálculo e impresión de números pares
+        if i%2==0:
+            print(i)
