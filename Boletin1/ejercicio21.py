@@ -13,21 +13,30 @@ cantidadNumPrimos=int(input("¿Cuántos números primos quieres mostrar? "))
 while cantidadNumPrimos<=0:
     cantidadNumPrimos=int(input("Error. ¿Cuántos números primos quieres mostrar? "))
      
- 
+#Declaramos lista vacía que va a acumular los números primos
 primos=[]
-num=20
+#Declaramos un número que será el límite superior del bucle for externo
+num=1000
+#Declaramos variable contadora de los divisores de un número
 divisors=0
- 
 
-
+#Bucle externo que va desde el 2 hasta el 999
 for i in range(2, num):
+    #Variable que es la dimensión de la lista
+    sizeLista=len(primos) 
+    #Condición de que cuando la cantidad de primos introducida sea igual a la dimensión de la lista pare el bucle
+    if cantidadNumPrimos==sizeLista:    
+        i=num
+    #Bucle interno que va desde 2 hasta i, para así ver los divisores de i
     for j in range (2, i):
+        #Comprobación de divisores de i en intervalo abierto
         if i%j==0:
             divisors+=1
+    #Cuando los divisores sean 0, es decir, el número sea primo, lo añade a la lista
     if divisors==0:
         primos.append(i)
+    #Reiniciamos la variable para el siguiente número del bucle interno
     divisors=0
-    if cantidadNumPrimos==len(primos):
-        i=num-1
-        
-print(primos)
+    
+#Mostramos el resultado por consola        
+print("Los %s primeros números primos son:\n%s" %(cantidadNumPrimos, primos))
