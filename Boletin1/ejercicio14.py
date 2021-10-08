@@ -43,10 +43,14 @@ if duracionLlamada<=10:
     for i in range(duracionLlamada):
         importeTotal+=precioPorMinuto[i]
 else:
+    #Calculo la suma total de los 10 primeros minutos
+    sumaPrimerosMinutos=0
+    for i in range(len(precioPorMinuto)):
+        sumaPrimerosMinutos+=precioPorMinuto[i]
     #Calculo minutos que tienen asociados un precio invariable de 0.5
     minutosRestantes=duracionLlamada-10
-    #Cálculo de precio total añadiendo el total de los 10 primeros minutos 
-    importeTotal=8.8 + (minutosRestantes*0.5)
+    #Cálculo de precio total
+    importeTotal=round(sumaPrimerosMinutos,2) + (minutosRestantes*0.5)
 
 #Cálculo del impuesto por días
 if dia=="D":
@@ -58,5 +62,6 @@ else:
     else:
         impuesto=importeTotal*0.10
 
+#Mostrar resultados por consola
 print("La llamada tiene un coste de %s € con un impuesto de %s €, lo que hace un total de %s €." 
       %(round(importeTotal,2), round(impuesto,2), round(importeTotal+impuesto, 2)))
