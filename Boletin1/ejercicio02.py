@@ -11,7 +11,7 @@
 fahrenheit=int(input("Dime los grados Fahrenheit: "))
 
 #Cálculo de Fahrenheit a Celcius
-celcius=(fahrenheit-30)/2
+celcius=round(((fahrenheit-32)*5)/9 , 2)
 
 #Mostrar resultado por consola
 print("%s F son %s ºC" %(fahrenheit, celcius))

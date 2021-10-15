@@ -23,7 +23,7 @@ while cateto2<=0:
 '''Teorema de Pitágonas:
 hipotenusa**2 = (cateto1**2) + (cateto2**2)
 '''
-hipotenusa = sqrt(cateto1**2 + cateto2**2)
+hipotenusa = round(sqrt(cateto1**2 + cateto2**2),2)
 
 #Mostrar resultado por consola
 print("La hipotenusa es de " + str(hipotenusa) + " cm.")

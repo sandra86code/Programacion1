@@ -9,12 +9,12 @@ cuanto deberá pagar finalmente por su compra.
 '''
 
 #Petición de datos y comprobación
-totalCompra=float(input("Introduzca el total de su compra: "))
-while totalCompra<=0:
-    totalCompra=float(input("Error. Introduzca el total de su compra: "))
+precioInicial=float(input("Introduzca el total de su compra: "))
+while precioInicial<=0:
+    precioInicial=float(input("Error. Introduzca el total de su compra: "))
     
 #Declaración de la constante del descuento
 DESCUENTO = 0.85
 
 #Cálculo del total una vez aplicado el descuento + salida de datos por consola
-print("El precio total una vez aplicado el descuento es " + str(totalCompra*DESCUENTO) + " €")
+print("El precio final una vez aplicado el descuento es " + str(precioInicial*DESCUENTO) + " €")

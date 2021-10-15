@@ -23,7 +23,7 @@ if num>=0:
 else:
     raizCubica=(-num)**(1/3)
     raizCubica=-raizCubica
-print("La raíz cúbica de %s es %s" %(num, raizCubica))    
+print("La raíz cúbica de %s es %s" %(num, round(raizCubica,3)))    
 
 #Calcular la raíz cuadrada
 if num>=0:

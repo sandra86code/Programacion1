@@ -9,9 +9,11 @@
 
 #Petición de datos con un bucle para no tener que introducir 3 variables
 suma=0
-for i in range(3):
+cantidadNumeros=3
+for i in range(cantidadNumeros):
     num=int(input("Introduce el número " + str(i+1) + ": "))
     suma+=num
 
 #Cálculo de la media dentro de la salida de datos por consola
-print("La media de los números introducidos es " + str(suma/3))
+#media=round(suma/cantidadNumeros,2)
+print("La media de los números introducidos es " + str(round(suma/cantidadNumeros,2)))

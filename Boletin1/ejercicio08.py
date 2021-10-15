@@ -8,7 +8,7 @@
 pedirnos cuantas monedas tenemos de 2e, 1e, 50 céntimos, 20 céntimos o 10 céntimos).
 '''
 
-'''
+
 #Pedir datos y comprobar que sean correctos
 monedasDosEuros=int(input("Introduzca la cantidad de monedas de 2€: "))
 while monedasDosEuros<0:
@@ -30,39 +30,32 @@ monedas10Cent=int(input("Introduzca la cantidad de monedas de 10 cent: "))
 while monedas10Cent<0:
     monedas10Cent=int(input("Introduzca la cantidad de monedas de 10 cent: "))
     
-#Calcular total de céntimos
-totalCentimos=(monedasDosEuros*200) + (monedasEuro*100) + (monedas50Cent*50) + (monedas20Cent*20) + (monedas10Cent*10)
-
-#Calculamos los euros y los céntimos
-euros=totalCentimos//100
-centimos=totalCentimos%100
+#Calcular total
+totalEuros=(monedasDosEuros*2) + monedasEuro + (monedas50Cent*0.5) + (monedas20Cent*0.2) + (monedas10Cent*0.1)
 
 #Mostramos los resultados por consola
-print("La cantidad introducida corresponde con %s € con %s céntimos." %(euros, centimos))
+print("La cantidad introducida corresponde con %s €." %(round(totalEuros,2)))
 
 
 '''
 #Solución con listas
-
+ 
 #Declaración listas
 listaMonedas=["2 €", "1 €", "50 céntimos", "20 céntimos", "10 céntimos"]
-
-valorEnCentimos=[200,100,50,20,10]
-
+ 
+valorEnEuros=[2,1,0.5,0.2,0.1]
+ 
 #Recorremos listas con bucle y declaramos variable contadora de la suma
-sumaCentimos=0
+valorTotal=0
 for i in range (len(listaMonedas)):
     cantidadMoneda=int(input("Indroduce la cantidad de monedas de "+ str(listaMonedas[i]) + ": "))
     #Comprobamos datos
     while cantidadMoneda<0:
         cantidadMoneda=int(input("Error. Indroduce la cantidad de monedas de "+ str(listaMonedas[i]) + ": "))
-    
-    sumaCentimos+=cantidadMoneda*valorEnCentimos[i]
-    
-#Calculamos los euros y los céntimos que tenemos
-#Calculamos los euros y los céntimos
-euros=sumaCentimos//100
-centimos=sumaCentimos%100
-
+     
+    valorTotal+=cantidadMoneda*valorEnEuros[i]
+     
+ 
 #Mostramos los resultados por consola
-print("La cantidad introducida corresponde con %s € con %s céntimos." %(euros, centimos))
+print("La cantidad introducida corresponde con %s €" %(round(valorTotal,2)))
+'''
