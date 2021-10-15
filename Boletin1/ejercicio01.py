@@ -14,7 +14,7 @@ cateto1=int(input("Introduce el primer cateto: "))
 while cateto1<=0:
     cateto1=int(input("Error. Introduce el primer cateto: "))
     
-cateto2=int(input("Error. Introduce el segundo cateto: "))
+cateto2=int(input("Introduce el segundo cateto: "))
 while cateto2<=0:
     cateto2=int(input("Error. Introduce el segundo cateto: "))
 
