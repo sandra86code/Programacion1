@@ -31,7 +31,7 @@ for i in range(2, num):
     for j in range (2, i):
         #Comprobación de divisores de i en intervalo abierto
         if i%j==0:
-            divisors+=1
+            divisors=1
     #Cuando los divisores sean 0, es decir, el número sea primo, lo añade a la lista
     if divisors==0:
         primos.append(i)
