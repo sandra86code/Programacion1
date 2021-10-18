@@ -16,19 +16,13 @@ exponente. Pueden ocurrir tres cosas:
 base=int(input("Introduce la base: "))
 exponente=int(input("Introduce el exponente: "))
 
-#Cambio exponente negativo a positivo y creación de variable interruptor
-signo=""
-if exponente<0:
-    exponente=-exponente
-    signo="negativo"
-    
-#Calculo potencia
-potencia=1
-for i in range(exponente):
-    potencia*=base
-        
-#Muestra de resultado por consola
-if signo=="negativo":
-    potencia=1/potencia
+#Expresión lógica para calcular la potencia dependiendo del exponente
+if exponente==0:
+    potencia = 1
+elif exponente<0:
+    potencia = 1 / (base**abs(exponente))
+else:
+    potencia = base**exponente
 
-print("La potencia es %s" %(potencia))
+#Mostrar resultado por consola
+print("El resultado de la potencia es %s" %(round(potencia, 2)))
