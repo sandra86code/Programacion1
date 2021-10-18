@@ -36,9 +36,9 @@ if tipo=="A":
         gananciaKg=0.3
 else:
     if size=="1":
-        gananciaKg=0.3
+        gananciaKg=-0.3
     else:
-        gananciaKg=0.5
+        gananciaKg=-0.5
 
 #Cálculo de la ganancia total
 gananciaTotal=gananciaKg*numKg
