@@ -24,3 +24,19 @@ diasEnMeses=["31", "28 o 29", "31", "30", "31", "30", "31", "31", "30",
 #Salida del resultado por consola
 print("El mes %s, que corresponde con %s, tiene %s días." 
       %(num, meses[num-1], diasEnMeses[num-1]))
+
+'''
+#Solución con estructura lógica:
+
+mes=int(input("Introduce un número entre 1 y 12: "))
+while mes<1 or mes>12:
+    mes=int(input("Error. Introduce un número entre 1 y 12: "))
+    
+if mes in {1,3,5,7,8,10,12}:
+    print("El mes tiene 31 días.")
+elif mes in {4,6,9,11}:
+    print("El mes tiene 30 días.")
+else:
+    print("El mes tiene 28 o 29 días.")
+    
+'''
