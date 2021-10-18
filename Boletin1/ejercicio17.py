@@ -21,7 +21,7 @@ if numA<numB:
             print(i)
 else:
     #Bucle entre límite interior y superior
-    for i in range(numB+1, numA):
+    for i in range(numA-1, numB, -1):
         #Cálculo e impresión de números pares
         if i%2==0:
             print(i)

@@ -36,11 +36,10 @@ while num!=0:
     if num>limiteInferior and num<limiteSuperior:
         suma+=num
     #Condición de si se ha introducido un nº igual al límite superior o inferior.    
-    elif num==limiteInferior or num==limiteSuperior:
-        intervalo="Sí"
+    elif num<limiteInferior and num<limiteSuperior:
+        contadorOutIntervalo+=1  
     #Condición de cantidad de números fuera del intervalo abierto 
     else:
-        contadorOutIntervalo+=1
         intervalo="Sí"
     num=int(input("Introduce un número (0 para parar): "))
 
