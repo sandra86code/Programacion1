@@ -65,3 +65,51 @@ else:
 #Mostrar resultados por consola
 print("La llamada tiene un coste de %s € con un impuesto de %s €, lo que hace un total de %s €." 
       %(round(importeTotal,2), round(impuesto,2), round(importeTotal+impuesto, 2)))
+
+
+
+'''
+#Solución sin listas
+
+
+duracionLlamada=int(input("¿Cuántos minutos ha durado la llamada? "))
+while duracionLlamada<=0:
+    duracionLlamada=int(input("Error. ¿Cuántos minutos ha durado la llamada? "))
+
+dia=input("Introduce el día de la semana en el que ha realizado la llamada (L,M,X,J,V,S,D): ")
+while dia not in {"L", "M", "X", "J", "V", "S", "D"}:
+    dia=input("Error. Introduce el día de la semana en el que ha realizado la llamada (L,M,X,J,V,S,D): ")
+
+turno=input("Introduce el turno en el que se ha realizado la llamada (mañana/tarde): ")
+while turno not in {"mañana", "tarde"}:
+    turno=input("Error. Introduce el turno en el que se ha realizado la llamada (mañana/tarde): ")
+    
+
+if duracionLlamada > 10:
+    duracionLlamada -= 10
+    precio = duracionLlamada*0.50 + 8.8
+elif duracionLlamada >= 8:
+    duracionLlamada -= 8
+    precio = duracionLlamada*0.70 + 7.4
+elif duracionLlamada >= 5:
+    duracionLlamada -= 5
+    precio = duracionLlamada*0.80 + 5 
+else:
+    precio+=tiempo*1
+
+
+#Cálculo del impuesto por días
+if dia=="D":
+    impuesto=importeTotal*0.03
+else:
+    #Cálculo del impuesto por turnos
+    if turno=="mañana":
+        impuesto=importeTotal*0.15
+    else:
+        impuesto=importeTotal*0.10
+
+#Mostrar resultados por consola
+print("La llamada tiene un coste de %s € con un impuesto de %s €, lo que hace un total de %s €." 
+      %(round(importeTotal,2), round(impuesto,2), round(importeTotal+impuesto, 2)))
+      
+'''
