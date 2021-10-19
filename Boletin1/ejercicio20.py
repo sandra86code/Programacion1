@@ -26,4 +26,3 @@ for i in range(20):
 
 #Mostramos por pantalla el precio total a pagar
 print("El precio total a pagar en 20 meses es: %s €." %(precioTotal))
-
