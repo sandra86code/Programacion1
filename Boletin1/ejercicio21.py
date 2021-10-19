@@ -8,7 +8,7 @@
 números primos que queremos mostrar.
 '''
 
-'''
+
 #Petición y comprobación de datos
 cantidadNumPrimos=int(input("¿Cuántos números primos quieres mostrar? "))
 while cantidadNumPrimos<=0:
@@ -41,39 +41,20 @@ for i in range(2, num):
     
 #Mostramos el resultado por consola        
 print("Los %s primeros números primos son:\n%s" %(cantidadNumPrimos, primos))
+
+
+
 '''
 
-#Solución propuesta en clase con bucle while que es más eficiente porque sale del bucle en cuanto encuentra un divisor
-
-    
-#Petición y comprobación de datos
-cantidadNumPrimos=int(input("¿Cuántos números primos quieres mostrar? "))
-while cantidadNumPrimos<=0:
-    cantidadNumPrimos=int(input("Error. ¿Cuántos números primos quieres mostrar? "))
-     
-#Declaramos lista vacía que va a acumular los números primos
-primos=[]
-#Declaramos un número que será el límite superior del bucle for externo
-num=1000    
-
-
-#Bucle externo que va desde el 2 hasta 1000
-for i in range(2, num):
-    #Variable que es la dimensión de la lista
-    sizeLista=len(primos) 
-    #Condición de que cuando la cantidad de primos introducida sea igual a la dimensión de la lista pare el bucle
-    if cantidadNumPrimos==sizeLista:    
-        i=num
-    #Bucle interno que va desde 2 hasta la mitad de i + 1, para así ver los divisores de i
-    esPrimo = True
-    j = 2
-    while j <= i//2 and esPrimo==True:
-        if i%j==0:
-            esPrimo = False
-    #Cuando los divisores sean 0, es decir, el número sea primo, lo añade a la lista
+#Solución propuesta en clase con bucle while para ver si un número es primo
+esPrimo = True
+i = 2
+num=4
+while i <= num//2 and esPrimo==True:
+    num=int(input("Introduce un número mayor que 0: "))
+    if num%i==0:
+        esPrimo = False
     if esPrimo==True:
-        primos.append(i)
-    
-#Mostramos el resultado por consola        
-print("Los %s primeros números primos son:\n%s" %(cantidadNumPrimos, primos))
-    
+        print("%s es primo." %(num))
+
+'''
