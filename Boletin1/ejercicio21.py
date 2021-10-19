@@ -73,8 +73,6 @@ for i in range(2, num):
     #Cuando los divisores sean 0, es decir, el número sea primo, lo añade a la lista
     if esPrimo==True:
         primos.append(i)
-    #Reiniciamos la variable para el siguiente número del bucle interno
-    esPrimo=True
     
 #Mostramos el resultado por consola        
 print("Los %s primeros números primos son:\n%s" %(cantidadNumPrimos, primos))
