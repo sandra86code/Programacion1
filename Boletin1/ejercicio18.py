@@ -36,7 +36,7 @@ while num!=0:
     if num>limiteInferior and num<limiteSuperior:
         suma+=num
     #Condición de si se ha introducido un nº igual al límite superior o inferior.    
-    elif num<limiteInferior and num>limiteSuperior:
+    elif num<limiteInferior or num>limiteSuperior:
         contadorOutIntervalo+=1  
     #Condición de cantidad de números fuera del intervalo abierto 
     else:
