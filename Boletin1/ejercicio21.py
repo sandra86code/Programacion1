@@ -47,14 +47,20 @@ print("Los %s primeros números primos son:\n%s" %(cantidadNumPrimos, primos))
 '''
 
 #Solución propuesta en clase con bucle while para ver si un número es primo
+
 esPrimo = True
-i = 2
+cont = 2
+#El valor asignado a num solo sirve para entrar en el bucle while, la variable num asigna valor con el input una vez dentro del bucle
 num=4
-while i <= num//2 and esPrimo==True:
+while cont <= num//2 and esPrimo==True:
     num=int(input("Introduce un número mayor que 0: "))
-    if num%i==0:
+    if num%cont==0:
         esPrimo = False
-    if esPrimo==True:
-        print("%s es primo." %(num))
+    cont = cont + 1
+
+if esPrimo==True:
+    print("%s es primo." %(num))
+else:
+    print("%s no es primo." %(num))
 
 '''

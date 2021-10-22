@@ -8,6 +8,7 @@
 pedirnos cuantas monedas tenemos de 2e, 1e, 50 céntimos, 20 céntimos o 10 céntimos).
 '''
 
+from math import trunc
 
 #Pedir datos y comprobar que sean correctos
 monedasDosEuros=int(input("Introduzca la cantidad de monedas de 2€: "))
@@ -34,10 +35,13 @@ while monedas10Cent<0:
 totalEuros=(monedasDosEuros*2) + monedasEuro + (monedas50Cent*0.5) + (monedas20Cent*0.2) + (monedas10Cent*0.1)
 
 #Mostramos los resultados por consola
-print("La cantidad introducida corresponde con %s €." %(round(totalEuros,2)))
-
-
+parteEntera=trunc(totalEuros)
+totalCentimos=(totalEuros-parteEntera)*100
+print("La cantidad introducida corresponde con %s € y %s céntimos." %(trunc(parteEntera), trunc(totalCentimos)))
+      
+      
 '''
+
 #Solución con listas
  
 #Declaración listas
@@ -58,4 +62,5 @@ for i in range (len(listaMonedas)):
  
 #Mostramos los resultados por consola
 print("La cantidad introducida corresponde con %s €" %(round(valorTotal,2)))
+
 '''

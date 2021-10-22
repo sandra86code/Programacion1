@@ -36,5 +36,5 @@ for i in range (cantidadNumeros):
     #Estructura lógica en la que imprime si el número es par o impar
     if num%2==0:
         print("El número %s es par." % (num))
-    elif num%2!=0:
+    else:
         print("El número %s es impar." % (num))
