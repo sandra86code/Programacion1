@@ -62,13 +62,20 @@ elif opcion==1:
         mensaje=False
 
 elif opcion==2: #hay que hacerlo con while
-    divisors=0
-    for i in range (num+1, num+100):
-        for j in range (2, i//2+1):
+    i=num+1
+    esPrimo=False
+    while i<=num+100 and esPrimo==False:
+        j=2
+        esPrimo=True
+        while j<=i//2 and esPrimo==True:
             if i%j==0:
-                divisors+=1
-        if divisors==0:
+                esPrimo=False
+            else:
+                j+=1
+        if esPrimo==True:        
             mensaje="%s es el siguiente primo." %(i)
+        else:
+            i+=1
 
 elif opcion==3:
     num=str(num)
@@ -166,5 +173,6 @@ else:
     num2=input("Introduce otro número: ")
     newNum=num+num2
     mensaje="El número resultante de juntar ambos números es %s." % (newNum)
+
     
 print(mensaje)
