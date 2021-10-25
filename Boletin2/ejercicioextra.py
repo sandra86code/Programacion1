@@ -21,6 +21,7 @@
  
  
 menu="Menú de opciones: \n"\
+    "0. voltea \n"\
     "1. esCapicua \n"\
     "2. siguientePrimo \n"\
     "3. digitos \n"\

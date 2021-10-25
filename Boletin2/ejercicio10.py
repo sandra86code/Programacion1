@@ -17,6 +17,7 @@ The messages are the following:
 "The number is not valid, try again."
 "The factorial is XX."
  """
+
  
 #Pido los datos
 num=int(input("Introduce un número entero positivo: "))
