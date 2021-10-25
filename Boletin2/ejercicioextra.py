@@ -19,7 +19,7 @@
 11. juntaNumeros: Pega dos números para formar uno.
  """
  
- 
+#Creo el menú y lo guardo en una variable 
 menu="Menú de opciones: \n"\
     "0. voltea \n"\
     "1. esCapicua \n"\
@@ -34,35 +34,56 @@ menu="Menú de opciones: \n"\
     "10. trozoDeNumero \n"\
     "11. juntaNumeros \n"
 
+#Imprimo el menú
 print(menu)
+
+#Pido al usuario que elija una opción
 opcion=int(input("Elige una de las opciones: "))         
 
+#Compruebo que los datos son correos y sino lo son,
+#vuelvo a imprimir menú y a pedir los datos
 while opcion<0 or opcion>11:
     print("Opción incorrecta. Vuelve a intentarlo.")
     print(menu)
     opcion=int(input("Elige una de las opciones: "))
 
+#Pido un número, variable que voy a usar en cada opción
 num=int(input("Introduce un número: "))                
 
-
+#Estructura lógica para que haga la opcion seleccionada
+#el usuario
 if opcion==0:
+    #Hago un casting del número para que lo lea como string
     num=str(num)
+    #Creo variable acumuladora vacía del tipo cadena para usarla en el bucle
     numReves=""
+    #Creo un bucle para recorrer el número
     for i in range (1, len(num)+1):
+        #Voy acumulando cada caracter (dígito) del número 
+        #pero en orden inverso con respecto al número
         numReves+=num[-i]
+    #Guardo mensaje final en variable mensaje
     mensaje="El número dado la vuelta es %s." %(numReves)
 
 elif opcion==1:
+    #Hago un casting del número para que lo lea como string
     num=str(num)
+    #Creo variable acumuladora vacía del tipo cadena para usarla en el bucle
     numReves=""
+    #Creo un bucle para recorrer el número
     for i in range (1, len(num)+1):
+        #Voy acumulando cada caracter (dígito) del número 
+        #pero en orden inverso con respecto al número
         numReves+=num[-i]
+    #Compruebo si el num es igual al número en orden inverso.
+    #Si es cierto devuelve True, si no, False
     if num==numReves:
         mensaje=True
     else:
         mensaje=False
 
-elif opcion==2: #hay que hacerlo con while
+elif opcion==2:
+    
     i=num+1
     esPrimo=False
     while i<=num+100 and esPrimo==False:
@@ -79,6 +100,7 @@ elif opcion==2: #hay que hacerlo con while
             i+=1
 
 elif opcion==3:
+    #Hago un casting del número para que lo lea como string
     num=str(num)
     contador=0
     for i in num:
@@ -86,6 +108,7 @@ elif opcion==3:
     mensaje="Tiene %s dígitos." % (contador)
 
 elif opcion==4:
+    #Hago un casting del número para que lo lea como string
     num=str(num)
     posicion=int(input("¿El dígito de qué posición quiere saber (0 en adelante)? "))
     while posicion<0 or posicion>len(num):
@@ -95,6 +118,7 @@ elif opcion==4:
     mensaje="El dígito que se encuentra en la posición %s es %s." % (posicion, num[posicion])
     
 elif opcion==5: 
+    #Hago un casting del número para que lo lea como string
     num=str(num)
     digito=int(input("¿Qué dígito quiere saber en qué posición se encuentra? "))
     while digito<0:
@@ -112,6 +136,7 @@ elif opcion==5:
         mensaje=-1
     
 elif opcion==6:
+    #Hago un casting del número para que lo lea como string
     num=str(num)
     numDigitosDerecha=int(input("¿Cuántos dígitos quiere quitarle al número por la derecha? "))
     while numDigitosDerecha>len(num):
@@ -126,6 +151,7 @@ elif opcion==6:
         mensaje="El número resultante es %s." % (numNuevoDerecha)
 
 elif opcion==7:
+    #Hago un casting del número para que lo lea como string
     num=str(num)
     numDigitosIzquierda=int(input("¿Cuántos dígitos quiere quitarle al número por la izquierda? "))
     while numDigitosIzquierda>len(num):
@@ -140,6 +166,7 @@ elif opcion==7:
         mensaje="El número resultante es %s." % (numNuevoIzquierda)
 
 elif opcion==8:
+    #Hago un casting del número para que lo lea como string
     num=str(num)
     digitosDerecha=input("¿Qué dígito quiere añadir al número por la derecha? ")
     newNum=num+digitosDerecha
@@ -147,12 +174,14 @@ elif opcion==8:
     
 
 elif opcion==9:
+    #Hago un casting del número para que lo lea como string
     num=str(num)
     digitosIzquierda=input("¿Qué dígito quiere añadir al número por la izquierda? ")
     newNum=digitosIzquierda+num
     mensaje="El número resultante es %s." % (newNum)
 
 elif opcion==10:
+    #Hago un casting del número para que lo lea como string
     num=str(num)
     posicionInicial=int(input("Introduzca la posición inicial: "))
     while posicionInicial<0 or posicionInicial>=len(num):
@@ -170,6 +199,7 @@ elif opcion==10:
     mensaje="El trozo comprendido entre la posición inicial %s y la posición final %s, ambas inclusive, es %s." % (posicionInicial, posicionFinal, newNum)
 
 else:
+    #Hago un casting del número para que lo lea como string
     num=str(num)
     num2=input("Introduce otro número: ")
     newNum=num+num2
