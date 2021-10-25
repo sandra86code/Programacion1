@@ -83,17 +83,32 @@ elif opcion==1:
         mensaje=False
 
 elif opcion==2:
-    
+    #Creo la variable que itera en el bucle while externo y le doy un valor inicial que parta del n.º siguiente 
+    #al número que ha introducido el usuario
     i=num+1
+    #Creo la bandera que voy a utilizar en el bucle externo y la inicializo a False
     esPrimo=False
+    #La condición de entrada en el bucle externo es doble: que la bandera no se haya modificado
+    #y que la variable iteradora sea menor o igual que el número + 100 (suficiente para encontrar
+    #el siguiente primo)
     while i<=num+100 and esPrimo==False:
+        #Creo la variable que itera el bucle while interno y le digo que empiece en 2 porque va a comprobar
+        #los divisores de i
         j=2
+        #Creo la bandera que voy a utilizar en el bucle interno y la inicializo a True
         esPrimo=True
+        #La condición de entrada en el bucle interno es doble: que la bandera no se haya modificado
+        #y que la variable iteradora sea menor o igual que la mitad del número (al estar buscando divisores)
         while j<=i//2 and esPrimo==True:
+            #Si i es divisible entre j, el número tiene un divisor, por lo que no es primo, así que cambio 
+            #la bandera para que no vuelva a entrar en el bucle
             if i%j==0:
                 esPrimo=False
+            #Si i no es divisible entre j, incrementamos j en 1, para que vuelva a dar otra vuelta al bucle.
             else:
                 j+=1
+           
+        #Si 
         if esPrimo==True:        
             mensaje="%s es el siguiente primo." %(i)
         else:
