@@ -24,7 +24,7 @@ cantidadNumeros=int(input("¿Cuántos números quieres introducir? "))
 #Compruebo que el dato sea positivo, si es negativo o 0, vuelvo a preguntar
 while cantidadNumeros<=0:
     cantidadNumeros=int(input("Error. ¿Cuántos números quieres introducir? "))
-    
+     
 #Bucle for cuyo rango es la cantidad de números que el usuario ha introducido
 for i in range (cantidadNumeros):
     #Pido el número
@@ -38,3 +38,29 @@ for i in range (cantidadNumeros):
         print("El número %s es par." % (num))
     else:
         print("El número %s es impar." % (num))
+        
+
+'''        
+#SOLUCIÓN PROPUESTA EN CLASE CON BUCLE WHILE
+
+cantidadNumeros=int(input("¿Cuántos números quieres introducir? "))
+while cantidadNumeros<=0:
+    cantidadNumeros=int(input("Error. ¿Cuántos números quieres introducir? "))
+
+cont=1
+
+while cont<=cantidadNumeros:
+    num=inum=int(input("Introduce un número mayor que 0: "))
+    while num<=0:
+        print("El número no es válido, debería ser mayor que 0.")
+        num=int(input("Introduce un número mayor que 0: "))
+        
+    if num%2==0:
+        print("El número %s es par." % (num))
+    else:
+        print("El número %s es impar." % (num))
+    cont+=1
+'''
+
+
+
