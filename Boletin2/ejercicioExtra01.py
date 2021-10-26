@@ -2,7 +2,7 @@
 # coding: utf-8
  @autor: Sandra Ruiz Jimenez
  @fecha: Oct 22, 2021
- @nombre: Boletin 2 - Ejercicio Extra
+ @nombre: Boletin 2 - Ejercicio Extra 1
  @enunciado: 
  Crea una programa que tenga muestre un mensaje para elegir las siguientes opciones:
 0. voltea: Le da la vuelta a un número.
