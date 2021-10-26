@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: Oct 5, 2021
- @nombre: Examen a�o 2020/2021 - Ejercicio 2
+ @nombre: Examen año 2020/2021 - Ejercicio 2
  @enunciado: 
  En el gimnasio Jacafitness, para el que ya hemos trabajado,nos piden
  que realicemos un programa para determinar si deberías acuidr al médico
