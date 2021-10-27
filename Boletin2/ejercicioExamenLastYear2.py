@@ -41,10 +41,10 @@ while tipoVida not in {"Sedentaria", "Activa", "Muy activa"}:
     tipoVida=input("¿Tipo de vida? (Sedentaria/Activa/Muy activa): ")
 
     
-if peso>100 or (edad>70 and tipoVida=="Sedentaria"):
+if peso>100 or (edad>70 and tipoVida=="Sedentaria") or (peso>74.4 and edad>50):
     mensaje="Debería acudir al médico a una revisión."
-elif peso>74.4 and edad>50:
-    mensaje="Debería acudir al médico a una revisión."
+# elif peso>74.4 and edad>50:
+#     mensaje="Debería acudir al médico a una revisión."
 else: 
     mensaje="No es urgente que acuda al médico si no tiene problemas de salud."
 
