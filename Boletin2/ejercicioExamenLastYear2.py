@@ -24,3 +24,28 @@
  En cualquier otro caso se mostrará "No es urgente que acuda al médico si
  no tiene problemas de salud".
 '''
+
+peso=float(input("Introduce tu peso en kilos: "))
+while peso<=0:
+    print("Datos incorrectos. Vuelve a intentarlo.")
+    peso=float(input("Introduce tu peso en kilos: "))
+    
+edad=int(input("Introduce tu edad: "))
+while edad<=0:
+    print("Datos incorrectos. Vuelve a intentarlo.")
+    edad=int(input("Introduce tu edad: "))
+    
+tipoVida=input("¿Tipo de vida? (Sedentaria/Activa/Muy activa): ")
+while tipoVida not in {"Sedentaria", "Activa", "Muy activa"}:
+    print("Datos incorrectos. Vuelve a intentarlo.")
+    tipoVida=input("¿Tipo de vida? (Sedentaria/Activa/Muy activa): ")
+
+    
+if peso>100 or (edad>70 and tipoVida=="Sedentaria"):
+    mensaje="Debería acudir al médico a una revisión."
+elif peso>74.4 and edad>50:
+    mensaje="Debería acudir al médico a una revisión."
+else: 
+    mensaje="No es urgente que acuda al médico si no tiene problemas de salud."
+
+print(mensaje)

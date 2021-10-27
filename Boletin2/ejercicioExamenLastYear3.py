@@ -10,3 +10,19 @@
  El máximo común divisor (mcd) es el mayor número que divide a ambos números
  a la vez.
 '''
+
+numA=int(input("Introduce un número: "))
+numB=int(input("Introduce otro número: "))
+
+if numA>=numB:
+    numMayor=numA
+    numMenor=numB
+else:
+    numMayor=numB
+    numMenor=numA
+    
+for i in range (1, numMenor+1):
+    if numMayor%i==0 and numMenor%i==0:
+        mcd=i
+            
+print("El máximo común divisor de %s y %s es %s." %(numA, numB, mcd))

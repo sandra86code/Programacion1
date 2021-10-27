@@ -13,3 +13,30 @@
  preguntar por la hora y el día de la semana, te indique la actividad que puedes
  realizar.
 '''
+
+print("Bienvenid@ al gimansio Jacafitness.")
+
+hora=int(input("Introduzca una hora (12, 16 o 20): "))
+while hora not in {12, 16, 20}:
+    print("Error. Han introducido datos erróneos. Vuelva a intentarlo.")
+    hora=int(input("Introduzca una hora (12, 16 o 20): "))
+
+dia=input("Introduzca un día de la semana (L/M/X/J/V): ")
+while dia not in {"L", "M", "X", "J", "V"}:
+    print("Error. Han introducido datos erróneos. Vuelva a intentarlo.")
+    dia=input("Introduzca un día de la semana (L/M/X/J/V): ")
+    
+if hora==20:
+    mensaje="Puede asistir a Body Combat de 20 a 22."
+elif hora==12:
+    if dia in {"L", "X", "J"}:
+        mensaje="Puede asistir a Spinning de 12 a 14."
+    else:
+        mensaje="Puede asistir a Yoga de 12 a 14."
+else:
+    if dia in {"L", "X", "J"}:
+        mensaje="Puede asistir a Yoga de 16 a 20."
+    else:
+        mensaje="Puede asistir a Spinning de 16 a 20."
+
+print(mensaje)
