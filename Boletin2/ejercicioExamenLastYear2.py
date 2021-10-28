@@ -25,6 +25,7 @@
  no tiene problemas de salud".
 '''
 
+#Pido los datos y, si no son correctos, los vuelvo a pedir
 peso=float(input("Introduce tu peso en kilos: "))
 while peso<=0:
     print("Datos incorrectos. Vuelve a intentarlo.")
@@ -40,12 +41,12 @@ while tipoVida not in {"Sedentaria", "Activa", "Muy activa"}:
     print("Datos incorrectos. Vuelve a intentarlo.")
     tipoVida=input("¿Tipo de vida? (Sedentaria/Activa/Muy activa): ")
 
-    
+#Creo una estructura en la que de darse alguna de las 3 condiciones del if,
+#se guarda un mensaje. En todos los demás casos, se guarda el otro mensaje.    
 if peso>100 or (edad>70 and tipoVida=="Sedentaria") or (peso>74.4 and edad>50):
     mensaje="Debería acudir al médico a una revisión."
-# elif peso>74.4 and edad>50:
-#     mensaje="Debería acudir al médico a una revisión."
 else: 
     mensaje="No es urgente que acuda al médico si no tiene problemas de salud."
 
+#Imprimo la variable mensaje
 print(mensaje)
