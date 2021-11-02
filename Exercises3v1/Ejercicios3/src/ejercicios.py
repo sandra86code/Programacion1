@@ -54,20 +54,17 @@ def leapYear(year):
  """
 
 def daysInMonth(month, year):
+    days=-1
     if year>0:
         if month in {1,3,5,7,8,10,12}:
             days=31
         elif month in {4,6,9,11}:
             days=30
         elif month==2:
-            if leapYear==1:
+            if leapYear(year)==1:
                 days=29
             else:
                 days=28
-        else:
-            days=-1
-    else:
-        days=-1
     return days
 
 
@@ -91,14 +88,13 @@ def daysInMonth(month, year):
        If the variable d is zero was Sunday, 1 Monday……………... 6 Saturday. 
  """
  
-def daysOfWeek(day, month, year):
+def dayOfWeek(day, month, year):
+    a = (14-month)//12
+    y = year - a
+    m = month + 12*a - 2
+    d = (day + y + (y//4) - (y//100) + (y//400) + (31*m)//12) % 7
      
-    a = (14-month)/12
-    y = year-a
-    m = month+12 * a-2
-    d = (day + y + y/4 - y/100 + y/400 + 31*m/12) % 7
-     
-    return round(d)
+    return d
  
  
 """
@@ -115,15 +111,12 @@ def daysOfWeek(day, month, year):
  """
  
 def myPower(numA, numB):
-    potencia=0
+    potencia=1
     if numB>0:
         for i in range (numB):
-            potencia+=numA
+            potencia*=numA
     elif numB<0:
-        numB*=-1
-        for i in range (numB):
-            potencia+=numA
-        potencia*=-1   
+        potencia=-1   
     return potencia
  
  
