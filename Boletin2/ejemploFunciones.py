@@ -9,9 +9,9 @@ def leer(cadena):
     num1=int(input(cadena))
     while num1 < 10 or num1>100:
         num1=int(input(cadena))
-     
+
     return num1
- 
+
 # cant= 0
 # num1 = leer("Introduce el primer número: ")
 # cant += num1
@@ -23,7 +23,7 @@ def leer(cadena):
 # cant += num3
 #  
 # print(cant/3)
- 
+
 # #Función sin retorno
 # def leer2(cadena):
 #     num1=int(input(cadena))
@@ -71,4 +71,10 @@ print(calculaDescuento(100, 10)) #En este caso descuento vale 10
 
 
 
+def repiteCaracter(caracter='/', repite=3):
+    return caracter*repite
+
+print(repiteCaracter())
+print(repiteCaracter('.', 10))
+print(repiteCaracter(repite=10))
 
