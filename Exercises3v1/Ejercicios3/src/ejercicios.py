@@ -9,11 +9,16 @@
  """
  
 def factorial(num):
+    #Iniciamos la variable resultado a 1 porque vamos a usarla para multiplicar.
+    #Además es el resultado del número 0, que no entrará en la estructura condicional posterior
     resultado=1
+    #Estructura condicional si el número (parámetro de entrada) es menor o mayor que 0
     if num<0:
         resultado=-1
     elif num>0:
+        #Bucle que va [1, num]
         for i in range (1, num+1):
+            #Con cada iteración se multiplica i al resultado
             resultado*=i
      
     return resultado
@@ -32,8 +37,10 @@ def factorial(num):
  """
  
 def leapYear(year):
+    #Estructura lógica si el año es bisiesto y diferente de 0
     if (year%4==0 or (year%100==0 and year%400==0)) and year!=0:
         resultado=1
+    #Años no bisiestos y año==0
     else:
         resultado=-1
      
@@ -54,15 +61,24 @@ def leapYear(year):
  """
 
 def daysInMonth(month, year):
+    #Iniciamos la variable en -1 que nos servirá para argumentos incorrectos,
+    #ya que no entrarán en la estructura condicional
     days=-1
+    #Años positivos
     if year>0:
+        #Meses de 31 días
         if month in {1,3,5,7,8,10,12}:
             days=31
+        #Meses de 30 días
         elif month in {4,6,9,11}:
             days=30
+        #Elif para que entre solo en febrero, al no haber control de meses mayores de 13
+        #o menores de 0
         elif month==2:
+            #Uso la función del año bisiesto con el parámetro year y cuando el resultado era 1 (año bisiesto)
             if leapYear(year)==1:
                 days=29
+            #Años no bisiestos
             else:
                 days=28
     return days
@@ -89,6 +105,8 @@ def daysInMonth(month, year):
  """
  
 def dayOfWeek(day, month, year):
+    #Uso la función que me han dado, usando división entera (para que no haya decimales o da error)
+    #y paréntesis para orden de operaciones
     a = (14-month)//12
     y = year - a
     m = month + 12*a - 2
@@ -111,10 +129,15 @@ def dayOfWeek(day, month, year):
  """
  
 def myPower(numA, numB):
+    #Inicio la variable a 1, porque la voy a usar en el bucle para multiplicar.
+    #Además será el resultado final cuando numB==0
     potencia=1
+    #Si numB es positivo, creo un bucle que multiplique numA el número de veces
+    #coincidente con el valor de numB
     if numB>0:
         for i in range (numB):
             potencia*=numA
+    #Si el num es negativo, la potencia vale -1
     elif numB<0:
         potencia=-1   
     return potencia
