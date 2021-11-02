@@ -68,3 +68,7 @@ def calculaDescuento(cant, descuento=5):
 
 print(calculaDescuento(100)) #En este caso descuento vale 5
 print(calculaDescuento(100, 10)) #En este caso descuento vale 10
+
+
+
+
