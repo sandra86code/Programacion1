@@ -170,7 +170,7 @@ def myPower(numA, numB):
 # coding: utf-8
  @autor: Sandra Ruiz Jimenez
  @fecha: Nov 2, 2021
- @nombre: Boletin 3 - Ejercicio 8
+ @nombre: Boletin 3 - Ejercicio 9
  @enunciado: 
  Design a method called numberDivisorPrime that receives a positive number as 
  a parameter. 
@@ -185,7 +185,7 @@ def myPower(numA, numB):
 # coding: utf-8
  @autor: Sandra Ruiz Jimenez
  @fecha: Nov 2, 2021
- @nombre: Boletin 3 - Ejercicio 8
+ @nombre: Boletin 3 - Ejercicio 10
  @enunciado: 
  Design a method called friend that receives two positive number as parameters. 
  The method should return true if the number are friends and false in other case. 
