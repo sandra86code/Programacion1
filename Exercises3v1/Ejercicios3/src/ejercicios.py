@@ -5,8 +5,11 @@
  @nombre: Boletin 3 - Ejercicio 1
  @enunciado: 
  Design a method called factorial that receives a positive integer and returns 
- the factorial. If the number is negative the method should return -1.    
+ the factorial. 
+ If the number is negative the method should return -1.    
  """
+from math import sqrt
+
  
 def factorial(num):
     #Iniciamos la variable resultado a 1 porque vamos a usarla para multiplicar.
@@ -57,7 +60,7 @@ def leapYear(year):
  Design a method called daysInMonth that returns the integer number of days 
  in the month and year that received as arguments. 
  You can use the method leapYear. 
- If the arguments are not valid the method should return -1
+ If the arguments are not valid the method should return -1.
  """
 
 def daysInMonth(month, year):
@@ -123,9 +126,11 @@ def dayOfWeek(day, month, year):
  @enunciado: 
  Design a method called myPower that receives one integer and one integer 
  positive numbers as parameters and the method calculates the power of the 
- first parameter raised the second number. You only can use the multiplication. 
+ first parameter raised the second number. 
+ You only can use the multiplication. 
  If the parameters are not right (the second parameter is negative) the method 
- should return -1. Remember that any number raised 0 is 1.
+ should return -1. 
+ Remember that any number raised 0 is 1.
  """
  
 def myPower(numA, numB):
@@ -150,11 +155,25 @@ def myPower(numA, numB):
  @nombre: Boletin 3 - Ejercicio 6
  @enunciado: 
  Design a method called numberOfNumbers that receives one integer positive number 
- as parameter. The method should return the number of digits of the number that 
- received by parameter. If the parameter is not valid the method should return -1.
+ as parameter. 
+ The method should return the number of digits of the number that received by parameter. 
+ If the parameter is not valid the method should return -1.
  """
 
-
+def numberOfNumbers(num):
+    #Inicializo la variable digits a 1 para la primera decena [1,9], correspondiente al primer dígito
+    digits=1
+    #Si el número es negativo o 0 (parámetro no válido, digits vale -1
+    if num<=0:
+        digits=-1
+    #Mientras que el número tenga dos dígitos
+    while num>9:
+        #Quita una decena (un dígito)
+        num=num/10
+        #Utilizo la variable digits como acumulador y le sumo uno con cada dígito que puedo dividir
+        digits+=1
+    
+    return digits
 
 
 """
@@ -168,8 +187,26 @@ def myPower(numA, numB):
  if the number is not prime. If the parameter is not valid the method should return -1.
  """
  
- 
- 
+def isPrime(num):
+    #Si el parámetro no es válido la variable que usaré en el return vale -1
+    if num<=0:
+        isPrime=-1
+    #Aquí opero para parámetros correctos (número positivo)
+    else:
+        #Variable para el bucle que inicia en 2, ya que es el número desde el que empiezo a contar divisores
+        i=2
+        #Bandera que inicializo a 1 (número primo), es decir, sin divisores.
+        isPrime=1
+        #Creo el bucle que va desde 2 hasta la mitad del número (posibles divisores) y cuya bandera vale 1
+        while i<=num//2 and isPrime==1:
+            #Si el número tiene algún divisor modifico la bandera para que valga 0 (no es primo)
+            if num%i==0:
+                isPrime=0
+            #De lo contrario aumento la variable iteradora del bucle
+            else:
+                i+=1
+        
+    return isPrime
  
  
 """
@@ -179,14 +216,21 @@ def myPower(numA, numB):
  @nombre: Boletin 3 - Ejercicio 8
  @enunciado: 
  Design a method called secondOrder that receives three integer positive number 
- as parameters. This parameters are the coefficients of the an equation of a 
+ as parameters. 
+ This parameters are the coefficients of the an equation of a 
  second order (ax2+bx+c=0) and the method returns the numbers of the solutions. 
- If the parameters are not valid the method should return -1
+ If the parameters are not valid the method should return -1.
  """
  
- 
- 
- 
+def secondOrder (a, b, c):
+    if a==0 or (((b**2)-4*a*c)/(2*a))<0:
+        numSoluciones=0
+    elif (((b**2)-4*a*c)/(2*a))==0:
+        numSoluciones=1
+    else:
+        numSoluciones=2
+    
+    return numSoluciones
  
  
 """
@@ -198,9 +242,21 @@ def myPower(numA, numB):
  Design a method called numberDivisorPrime that receives a positive number as 
  a parameter. 
  The method should return the number of prime divisors of the parameter. 
- If the parameter is not valid the method should return -1.
+ If the parameter is not valid the method should return 0.
  """
  
+def numberDivisorPrime(num):
+    #Inicializo la variable a 0, que vale para parámetros no válidos y como variable 
+    #acumuladora del bucle posterior
+    divisors=0
+    #Si el número es mayor que 0, creo un bucle desde 1 hasta la mitad del número más 1
+    if num>0:
+        for i in range(1,num//2+1):
+            #Si i es divisor del número y además i es un número primo, me acumula en la variable divisors
+            if num%i==0 and isPrime(i)==1:
+                divisors+=1    
+    
+    return divisors
  
  
  
@@ -217,3 +273,31 @@ def myPower(numA, numB):
  If the parameters are not valid the method should return false.
  """
  
+def friend (numA, numB):
+    #Inicio el resultado en False, para parámetros no válidos (numeros menores o igual que 0 o que los
+    #números no sean amigos
+    resultado=False
+    #Si los parámetros son correctos y la suma de los divisores de A es igual a B y la suma de divisores
+    #de B es igual a A, los números son amigos.
+    #Para la suma de los divisores he creado otra función a la que llamo, para no repetir código con cada
+    #número
+    if numA>0 and numB>0 and sumaDivisores(numA)==numB and sumaDivisores(numB)==numA:
+        resultado=True
+    
+    return resultado
+
+
+def sumaDivisores(num):
+    #Creo la variable sumatoria de los divisores
+    suma=0
+    #Creo un bucle desde 1 hasta la mitad del número más 1
+    for i in range(1,num//2+1):
+        #Si i es divisor del número, me lo suma
+        if num%i==0:
+            suma+=i
+    
+    return suma
+
+#Test con dos números amigos
+assert(sumaDivisores(220)==284)
+assert(sumaDivisores(284)==220)

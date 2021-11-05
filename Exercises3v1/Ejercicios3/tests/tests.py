@@ -47,39 +47,39 @@ class Test(unittest.TestCase):
         self.assert_(ejercicios.myPower(-2,3)== -8)
         self.assert_(ejercicios.myPower(3,-3)== -1)
         self.assert_(ejercicios.myPower(2,8)==256)
-#         
-#         self.assert_(ejercicios.numberOfNumbers(29)==2)
-#         self.assert_(ejercicios.numberOfNumbers(-12)==-1)
-#         self.assert_(ejercicios.numberOfNumbers(2)==1)
-#         self.assert_(ejercicios.numberOfNumbers(201)==3)
-#         self.assert_(ejercicios.numberOfNumbers(0), 1)
-#         self.assert_(ejercicios.numberOfNumbers(29874)==5)
-#         
-#         self.assert_(ejercicios.isPrime(29)==1)
-#         self.assert_(ejercicios.isPrime(-12)==-1)
-#         self.assert_(ejercicios.isPrime(2)==1)
-#         self.assert_(ejercicios.isPrime(201)==0)
-#         self.assert_(ejercicios.isPrime(0)==-1)
-#         self.assert_(ejercicios.isPrime(100)==0)
-#         
-#         self.assert_(ejercicios.secondOrder(1,-5,6) == 2)
-#         self.assert_(ejercicios.secondOrder(2,-7,3) == 2)
-#         self.assert_(ejercicios.secondOrder(1,-2,1) == 1)
-#         self.assert_(ejercicios.secondOrder(1,1,1) == 0)
-#         
-#         self.assert_(ejercicios.numberDivisorPrime(8)== 2)
-#         self.assert_(ejercicios.numberDivisorPrime(-8)== 0)
-#         self.assert_(ejercicios.numberDivisorPrime(0)== 0)
-#         self.assert_(ejercicios.numberDivisorPrime(21)== 3)
-#         
-#         self.assert_(ejercicios.friend(8,-2) == False)
-#         self.assert_(ejercicios.friend(-8,8) == False)
-#         self.assert_(ejercicios.friend(220,284) == True)
-#         self.assert_(ejercicios.friend(6,6) == True)
-#         self.assert_(ejercicios.friend(21,21) == False)
-#         
-#                 
-#         
-# if __name__ == "__main__":
-#     #import sys;sys.argv = ['', 'Test.testName']
-#     unittest.main()
+         
+        self.assert_(ejercicios.numberOfNumbers(29)==2)
+        self.assert_(ejercicios.numberOfNumbers(-12)==-1)
+        self.assert_(ejercicios.numberOfNumbers(2)==1)
+        self.assert_(ejercicios.numberOfNumbers(201)==3)
+        self.assert_(ejercicios.numberOfNumbers(0), 1)
+        self.assert_(ejercicios.numberOfNumbers(29874)==5)
+         
+        self.assert_(ejercicios.isPrime(29)==1)
+        self.assert_(ejercicios.isPrime(-12)==-1)
+        self.assert_(ejercicios.isPrime(2)==1)
+        self.assert_(ejercicios.isPrime(201)==0)
+        self.assert_(ejercicios.isPrime(0)==-1)
+        self.assert_(ejercicios.isPrime(100)==0)
+         
+        self.assert_(ejercicios.secondOrder(1,-5,6) == 2)
+        self.assert_(ejercicios.secondOrder(2,-7,3) == 2)
+        self.assert_(ejercicios.secondOrder(1,-2,1) == 1)
+        self.assert_(ejercicios.secondOrder(1,1,1) == 0)
+         
+        self.assert_(ejercicios.numberDivisorPrime(8)== 2)
+        self.assert_(ejercicios.numberDivisorPrime(-8)== 0)
+        self.assert_(ejercicios.numberDivisorPrime(0)== 0)
+        self.assert_(ejercicios.numberDivisorPrime(21)== 3)
+         
+        self.assert_(ejercicios.friend(8,-2) == False)
+        self.assert_(ejercicios.friend(-8,8) == False)
+        self.assert_(ejercicios.friend(220,284) == True)
+        self.assert_(ejercicios.friend(6,6) == True)
+        self.assert_(ejercicios.friend(21,21) == False)
+         
+                 
+         
+if __name__ == "__main__":
+    #import sys;sys.argv = ['', 'Test.testName']
+    unittest.main()
