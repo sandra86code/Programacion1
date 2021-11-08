@@ -13,3 +13,4 @@ continúa de esta forma hasta obtener una división exacta, siendo el último
 divisor el MCD.
 Crea un programa que lea dos números enteros y muestre el MCD.
 '''
+

@@ -86,5 +86,11 @@ sería tan fácil como modificar el valor de la constante.
 '''
 
 '''
-También puede hacerse con funciones de Python (importadas) para obtener el día, el mes y el año actual.
+También puede hacerse con la función date.today() de Python (importadas) para obtener el mes y el año actual.
+
+# from datetime import date
+#
+# mesActual=date.today().month
+# yearActual=date.today().year
+
 '''
