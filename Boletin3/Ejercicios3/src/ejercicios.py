@@ -84,6 +84,7 @@ def daysInMonth(month, year):
             #Años no bisiestos
             else:
                 days=28
+                
     return days
 
 
@@ -145,6 +146,7 @@ def myPower(numA, numB):
     #Si el num es negativo, la potencia vale -1
     elif numB<0:
         potencia=-1   
+        
     return potencia
  
  
