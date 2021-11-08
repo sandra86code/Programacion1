@@ -84,3 +84,7 @@ por ejemplo, YEAR_ACTUAL. De esta manera, se convertirían en una constante (aun
 De esta manera, cambiaríamos los datos de comparación por las constantes y si hubiese que cambiarlas,
 sería tan fácil como modificar el valor de la constante.
 '''
+
+'''
+También puede hacerse con funciones de Python (importadas) para obtener el día, el mes y el año actual.
+'''
