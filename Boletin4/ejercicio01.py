@@ -8,3 +8,12 @@
 múltiplo del otro. Crea una función EsMultiplo que reciba los dos números, y devuelve si el
 primero es múltiplo del segundo.
 '''
+
+numA=int(input("Dame un número entero: "))
+numB=int(input("Dame otro número entero: "))
+
+def esMultiplo(numA,numB):
+    
+    return numA%numB==0
+
+print(esMultiplo(numA, numB))
