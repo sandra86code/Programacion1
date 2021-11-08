@@ -8,7 +8,7 @@
  the factorial. 
  If the number is negative the method should return -1.    
  """
-from math import sqrt
+
 
  
 def factorial(num):
@@ -223,13 +223,24 @@ def isPrime(num):
  """
  
 def secondOrder (a, b, c):
-    if a==0 or (((b**2)-4*a*c)/(2*a))<0:
-        numSoluciones=0
-    elif (((b**2)-4*a*c)/(2*a))==0:
-        numSoluciones=1
+    #Compruebo si es una ecuación de segundo grado
+    if a!=0:
+        #Creo una variable donde igualo la fórmula de su cálculo
+        discriminante=(b**2)-4*a*c
+        #Creo la estructura lógica según el valor del discriminante
+        if discriminante>0:
+            #Hay dos soluciones reales distintas
+            numSoluciones=2
+        elif discriminante==0:
+            #Hay dos soluciones reales iguales, por lo que el resultado es 1
+            numSoluciones=1
+        else:
+            #No hay soluciones reales, sino 2 soluciones complejas distintas.
+            numSoluciones=0
+    #Si no es una ecuación de segundo grado, no tiene soluciones, por lo que devuelve -1
     else:
-        numSoluciones=2
-    
+        numSoluciones=-1
+        
     return numSoluciones
  
  

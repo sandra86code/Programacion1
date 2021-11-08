@@ -66,6 +66,7 @@ class Test(unittest.TestCase):
         self.assert_(ejercicios.secondOrder(2,-7,3) == 2)
         self.assert_(ejercicios.secondOrder(1,-2,1) == 1)
         self.assert_(ejercicios.secondOrder(1,1,1) == 0)
+        self.assert_(ejercicios.secondOrder(0,1,1) == -1)
          
         self.assert_(ejercicios.numberDivisorPrime(8)== 2)
         self.assert_(ejercicios.numberDivisorPrime(-8)== 0)
