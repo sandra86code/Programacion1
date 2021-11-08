@@ -10,7 +10,7 @@ temperatura máxima y mínima de cada día y vaya mostrando la media. El program
 el número de días que se van a introducir.
 '''
 
-def temperaturaMedia(tMin, tMax):
+def calculaTMedia(tMin, tMax):
     tMedia=(tMin+tMax)/2
     
     return round(tMedia,2)
@@ -20,7 +20,7 @@ def pideTemperatura(dias):
     for i in range (numDias):
         tMin=float(input("Introduce la temperatura mínima del día: "))
         tMax=float(input("Introduce la temperatura máxima del día: "))
-        print("La temperatura media del día ha sido %s" %(temperaturaMedia(tMin,tMax)))
+        print("La temperatura media del día ha sido %s" %(calculaTMedia(tMin,tMax)))
         
         
 numDias=int(input("¿Cuántos días quieres introducir? "))
