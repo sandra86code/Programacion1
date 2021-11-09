@@ -36,7 +36,7 @@ Crear un programa que utilizando las funciones anteriores muestre el siguiente m
 
 def leerFraccion():
     
-    numerador=int(input("Introduce un número: "))
+    numerador=int(input("Introduce el numerador de la fracción: "))
     denominador=int(input("Introduce el denominador de la fracción: "))
     while denominador==0:
         print("Datos erróneos. El denominador no puede ser 0. Vuelva a intentarlo.")
@@ -45,27 +45,28 @@ def leerFraccion():
     return [numerador, denominador]
 
 
-def simplificarFraccion(numerador, denominador):
+def simplificarFraccion(fraccion):
     
-    mcd=calcularMcd(numerador, denominador)
-    
-    return [numerador/mcd, denominador/mcd]
+    mcd=calcularMcd(fraccion)
+
+    return [round(fraccion[0]/mcd), round(fraccion[1]/mcd)]
 
 
-def escribirFraccion(numerador, denominador):
-    fraccion="%s/%s" %(numerador, denominador)
-    if denominador==1:
-        fraccion=denominador
+def escribirFraccion(fraccion):
+    if fraccion[1]==1:
+        fraccion=fraccion[0]
+    else:
+        fraccion="%s/%s" %(fraccion[0], fraccion[1])
     return fraccion
 
 
-def calcularMcd(numA,numB):
-    if numA>numB:
-        numMenor=numB
-        numMayor=numA
+def calcularMcd(fraccion):
+    if fraccion[0]>fraccion[1]:
+        numMenor=fraccion[1]
+        numMayor=fraccion[0]
     else:
-        numMenor=numA
-        numMayor=numB
+        numMenor=fraccion[0]
+        numMayor=fraccion[1]
         
     mcd=1
     for i in range(2,numMenor+1):
@@ -75,40 +76,76 @@ def calcularMcd(numA,numB):
     return mcd
 
 
-# def menuOpciones(opcion):
-#
-#     if opcion==1:
-#         fraccion1=leerFracion()
-#         mensaje="La suma de las dos fracciones es %s" %()
-#     elif opcion==2:
-#         pedirFracciones()
-#         mensaje="La resta de las dos fracciones es %s" %()
-#     elif opcion==3:
-#         mensaje="La multiplicación de las dos fracciones es %s" %()
-#     else:
-#         mensaje="La división de las dos fracciones es %s" %()
-#
-#     return mensaje
-#
-#
-# def menu():
-#     menu="Operando con fracciones:\n"\
-#         "1. Sumar dos fracciones.\n"\
-#         "2. Restar dos fracciones.\n"\
-#         "3. Multiplicar dos fracciones.\n"\
-#         "4. Dividir dos fracciones.\n"\
-#         "5. Salir."
-#     print(menu)
-#
-#     opcion=int(input("Introduce una opción de las anteriores: "))
-#     while opcion<1 or opcion>5:
-#         print("Datos incorrectos.")
-#         opcion=int(input("Introduce una opción de las anteriores: "))
-#
-#     if opcion>1 and opcion<5:
-#         menuOpciones(opcion)
-#     else:
-#         print("Hasta la vista.")
-#
-# menu()
+def sumarFracciones(fraccion1, fraccion2):
+    numerador=(fraccion1[0] * fraccion2[1]) + (fraccion2[0] * fraccion1[1])
+    denominador=(fraccion2[0] * fraccion2[1])
+    fraccionSumada=[numerador, denominador]
+
+    return simplificarFraccion(fraccionSumada)
+
+
+def restarFracciones(fraccion1, fraccion2):
+    numerador=(fraccion1[0] * fraccion2[1]) - (fraccion2[0] * fraccion1[1])
+    denominador=(fraccion2[0] * fraccion2[1])
+    fraccionRestada=[numerador, denominador]
+
+    return simplificarFraccion(fraccionRestada)
+
+
+def multiplicarFracciones(fraccion1, fraccion2):
+    numerador=(fraccion1[0] * fraccion1[1])
+    denominador=(fraccion2[0] * fraccion2[1])
+    fraccionMultiplicada=[numerador, denominador]
+
+    return simplificarFraccion(fraccionMultiplicada)
+
+
+def dividirFracciones(fraccion1, fraccion2):
+    numerador=(fraccion1[0] * fraccion2[1])
+    denominador=(fraccion1[1] * fraccion1[1])
+    fraccionDividida=[numerador, denominador]
+
+    return simplificarFraccion(fraccionDividida)
+
+
+def menuOpciones(opcion):
+    fraccion1=leerFraccion()
+    fraccion1=simplificarFraccion(fraccion1)
+    fraccion2=leerFraccion()
+    fraccion2=simplificarFraccion(fraccion2)
+    
+    if opcion==1:
+        mensaje="La suma de las dos fracciones es %s \n" %(escribirFraccion(sumarFracciones(fraccion1, fraccion2)))
+    elif opcion==2:
+        mensaje="La resta de las dos fracciones es %s \n" %(escribirFraccion(restarFracciones(fraccion1, fraccion2)))
+    elif opcion==3:
+        mensaje="La multiplicación de las dos fracciones es %s \n" %(escribirFraccion(multiplicarFracciones(fraccion1, fraccion2)))
+    else:
+        mensaje="La división de las dos fracciones es %s \n" %(escribirFraccion(dividirFracciones(fraccion1, fraccion2)))
+    
+    print(mensaje)
+    
+    menuPrincipal()
+    
+    
+def menuPrincipal():
+    menu="Operando con fracciones:\n"\
+        "1. Sumar dos fracciones.\n"\
+        "2. Restar dos fracciones.\n"\
+        "3. Multiplicar dos fracciones.\n"\
+        "4. Dividir dos fracciones.\n"\
+        "5. Salir."
+    print(menu)
+
+    opcion=int(input("Introduce una opción de las anteriores: "))
+    while opcion<1 or opcion>5:
+        print("Datos incorrectos.")
+        opcion=int(input("Introduce una opción de las anteriores: "))
+
+    if opcion!=5:
+        menuOpciones(opcion)
+    else:
+        print("Hasta la vista.")
+
+menuPrincipal()
 
