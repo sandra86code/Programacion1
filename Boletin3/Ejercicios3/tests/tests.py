@@ -70,9 +70,10 @@ class Test(unittest.TestCase):
         self.assert_(ejercicios.secondOrder(0,1,1) == -1)
          
         self.assert_(ejercicios.numberDivisorPrime(8)== 1)
-        self.assert_(ejercicios.numberDivisorPrime(-8)== 0)
+        self.assert_(ejercicios.numberDivisorPrime(-8)== -1)
         self.assert_(ejercicios.numberDivisorPrime(0)== 0)
         self.assert_(ejercicios.numberDivisorPrime(21)== 2)
+        self.assert_(ejercicios.numberDivisorPrime(1)== 0)
          
         self.assert_(ejercicios.friend(8,-2) == False)
         self.assert_(ejercicios.friend(-8,8) == False)

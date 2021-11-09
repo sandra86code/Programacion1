@@ -336,7 +336,9 @@ def numberDivisorPrime(num):
         for i in range(1,num//2+1):
             #Si i es divisor del número y además i es un número primo, me acumula en la variable divisors
             if num%i==0 and isPrime(i)==1:
-                divisors+=1    
+                divisors+=1
+    elif num<0:
+        divisors=-1  
     
     return divisors
  
@@ -395,3 +397,5 @@ def sumaDivisores(num):
 #Test con dos números amigos
 assert(sumaDivisores(220)==284)
 assert(sumaDivisores(284)==220)
+assert(sumaDivisores(8)==7)
+
