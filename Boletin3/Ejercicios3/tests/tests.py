@@ -58,6 +58,7 @@ class Test(unittest.TestCase):
         self.assert_(ejercicios.isPrime(29)==1)
         self.assert_(ejercicios.isPrime(-12)==-1)
         self.assert_(ejercicios.isPrime(2)==1)
+        self.assert_(ejercicios.isPrime(1)==-1)
         self.assert_(ejercicios.isPrime(201)==0)
         self.assert_(ejercicios.isPrime(0)==-1)
         self.assert_(ejercicios.isPrime(100)==0)
@@ -68,10 +69,10 @@ class Test(unittest.TestCase):
         self.assert_(ejercicios.secondOrder(1,1,1) == 0)
         self.assert_(ejercicios.secondOrder(0,1,1) == -1)
          
-        self.assert_(ejercicios.numberDivisorPrime(8)== 2)
+        self.assert_(ejercicios.numberDivisorPrime(8)== 1)
         self.assert_(ejercicios.numberDivisorPrime(-8)== 0)
         self.assert_(ejercicios.numberDivisorPrime(0)== 0)
-        self.assert_(ejercicios.numberDivisorPrime(21)== 3)
+        self.assert_(ejercicios.numberDivisorPrime(21)== 2)
          
         self.assert_(ejercicios.friend(8,-2) == False)
         self.assert_(ejercicios.friend(-8,8) == False)

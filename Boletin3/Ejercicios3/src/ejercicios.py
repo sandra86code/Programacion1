@@ -191,7 +191,7 @@ def numberOfNumbers(num):
  
 def isPrime(num):
     #Si el parámetro no es válido la variable que usaré en el return vale -1
-    if num<=0:
+    if num<=1:
         isPrime=-1
     #Aquí opero para parámetros correctos (número positivo)
     else:
