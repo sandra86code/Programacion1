@@ -69,7 +69,7 @@ def menuOpciones(opcion):
             minuto=int(input("Introduce los segundos: "))
         #Imprimo el resultado llamado a la función que lo calcula con los parámetros introducidos
         #por el usuario
-        print("%s:%s:%s equivalen a %s segundos \n" % (hora, minuto, segundo, convertirASegundos(hora, minuto, segundo)))
+        print("%s horas, %s minutos y %s segundos equivalen a %s segundos \n" % (hora, minuto, segundo, convertirASegundos(hora, minuto, segundo)))
     #Llamo a la función para que vuelva a imprimir el menú y a pedir la opción
     menuPrincipal()
 
