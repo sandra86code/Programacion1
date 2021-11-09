@@ -10,7 +10,13 @@
  """
 
 
- 
+'''
+Esta función calcula el factorial de un número 
+Recibe un número entero
+Devuelve:
+-1 si el número es negativo
+El factorial si el número es positivo
+'''
 def factorial(num):
     #Iniciamos la variable resultado a 1 porque vamos a usarla para multiplicar.
     #Además es el resultado del número 0, que no entrará en la estructura condicional posterior
@@ -38,7 +44,14 @@ def factorial(num):
  A year is a leap year if it is multiple of 4 but the year is not multiple of 100 
  and not multiple of 400.
  """
- 
+
+'''
+Esta función calcula si un año es bisiesto o no.
+Recibe un año. 
+Devuelve:
+1 si el año es bisiesto
+-1 si el año no es bisiesto o es el año 0
+'''
 def leapYear(year):
     #Estructura lógica si el año es bisiesto y diferente de 0
     if (year%4==0 or (year%100==0 and year%400==0)) and year!=0:
@@ -63,6 +76,16 @@ def leapYear(year):
  If the arguments are not valid the method should return -1.
  """
 
+'''
+Esta función calcula cuántos días hay en un mes.
+Recibe un mes y un año
+Devuelve:
+31 si el mes tiene 31 días
+30 si el mes tiene 30 días
+28 si el mes es febrero y el año no es bisiesto
+29 si el mes es febrero y el año es bisiesto
+-1 si los datos no son correctos
+'''
 def daysInMonth(month, year):
     #Iniciamos la variable en -1 que nos servirá para argumentos incorrectos,
     #ya que no entrarán en la estructura condicional
@@ -107,7 +130,13 @@ def daysInMonth(month, year):
        
        If the variable d is zero was Sunday, 1 Monday……………... 6 Saturday. 
  """
- 
+
+'''
+Esta función calcula el día de la semana en que cayó una fecha. 
+Recibe un día, un mes y un año
+Devuelve:
+De 0 a 6, dependiendo del día de la semana que sea (0 - domingo, 1 - lunes, etc.)
+'''
 def dayOfWeek(day, month, year):
     #Uso la función que me han dado, usando división entera (para que no haya decimales o da error)
     #y paréntesis para orden de operaciones
@@ -133,7 +162,16 @@ def dayOfWeek(day, month, year):
  should return -1. 
  Remember that any number raised 0 is 1.
  """
- 
+
+'''
+Esta función calcula la potencia de un número utilizando la multiplicación 
+Recibe dos números enteros
+Devuelve:
+La potencia si el exponente es un número positivo.
+1 si el exponente es 0.
+-1 si el exponente es un número negativo.
+
+'''
 def myPower(numA, numB):
     #Inicio la variable a 1, porque la voy a usar en el bucle para multiplicar.
     #Además será el resultado final cuando numB==0
@@ -162,6 +200,13 @@ def myPower(numA, numB):
  If the parameter is not valid the method should return -1.
  """
 
+'''
+Esta función calcula los dígitos de un número entero. 
+Recibe un número entero.
+Devuelve:
+-1 si el número introducido es negativo.
+El número de dígitos del número si el número introducido es positivo.
+'''
 def numberOfNumbers(num):
     #Inicializo la variable digits a 1 para la primera decena [1,9], correspondiente al primer dígito
     digits=1
@@ -188,7 +233,15 @@ def numberOfNumbers(num):
  than 0 as parameter. The method should return 1 if the number is prime or 0 
  if the number is not prime. If the parameter is not valid the method should return -1.
  """
- 
+
+'''
+Esta función calcula si un número es primo. 
+Recibe un número entero.
+Devuelve:
+-1 si el número es negativo o 0.
+0 si el número no es primo.
+1 si el número es primo.
+'''
 def isPrime(num):
     #Si el parámetro no es válido la variable que usaré en el return vale -1
     if num<=1:
@@ -223,7 +276,16 @@ def isPrime(num):
  second order (ax2+bx+c=0) and the method returns the numbers of the solutions. 
  If the parameters are not valid the method should return -1.
  """
- 
+
+'''
+Esta función calcula el número de soluciones de una función de segundo grado 
+Recibe 3 números enteros (a, b, c)
+Devuelve:
+-1 si a (primero número) es 0.
+0 si el discriminante es menor que 0.
+1 si el discriminante es 0.
+2 si el discriminante es mayor que 0.
+'''
 def secondOrder (a, b, c):
     #Compruebo si es una ecuación de segundo grado
     if a!=0:
@@ -257,7 +319,14 @@ def secondOrder (a, b, c):
  The method should return the number of prime divisors of the parameter. 
  If the parameter is not valid the method should return 0.
  """
- 
+
+'''
+Esta función calcula el número de divisores primos de un número 
+Recibe un número entero positivo
+Devuelve:
+0 si no tiene divisores primos.
+El número de divisores primos del número
+''' 
 def numberDivisorPrime(num):
     #Inicializo la variable a 0, que vale para parámetros no válidos y como variable 
     #acumuladora del bucle posterior
@@ -285,7 +354,14 @@ def numberDivisorPrime(num):
  of the one number is equal to the second number and in the other case too. 
  If the parameters are not valid the method should return false.
  """
- 
+
+'''
+Esta función calcula si dos números enteros positivos son números amigos 
+Recibe dos números enteros positivos
+Devuelve:
+False si no son amigos
+True si son amigos
+''' 
 def friend (numA, numB):
     #Inicio el resultado en False, para parámetros no válidos (numeros menores o igual que 0 o que los
     #números no sean amigos
@@ -299,7 +375,12 @@ def friend (numA, numB):
     
     return resultado
 
-
+'''
+Esta función calcula la suma de los divisores de un número 
+Recibe un número entero positivo
+Devuelve:
+La suma de los divisores de un número
+'''
 def sumaDivisores(num):
     #Creo la variable sumatoria de los divisores
     suma=0

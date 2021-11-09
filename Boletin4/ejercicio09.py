@@ -4,9 +4,9 @@
  @fecha: Nov 8, 2021
  @nombre: Boletin 1 - Ejercicio 9  
  @enunciado: 
- Queremos crear un programa que trabaje con fracciones a/b. Para representar una fracción
-vamos a utilizar dos enteros: numerador y denominador. Vamos a crear las siguientes
-funciones para trabajar con funciones:
+ Queremos crear un programa que trabaje con fracciones a/b. 
+ Para representar una fracción vamos a utilizar dos enteros: numerador y denominador. 
+ Vamos a crear las siguientes funciones para trabajar con funciones:
 1. Leer_fracción: La tarea de esta función es leer por teclado el numerador y el
 denominador. Cuando leas una fracción debes simplificarla.
 2. Escribir_fracción: Esta función escribe en pantalla la fracción. Si el dominador es 1, se
@@ -23,6 +23,7 @@ denominador=d1*d2. Se debe simplificar la fracción resultado.
 ello numerador=n1*n2 y denominador=d1*d2. Se debe simplificar la fracción resultado.
 8. Dividir_fracciones: Función que recibe dos fracciones y calcula el cociente, para ello
 numerador=n1*d2 y denominador=d1*n2. Se debe simplificar la fracción resultado.
+
 Crear un programa que utilizando las funciones anteriores muestre el siguiente menú:
 1. Sumar dos fracciones: En esta opción se piden dos fracciones y se muestra el resultado.
 2. Restar dos fracciones: En esta opción se piden dos fracciones y se muestra la resta.
@@ -31,3 +32,4 @@ producto.
 4. Dividir dos fracciones: En esta opción se piden dos fracciones y se muestra la cociente.
 5. Salir
 '''
+
