@@ -34,24 +34,40 @@ Crear un programa que utilizando las funciones anteriores muestre el siguiente m
     5. Salir
 '''
 
+'''
+Esta función pide al usuario el numerador y el denominador de una función y los devuelve en una lista
+Recibe: No tiene parámetros
+Devuelve: una lista de 2 elementos, numerador y denominador
+'''
 def leerFraccion():
-    
+    #Pedimos datos
     numerador=int(input("Introduce el numerador de la fracción: "))
     denominador=int(input("Introduce el denominador de la fracción: "))
+    #Comprobamos que el denominador no es 0, ya que división entre 0 da error
     while denominador==0:
         print("Datos erróneos. El denominador no puede ser 0. Vuelva a intentarlo.")
         denominador=int(input("Introduce el denominador de la fracción: "))
     
     return [numerador, denominador]
 
-
+'''
+Esta función simplifica una fracción (lista de 2 elementos), usando la función para calcular el mcd
+Recibe una lista de 2 elementos
+Devuelve: una lista de 2 elementos de enteros, simplificada
+'''
 def simplificarFraccion(fraccion):
     
     mcd=calcularMcd(fraccion)
+    
+    return [fraccion[0]//mcd, fraccion[1]//mcd]
 
-    return [round(fraccion[0]/mcd), round(fraccion[1]/mcd)]
-
-
+'''
+Esta función pasa una lista de dos elementos y la escribe como cadena
+Recibe una fracción (lista de 2 elementos de enteros)
+Devuelve:
+Si el denominador es 1, devuelve solo el denominador (entero)
+De lo contrario, devuelve la función como string
+'''
 def escribirFraccion(fraccion):
     if fraccion[1]==1:
         fraccion=fraccion[0]
@@ -59,7 +75,11 @@ def escribirFraccion(fraccion):
         fraccion="%s/%s" %(fraccion[0], fraccion[1])
     return fraccion
 
-
+'''
+Esta función calcula el mcd del numerador y denominador de una fraccion 
+Recibe una fraccion (lista de 2 elementos enteros)
+Devuelve: el mcd de numerador y denominador
+'''
 def calcularMcd(fraccion):
     if fraccion[0]>fraccion[1]:
         numMenor=fraccion[1]
@@ -75,7 +95,12 @@ def calcularMcd(fraccion):
     
     return mcd
 
-
+'''
+Esta función suma dos fracciones y simplifica la solución usando la función simplificarFraccion
+Recibe dos fracciones, que cada una son una lista de 2 números enteros
+Devuelve:
+La función resultante simplificada
+'''
 def sumarFracciones(fraccion1, fraccion2):
     numerador=(fraccion1[0] * fraccion2[1]) + (fraccion2[0] * fraccion1[1])
     denominador=(fraccion2[0] * fraccion2[1])
@@ -83,7 +108,12 @@ def sumarFracciones(fraccion1, fraccion2):
 
     return simplificarFraccion(fraccionSumada)
 
-
+'''
+Esta función resta dos fracciones y simplifica la solución usando la función simplificarFraccion
+Recibe dos fracciones, que cada una son una lista de 2 números enteros
+Devuelve:
+La función resultante simplificada
+'''
 def restarFracciones(fraccion1, fraccion2):
     numerador=(fraccion1[0] * fraccion2[1]) - (fraccion2[0] * fraccion1[1])
     denominador=(fraccion2[0] * fraccion2[1])
@@ -91,7 +121,12 @@ def restarFracciones(fraccion1, fraccion2):
 
     return simplificarFraccion(fraccionRestada)
 
-
+'''
+Esta función multiplica dos fracciones y simplifica la solución usando la función simplificarFraccion
+Recibe dos fracciones, que cada una son una lista de 2 números enteros
+Devuelve:
+La función resultante simplificada
+'''
 def multiplicarFracciones(fraccion1, fraccion2):
     numerador=(fraccion1[0] * fraccion1[1])
     denominador=(fraccion2[0] * fraccion2[1])
@@ -99,7 +134,12 @@ def multiplicarFracciones(fraccion1, fraccion2):
 
     return simplificarFraccion(fraccionMultiplicada)
 
-
+'''
+Esta función divide dos fracciones y simplifica la solución usando la función simplificarFraccion
+Recibe dos fracciones, que cada una son una lista de 2 números enteros
+Devuelve:
+La función resultante simplificada
+'''
 def dividirFracciones(fraccion1, fraccion2):
     numerador=(fraccion1[0] * fraccion2[1])
     denominador=(fraccion1[1] * fraccion1[1])
@@ -107,28 +147,40 @@ def dividirFracciones(fraccion1, fraccion2):
 
     return simplificarFraccion(fraccionDividida)
 
-
+'''
+Esta función es el menú secundario de opciones que imprime las soluciones
+Recibe una opción del menú principal
+Devuelve: no tiene return
+'''
 def menuOpciones(opcion):
+    #Creo las fracciones (fuera de la estructura condicional pq sino repetiría código),
+    #las leo y las simplifico.
     fraccion1=leerFraccion()
     fraccion1=simplificarFraccion(fraccion1)
     fraccion2=leerFraccion()
     fraccion2=simplificarFraccion(fraccion2)
     
+    #Estructura condicional usando las fracciones
     if opcion==1:
-        mensaje="La suma de las dos fracciones es %s \n" %(escribirFraccion(sumarFracciones(simplificarFraccion(leerFraccion()), simplificarFraccion(leerFraccion())))
+        mensaje="La suma de las dos fracciones es %s \n" %(escribirFraccion(sumarFracciones(fraccion1, fraccion2)))
     elif opcion==2:
         mensaje="La resta de las dos fracciones es %s \n" %(escribirFraccion(restarFracciones(fraccion1, fraccion2)))
     elif opcion==3:
         mensaje="La multiplicación de las dos fracciones es %s \n" %(escribirFraccion(multiplicarFracciones(fraccion1, fraccion2)))
     else:
         mensaje="La división de las dos fracciones es %s \n" %(escribirFraccion(dividirFracciones(fraccion1, fraccion2)))
-    
+    #Imprimo el mensaje
     print(mensaje)
-    
+    #Llamo a la función del menú principal, para que haga un bucle
     menuPrincipal()
     
-    
+'''
+Esta función es el menú principal del programa
+Recibe: no tiene parámetros de entrada
+Devuelve: no tiene return
+'''    
 def menuPrincipal():
+    #Creo la variable menú y la imprimo
     menu="Operando con fracciones:\n"\
         "1. Sumar dos fracciones.\n"\
         "2. Restar dos fracciones.\n"\
@@ -136,16 +188,18 @@ def menuPrincipal():
         "4. Dividir dos fracciones.\n"\
         "5. Salir."
     print(menu)
-
+    #Creo la variable opcion y compruebo datos
     opcion=int(input("Introduce una opción de las anteriores: "))
     while opcion<1 or opcion>5:
         print("Datos incorrectos.")
         opcion=int(input("Introduce una opción de las anteriores: "))
-
+    #Si la opción es 1,2,3 o 4 llamo a la función del menú secundario
     if opcion!=5:
         menuOpciones(opcion)
+    #Si la opción es la 5, me muestra un mensaje
     else:
         print("Hasta la vista.")
 
+#Llamo a la función principal, ya que no tiene return
 menuPrincipal()
 
