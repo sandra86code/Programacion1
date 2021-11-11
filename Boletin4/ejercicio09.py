@@ -115,7 +115,7 @@ def menuOpciones(opcion):
     fraccion2=simplificarFraccion(fraccion2)
     
     if opcion==1:
-        mensaje="La suma de las dos fracciones es %s \n" %(escribirFraccion(sumarFracciones(fraccion1, fraccion2)))
+        mensaje="La suma de las dos fracciones es %s \n" %(escribirFraccion(sumarFracciones(simplificarFraccion(leerFraccion()), simplificarFraccion(leerFraccion())))
     elif opcion==2:
         mensaje="La resta de las dos fracciones es %s \n" %(escribirFraccion(restarFracciones(fraccion1, fraccion2)))
     elif opcion==3:
