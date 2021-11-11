@@ -1,14 +1,8 @@
-# # nombre=input("De: ")
-# # print(nombre[-1])
-# #
-# # print(len(nombre))
-#
-# numbers=[3,5,6,7,8]
-# # numbers.append(int(input("Die: ")))
-# # print(numbers)
-#
-# numbers[2]= numbers.append(int(input("Die: ")))
-# print(numbers)
+#Código que elimina espacios y el retorno de carro
+nombre = input("Introduce tu nombre: ")
+for i in range (len(nombre)):
+    if nombre[i] != ' ':
+        print(nombre[i], end='')
 
 
 '''
@@ -27,3 +21,5 @@ while respuesta=='s':
         respuesta=input("Quieres continuar? (s/n): ")
     
 print(names)
+
+
