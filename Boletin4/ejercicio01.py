@@ -25,5 +25,3 @@ def esMultiplo(numA,numB):
     return numA%numB==0
 
 print(esMultiplo(numA, numB))
-
-
