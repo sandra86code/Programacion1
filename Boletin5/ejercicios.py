@@ -221,17 +221,33 @@ ignoring whites,. For example: "anilina" or "el abad le dio arroz al zorro".
 To simplify the problem, you can assume that simple characters are used, that is, without 
 tildes or diresis.
 '''
-
+'''
+Esta función comprueba si una palabra o frase es palíndroma (se lee igual al derecho que al revés)
+Recibe una cadena de texto que puede ser una palabra o una frase
+Devuelve:
+True si la palabra o frase es palíndroma (no tiene en cuenta espacios)
+False si la palabra o frase no es palíndroma
+'''
 def palindrome(cadena):
-    cadenaReves=''
+    #Creo una variable para almacenar la cadena sin espacios
+    cadenaSinEspacios=''
+    #Recorro la cadena y si el caracter no es un espacio, lo acumulo en la
+    #variable nueva
     for i in cadena:
-        cadenaReves+=
-    print(cadenaReves)
-    return cadenaReves
+        if i!=' ':
+            cadenaSinEspacios+=i
+    #Creo otra variable en la que voy acumular la cadena al reveś
+    cadenaReves=''
+    #Recorro la cadena sin espacios, pero como necesito que el marcador empiece
+    #en -1,-2,etc. por eso pongo el límite inferior en 1.
+    for i in range (1, len(cadenaSinEspacios)+1):
+        cadenaReves+=cadenaSinEspacios[-i]
+    
+    return cadenaSinEspacios==cadenaReves
 
 assert(palindrome('Ave')==False)
 assert(palindrome('lavan esa base naval')==True)
-assert(palindrome('el abad le dio arroz al zorro')==True)
+assert(palindrome('el abad le dio arroz al zorro')==False)
 
 '''
 # coding: utf-8 
