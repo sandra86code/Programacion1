@@ -21,5 +21,3 @@ while respuesta=='s':
         respuesta=input("Quieres continuar? (s/n): ")
 
 print(names)
-
-
