@@ -2,7 +2,7 @@
 # coding: utf-8
  @autor: Sandra Ruiz Jimenez
  @fecha: Nov 8, 2021
- @nombre: Boletin  - Ejercicio  
+ @nombre: Boletin 4 - Ejercicio 7
  @enunciado: 
  El día juliano correspondiente a una fecha es un número entero que indica los días que han
 transcurrido desde el 1 de enero del año indicado. 
@@ -109,11 +109,3 @@ def leerFecha():
 #Llamo a la función principal, ya que no tiene return     
 leerFecha()
 
-
-
-
-
-
-
-        
-        

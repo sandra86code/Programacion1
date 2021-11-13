@@ -2,7 +2,7 @@
 # coding: utf-8
  @autor: Sandra Ruiz Jimenez
  @fecha: Nov 8, 2021
- @nombre: Boletin 1 - Ejercicio 9  
+ @nombre: Boletin 4 - Ejercicio 9  
  @enunciado: 
  Queremos crear un programa que trabaje con fracciones a/b. 
  Para representar una fracción vamos a utilizar dos enteros: numerador y denominador. 
