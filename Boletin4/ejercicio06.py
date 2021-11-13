@@ -11,22 +11,23 @@ Escribe un programa con un menú donde se pueda elegir la opción de convertir a
 convertir a horas,minutos y segundos o salir del programa.
 '''
 
-'''
-Esta función calcula la cantidad de segundos dada una hora en horas, minutos y segundos
-Recibe 3 variables enteras, hora, minuto y segundo
-Devuelve:
-Cantidad total de segundos
-'''
+#===============================================================================
+# Esta función calcula la cantidad de segundos dada una hora en horas, minutos y segundos
+# Recibe 3 variables enteras, hora, minuto y segundo
+# Devuelve:
+# Cantidad total de segundos
+#===============================================================================
 def convertirASegundos(hora, minuto, segundo):
         
     return (hora*360)+(minuto*60)+segundo
 
-'''
-Esta función pasa una cantidad de segundos a horas, minutos y segundos 
-Recibe una variable de tipo entero, los segundos totales
-Devuelve:
-Un mensaje con la cantidad de horas, minutos y segundos
-'''
+
+#===============================================================================
+# Esta función pasa una cantidad de segundos a horas, minutos y segundos 
+# Recibe una variable de tipo entero, los segundos totales
+# Devuelve:
+# Un mensaje con la cantidad de horas, minutos y segundos
+#===============================================================================
 def convertirAHMinSeg(segundosTotales):
     
     horas=segundosTotales//360
@@ -37,11 +38,11 @@ def convertirAHMinSeg(segundosTotales):
     return mensaje
 
 
-'''
-Esta función es el menú secundario del programa, en el que pedimos los datos e imprimos el resultado
-Recibe una variable de tipo entero que es la opcion introducida en el menú principal
-Devuelve: No devuelve nada
-'''
+#===============================================================================
+# Esta función es el menú secundario del programa, en el que pedimos los datos e imprimos el resultado
+# Recibe una variable de tipo entero que es la opcion introducida en el menú principal
+# Devuelve: No devuelve nada
+#===============================================================================
 def menuOpciones(opcion):
     #Estructura condicional para opciones 1 y 2
     if opcion==1:
@@ -73,11 +74,12 @@ def menuOpciones(opcion):
     #Llamo a la función para que vuelva a imprimir el menú y a pedir la opción
     menuPrincipal()
 
-'''
-Esta función es el menú principal del programa 
-Recibe: no tiene parámetros
-Devuelve: No devuelve nada
-'''
+
+#===============================================================================
+# Esta función es el menú principal del programa 
+# Recibe: no tiene parámetros
+# Devuelve: No devuelve nada
+#===============================================================================
 def menuPrincipal():
     #Creo una variable de tipo cadena con el texto de las opciones
     menu="1. Convertir a segundos.\n"\

@@ -34,11 +34,12 @@ Crear un programa que utilizando las funciones anteriores muestre el siguiente m
     5. Salir
 '''
 
-'''
-Esta función pide al usuario el numerador y el denominador de una función y los devuelve en una lista
-Recibe: No tiene parámetros
-Devuelve: una lista de 2 elementos, numerador y denominador
-'''
+
+#===============================================================================
+# Esta función pide al usuario el numerador y el denominador de una función y los devuelve en una lista
+# Recibe: No tiene parámetros
+# Devuelve: una lista de 2 elementos, numerador y denominador
+#===============================================================================
 def leerFraccion():
     #Pedimos datos
     numerador=int(input("Introduce el numerador de la fracción: "))
@@ -50,24 +51,26 @@ def leerFraccion():
     
     return [numerador, denominador]
 
-'''
-Esta función simplifica una fracción (lista de 2 elementos), usando la función para calcular el mcd
-Recibe una lista de 2 elementos
-Devuelve: una lista de 2 elementos de enteros, simplificada
-'''
+
+#===============================================================================
+# Esta función simplifica una fracción (lista de 2 elementos), usando la función para calcular el mcd
+# Recibe una lista de 2 elementos
+# Devuelve: una lista de 2 elementos de enteros, simplificada
+#===============================================================================
 def simplificarFraccion(fraccion):
     
     mcd=calcularMcd(fraccion)
     
     return [fraccion[0]//mcd, fraccion[1]//mcd]
 
-'''
-Esta función pasa una lista de dos elementos y la escribe como cadena
-Recibe una fracción (lista de 2 elementos de enteros)
-Devuelve:
-Si el denominador es 1, devuelve solo el denominador (entero)
-De lo contrario, devuelve la función como string
-'''
+
+#===============================================================================
+# Esta función pasa una lista de dos elementos y la escribe como cadena
+# Recibe una fracción (lista de 2 elementos de enteros)
+# Devuelve:
+# Si el denominador es 1, devuelve solo el denominador (entero)
+# De lo contrario, devuelve la función como string
+#===============================================================================
 def escribirFraccion(fraccion):
     if fraccion[1]==1:
         fraccion=fraccion[0]
@@ -75,11 +78,12 @@ def escribirFraccion(fraccion):
         fraccion="%s/%s" %(fraccion[0], fraccion[1])
     return fraccion
 
-'''
-Esta función calcula el mcd del numerador y denominador de una fraccion 
-Recibe una fraccion (lista de 2 elementos enteros)
-Devuelve: el mcd de numerador y denominador
-'''
+
+#===============================================================================
+# Esta función calcula el mcd del numerador y denominador de una fraccion 
+# Recibe una fraccion (lista de 2 elementos enteros)
+# Devuelve: el mcd de numerador y denominador
+#===============================================================================
 def calcularMcd(fraccion):
     if fraccion[0]>fraccion[1]:
         numMenor=fraccion[1]
@@ -95,12 +99,13 @@ def calcularMcd(fraccion):
     
     return mcd
 
-'''
-Esta función suma dos fracciones y simplifica la solución usando la función simplificarFraccion
-Recibe dos fracciones, que cada una son una lista de 2 números enteros
-Devuelve:
-La función resultante simplificada
-'''
+
+#===============================================================================
+# Esta función suma dos fracciones y simplifica la solución usando la función simplificarFraccion
+# Recibe dos fracciones, que cada una son una lista de 2 números enteros
+# Devuelve:
+# La función resultante simplificada
+#===============================================================================
 def sumarFracciones(fraccion1, fraccion2):
     numerador=(fraccion1[0] * fraccion2[1]) + (fraccion2[0] * fraccion1[1])
     denominador=(fraccion2[0] * fraccion2[1])
@@ -108,12 +113,13 @@ def sumarFracciones(fraccion1, fraccion2):
 
     return simplificarFraccion(fraccionSumada)
 
-'''
-Esta función resta dos fracciones y simplifica la solución usando la función simplificarFraccion
-Recibe dos fracciones, que cada una son una lista de 2 números enteros
-Devuelve:
-La función resultante simplificada
-'''
+
+#===============================================================================
+# Esta función resta dos fracciones y simplifica la solución usando la función simplificarFraccion
+# Recibe dos fracciones, que cada una son una lista de 2 números enteros
+# Devuelve:
+# La función resultante simplificada
+#===============================================================================
 def restarFracciones(fraccion1, fraccion2):
     numerador=(fraccion1[0] * fraccion2[1]) - (fraccion2[0] * fraccion1[1])
     denominador=(fraccion2[0] * fraccion2[1])
@@ -121,12 +127,13 @@ def restarFracciones(fraccion1, fraccion2):
 
     return simplificarFraccion(fraccionRestada)
 
-'''
-Esta función multiplica dos fracciones y simplifica la solución usando la función simplificarFraccion
-Recibe dos fracciones, que cada una son una lista de 2 números enteros
-Devuelve:
-La función resultante simplificada
-'''
+
+#===============================================================================
+# Esta función multiplica dos fracciones y simplifica la solución usando la función simplificarFraccion
+# Recibe dos fracciones, que cada una son una lista de 2 números enteros
+# Devuelve:
+# La función resultante simplificada
+#===============================================================================
 def multiplicarFracciones(fraccion1, fraccion2):
     numerador=(fraccion1[0] * fraccion1[1])
     denominador=(fraccion2[0] * fraccion2[1])
@@ -134,12 +141,13 @@ def multiplicarFracciones(fraccion1, fraccion2):
 
     return simplificarFraccion(fraccionMultiplicada)
 
-'''
-Esta función divide dos fracciones y simplifica la solución usando la función simplificarFraccion
-Recibe dos fracciones, que cada una son una lista de 2 números enteros
-Devuelve:
-La función resultante simplificada
-'''
+
+#===============================================================================
+# Esta función divide dos fracciones y simplifica la solución usando la función simplificarFraccion
+# Recibe dos fracciones, que cada una son una lista de 2 números enteros
+# Devuelve:
+# La función resultante simplificada
+#===============================================================================
 def dividirFracciones(fraccion1, fraccion2):
     numerador=(fraccion1[0] * fraccion2[1])
     denominador=(fraccion1[1] * fraccion1[1])
@@ -147,11 +155,12 @@ def dividirFracciones(fraccion1, fraccion2):
 
     return simplificarFraccion(fraccionDividida)
 
-'''
-Esta función es el menú secundario de opciones que imprime las soluciones
-Recibe una opción del menú principal
-Devuelve: no tiene return
-'''
+
+#===============================================================================
+# Esta función es el menú secundario de opciones que imprime las soluciones
+# Recibe una opción del menú principal
+# Devuelve: no tiene return
+#===============================================================================
 def menuOpciones(opcion):
     #Creo las fracciones (fuera de la estructura condicional pq sino repetiría código),
     #las leo y las simplifico.
@@ -174,11 +183,12 @@ def menuOpciones(opcion):
     #Llamo a la función del menú principal, para que haga un bucle
     menuPrincipal()
     
-'''
-Esta función es el menú principal del programa
-Recibe: no tiene parámetros de entrada
-Devuelve: no tiene return
-'''    
+
+#===============================================================================
+# Esta función es el menú principal del programa
+# Recibe: no tiene parámetros de entrada
+# Devuelve: no tiene return   
+#===============================================================================
 def menuPrincipal():
     #Creo la variable menú y la imprimo
     menu="Operando con fracciones:\n"\
@@ -202,4 +212,3 @@ def menuPrincipal():
 
 #Llamo a la función principal, ya que no tiene return
 menuPrincipal()
-

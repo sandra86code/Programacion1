@@ -10,13 +10,13 @@ Crear un programa donde se pida un nombre de usuario y una contraseña y se inte
 login, solamente tenemos tres oportunidades para intentarlo.
 '''
 
-'''
-Esta función calcula si el login de un usuario es correcto o no
-Recibe el nombre y la contraseña del usuario (dos variables de tipo cadena)
-Devuelve:
-True si el login es correcto (nombre="usuario1" y password="asdasd").
-False si el login no es correcto.
-'''
+#===============================================================================
+# Esta función calcula si el login de un usuario es correcto o no
+# Recibe el nombre y la contraseña del usuario (dos variables de tipo cadena)
+# Devuelve:
+# True si el login es correcto (nombre="usuario1" y password="asdasd").
+# False si el login no es correcto.
+#===============================================================================
 def login (nombre, password):
     if nombre=="usuario1" and password=="asdasd":
         respuesta=True
@@ -26,16 +26,16 @@ def login (nombre, password):
     return respuesta
 
 
-'''
-Esta función pide los datos del nombre y la contraseña al usuario.
-Recibe: No recibe parámetros
-Devuelve: No tiene return
-Imprime "Login correcto" si el nombre y la contraseña son correctas.
-Imprime "Login incorrecto" si el nombre y/o la contraseña son incorrectas. 
-En este caso, permite 3 intentos. Si ningún intento es correcto, imprime
-el mensaje "Has agotado tus 3 intentos".
 
-'''
+#===============================================================================
+# Esta función pide los datos del nombre y la contraseña al usuario.
+# Recibe: No recibe parámetros
+# Devuelve: No tiene return
+# Imprime "Login correcto" si el nombre y la contraseña son correctas.
+# Imprime "Login incorrecto" si el nombre y/o la contraseña son incorrectas. 
+# En este caso, permite 3 intentos. Si ningún intento es correcto, imprime
+# el mensaje "Has agotado tus 3 intentos".
+#===============================================================================
 def pideDatos():
     #Variable iteradora
     i=0

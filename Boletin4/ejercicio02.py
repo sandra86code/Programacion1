@@ -11,24 +11,24 @@ máxima y mínima de cada día y vaya mostrando la media.
 El programa pedirá el número de días que se van a introducir.
 '''
 
-'''
-Esta función calcula la temperatura media 
-Recibe la temperatura máxima y la temperatura mínima (dos números de tipo float)
-Devuelve:
-La temperatura media con un redondeo de 2 decimales
-'''
+#===============================================================================
+# Esta función calcula la temperatura media 
+# Recibe la temperatura máxima y la temperatura mínima (dos números de tipo float)
+# Devuelve:
+# La temperatura media con un redondeo de 2 decimales
+#===============================================================================
 def calculaTMedia(tMin, tMax):
     tMedia=(tMin+tMax)/2
     
     return round(tMedia,2)
 
-'''
-Esta función pregunta la temperatura mínima y la temperatura máxima, calcula e imprime la media de ambas
-el número de veces del parámetro de entrada
-Recibe un número de días (entero positivo)
-Devuelve:
-No devuelve nada
-'''
+
+#===============================================================================
+# Esta función pregunta la temperatura mínima y la temperatura máxima, calcula e imprime la media de ambas
+# el número de veces del parámetro de entrada
+# Recibe un número de días (entero positivo)
+# Devuelve: No devuelve nada
+#===============================================================================
 def pideTemperatura(numDias):
     for i in range (numDias):
         tMin=float(input("Introduce la temperatura mínima del día: "))

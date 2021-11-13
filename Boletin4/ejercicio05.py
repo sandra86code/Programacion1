@@ -14,14 +14,12 @@ divisor el MCD.
 Crea un programa que lea dos números enteros y muestre el MCD.
 '''
 
-
-'''
-Esta función calcula el máximo común divisor usuando el Teorema de Euclides
-Recibe dos números enteros
-Devuelve:
-El máximo común divisor de ambos números
-
-'''
+#===============================================================================
+# Esta función calcula el máximo común divisor usuando el Teorema de Euclides
+# Recibe dos números enteros
+# Devuelve: 
+# El máximo común divisor de ambos números
+#===============================================================================
 def calculaMcd(numA, numB):
 
     #Estructura condicional para ver cuál es el número mayor, que se convierte en dividendo
@@ -60,5 +58,3 @@ while numB<=0:
 
 #Imprimo por consola el mensaje con el mcd
 print("El máximo común divisor (MCD) de %s y %s es %s" %(numA, numB, calculaMcd(numA, numB)))
-
-

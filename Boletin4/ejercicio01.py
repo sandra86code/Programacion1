@@ -13,13 +13,13 @@ es múltiplo del segundo.
 numA=int(input("Dame un número entero: "))
 numB=int(input("Dame otro número entero: "))
 
-'''
-Esta función calcula si un número (numA) es múltiplo de otro (numB) 
-Recibe dos números enteros
-Devuelve:
-True si es múltiplo
-False si no es múltiplo
-'''
+#===============================================================================
+# Esta función calcula si un número (numA) es múltiplo de otro (numB) 
+# Recibe dos números enteros
+# Devuelve:
+# True si es múltiplo
+# False si no es múltiplo
+#===============================================================================
 def esMultiplo(numA,numB):
     
     return numA%numB==0

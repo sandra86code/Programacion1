@@ -8,20 +8,14 @@
 input parameters and returns how many times that character appears in the string. 
 It should do if the string and character are lower case or upper case characters.
 '''
-'''
-Esta función calcula 
-Recibe 
-Devuelve:
 
-'''
-'''
-Esta función calcula si un caracter es minúsculas
-Recibe un caracter
-Devuelve:
-True si el caracter está en minúsculas (usando la función ord() y el número en el código ASCII)
-False si el caracter no está en minúsculas
-
-'''
+#===============================================================================
+# Esta función calcula si un caracter es minúsculas
+# Recibe un caracter
+# Devuelve:
+# True si el caracter está en minúsculas (usando la función ord() y el número en el código ASCII)
+# False si el caracter no está en minúsculas
+#===============================================================================
 def isMinusculas(caracter):
     isMinusculas=False
     if ord(caracter)>=97 and ord(caracter)<=122:
@@ -30,12 +24,12 @@ def isMinusculas(caracter):
     return isMinusculas
 
 
-'''
-Esta función calcula el número de coincidencias de un caracter en una cadena
-Recibe una cadena y un caracter
-Devuelve:
-El número de coincidencias de un caracter en una cadena
-'''
+#===============================================================================
+# Esta función calcula el número de coincidencias de un caracter en una cadena
+# Recibe una cadena y un caracter
+# Devuelve:
+# El número de coincidencias de un caracter en una cadena
+#===============================================================================
 def charactersInString(cadena, caracter):
     resultado=0
     #Estructura condicional en que si el resultado de la llamada a la otra función es True 
@@ -71,12 +65,12 @@ assert(charactersInString('Stranger Things', 'H')==1)
  que la devuelva en mayúsculas:
 '''
 
-'''
-Esta función devuelve una cadena convertida a minúsculas (funcion cadena.lower())
-Recibe una cadena
-Devuelve: la cadena en minúsculas
 
-'''
+#===============================================================================
+# Esta función devuelve una cadena convertida a minúsculas (funcion cadena.lower())
+# Recibe una cadena
+# Devuelve: la cadena en minúsculas
+#===============================================================================
 def convierteAMinusculas(cadena):
     cadenaConvertida=''
     #Recorro la cadena
@@ -96,12 +90,11 @@ assert(convierteAMinusculas('La ONU es internacional')=='la onu es internacional
 assert(convierteAMinusculas('CadeNA')=='cadena')
 
 
-'''
-Esta función devuelve una cadena convertida a mayúsculas (funcion cadena.upper())
-Recibe una cadena
-Devuelve: la cadena en mayúsculas
-
-'''
+#===============================================================================
+# Esta función devuelve una cadena convertida a mayúsculas (funcion cadena.upper())
+# Recibe una cadena
+# Devuelve: la cadena en mayúsculas
+#===============================================================================
 def convierteAMayusculas(cadena):
     cadenaConvertida=''
     for i in cadena:
@@ -132,11 +125,12 @@ method should return how many of those characters are lowcase letters.
 estos números se sacan con ord('A')
 '''
 
-'''
-Esta función calcula cuántas letras en minúscula hay en una cadena (no controla tildes ni ñ)
-Recibe una cadena (variable string)
-Devuelve: el número de letras en minúscula de la cadena (sin contar letras con tildes o ñ)
-'''
+
+#===============================================================================
+# Esta función calcula cuántas letras en minúscula hay en una cadena (no controla tildes ni ñ)
+# Recibe una cadena (variable string)
+# Devuelve: el número de letras en minúscula de la cadena (sin contar letras con tildes o ñ)
+#===============================================================================
 def lowCaseInString(cadena):
     resultado=0
     for i in cadena:
@@ -148,6 +142,10 @@ assert(lowCaseInString("clase de programacion")==19)
 assert(lowCaseInString("Hola")==3)
 assert(lowCaseInString("ONU")==0)
 assert(lowCaseInString("Guiso de ñame")==10)
+
+
+
+
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
@@ -161,11 +159,12 @@ method should return how many of those characters are upper case letters.
 estos números se sacan con ord('A')
 '''
 
-'''
-Esta función calcula cuántas letras en mayúscula hay en una cadena (no controla tildes ni ñ)
-Recibe una cadena (variable string)
-Devuelve: el número de letras en mayúscula de la cadena (sin contar letras con tildes o ñ)
-'''
+
+#===============================================================================
+# Esta función calcula cuántas letras en mayúscula hay en una cadena (no controla tildes ni ñ)
+# Recibe una cadena (variable string)
+# Devuelve: el número de letras en mayúscula de la cadena (sin contar letras con tildes o ñ)
+#===============================================================================
 def upperCaseInString(cadena):
     resultado=0
     for i in cadena:
@@ -179,6 +178,7 @@ assert(upperCaseInString("Hola")==1)
 assert(upperCaseInString("ONU")==3)
 assert(upperCaseInString("Sandra Ñantes")==2)
 
+
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
@@ -190,12 +190,13 @@ method should return how many of those characters are numbers.
 #CÓDIGO ASCII: 0-9 es [48-57]
 '''
 
-'''
-Esta función calcula cuántos caracteres numéricos hay en una cadena
-Recibe una cadena
-Devuelve:
-El número de caracteres numéricos que hay en una cadena
-'''
+
+#===============================================================================
+# Esta función calcula cuántos caracteres numéricos hay en una cadena
+# Recibe una cadena
+# Devuelve:
+# El número de caracteres numéricos que hay en una cadena
+#===============================================================================
 def numberInString(cadena):
     resultado=0 
     for i in cadena:
@@ -221,13 +222,15 @@ ignoring whites,. For example: "anilina" or "el abad le dio arroz al zorro".
 To simplify the problem, you can assume that simple characters are used, that is, without 
 tildes or diresis.
 '''
-'''
-Esta función comprueba si una palabra o frase es palíndroma (se lee igual al derecho que al revés)
-Recibe una cadena de texto que puede ser una palabra o una frase
-Devuelve:
-True si la palabra o frase es palíndroma (no tiene en cuenta espacios)
-False si la palabra o frase no es palíndroma
-'''
+
+
+#===============================================================================
+# Esta función comprueba si una palabra o frase es palíndroma (se lee igual al derecho que al revés)
+# Recibe una cadena de texto que puede ser una palabra o una frase
+# Devuelve:
+# True si la palabra o frase es palíndroma (no tiene en cuenta espacios)
+# False si la palabra o frase no es palíndroma
+#===============================================================================
 def palindrome(cadena):
     #Creo una variable para almacenar la cadena sin espacios
     cadenaSinEspacios=''
@@ -248,6 +251,8 @@ def palindrome(cadena):
 assert(palindrome('Ave')==False)
 assert(palindrome('lavan esa base naval')==True)
 assert(palindrome('el abad le dio arroz al zorro')==False)
+
+
 
 '''
 # coding: utf-8 

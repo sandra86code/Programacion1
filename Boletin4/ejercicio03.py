@@ -12,23 +12,24 @@
 #Importo pi de la librería math
 from math import pi
 
-'''
-Esta función calcula el área de una circunferencia
-Recibe el radio de la circunferencia
-Devuelve:
-El área de la circunferencia redondeada a 2 decimales
-'''
+
+#===============================================================================
+# Esta función calcula el área de una circunferencia
+# Recibe el radio de la circunferencia
+# Devuelve:
+# El área de la circunferencia redondeada a 2 decimales
+#===============================================================================
 def calculaAreaCircunferencia(radio):
 
     return round((radio**2)*pi, 2)
 
 
-'''
-Esta función calcula el perímetro de una circunferencia
-Recibe el radio de la circunferencia
-Devuelve:
-El perímetro de la circunferencia redondeada a 2 decimales
-'''
+#===============================================================================
+# Esta función calcula el perímetro de una circunferencia
+# Recibe el radio de la circunferencia
+# Devuelve:
+# El perímetro de la circunferencia redondeada a 2 decimales
+#===============================================================================
 def calculaPerimetroCircunferencia(radio):
     
     return round(2*pi*radio, 2)

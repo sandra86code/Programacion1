@@ -25,13 +25,14 @@ Para ello podemos hacer las siguientes funciones:
 '''
 
 
-'''
-Esta función calcula si un año es bisiesto o no 
-Recibe un año
-Devuelve:
-False si no es bisiesto
-True si es bisiesto
-'''
+#===============================================================================
+# Esta función calcula si un año es bisiesto o no 
+# Recibe un año
+# Devuelve:
+# False si no es bisiesto
+# True si es bisiesto
+#===============================================================================
+
 def esBisiesto(year):
     bisiesto=False
     if year%4==0 or (year%100==0 and year%400==0):
@@ -39,12 +40,13 @@ def esBisiesto(year):
 
     return bisiesto
 
-'''
-Esta función calcula cuántos días hay en un mes, teniendo en cuenta si el año es bisiesto o no 
-Recibe un mes y un año (variables de tipo entero)
-Devuelve:
-Los días que tiene el mes, teniendo en cuenta si el año es bisiesto o no
-'''
+
+#===============================================================================
+# Esta función calcula cuántos días hay en un mes, teniendo en cuenta si el año es bisiesto o no 
+# Recibe un mes y un año (variables de tipo entero)
+# Devuelve:
+# Los días que tiene el mes, teniendo en cuenta si el año es bisiesto o no
+#===============================================================================
 def diasDelMes(mes, year):
     if mes in {1,3,5,7,8,10,12}:
         dias=31
@@ -58,12 +60,13 @@ def diasDelMes(mes, year):
     
     return dias
 
-'''
-Esta función calcula el día juliano (días transcurridos desde el 1 de enero hasta la fecha) 
-Recibe un día, un mes y un año (3 variables de tipo entero)
-Devuelve:
-El día juliano
-'''        
+
+#===============================================================================
+# Esta función calcula el día juliano (días transcurridos desde el 1 de enero hasta la fecha) 
+# Recibe un día, un mes y un año (3 variables de tipo entero)
+# Devuelve:
+# El día juliano
+#===============================================================================
 def calcularDiaJuliano (dia,mes,year):
     diaJuliano=0
     for i in range(1, mes):
@@ -73,23 +76,25 @@ def calcularDiaJuliano (dia,mes,year):
     
     return diaJuliano
 
-'''
-Esta función valida si una fecha es correcta, ya sea porque el día, el mes o el año no es correcto. 
-Recibe un día, un mes y un año (3 variables de tipo entero)
-Devuelve:
-True si la fecha es válida
-False si la fecha no es válida
-'''       
+
+#===============================================================================
+# Esta función valida si una fecha es correcta, ya sea porque el día, el mes o el año no es correcto. 
+# Recibe un día, un mes y un año (3 variables de tipo entero)
+# Devuelve:
+# True si la fecha es válida
+# False si la fecha no es válida   
+#===============================================================================
 def validaFecha(dia, mes, year):
     
     return dia>0 and dia<=diasDelMes(mes, year) and mes>0 and mes<=12 and year>0
 
 
-'''
-Esta función lee una fecha e imprime el resultado del día juliano de esa fecha
-Recibe: no tiene parámetros
-Devuelve: no tiene return
-'''                
+
+#===============================================================================
+# Esta función lee una fecha e imprime el resultado del día juliano de esa fecha
+# Recibe: no tiene parámetros
+# Devuelve: no tiene return               
+#===============================================================================
 def leerFecha():
     #Pido datos
     dia=int(input("Introduce el día del mes: "))
@@ -108,4 +113,3 @@ def leerFecha():
 
 #Llamo a la función principal, ya que no tiene return     
 leerFecha()
-
