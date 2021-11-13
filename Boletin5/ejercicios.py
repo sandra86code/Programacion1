@@ -265,6 +265,12 @@ assert(palindrome('el abad le dio arroz al zorro')==False)
  es "hola", entonces si se encontrará y deberá devolver True, en caso 
  contrario deberá devolver False.
 '''
+#===============================================================================
+# Esta función 
+# Recibe 
+# Devuelve:
+# 
+#===============================================================================
 # def wordInText(palabra, texto):
 #
 #     return resultado
@@ -281,7 +287,12 @@ deberá buscar si existe la palabra que recibe como segundo parámetro y reempla
 tercera.
 '''
 
-
+#===============================================================================
+# Esta función 
+# Recibe 
+# Devuelve:
+# 
+#===============================================================================
 
 '''
 # coding: utf-8 
