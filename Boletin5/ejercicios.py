@@ -134,7 +134,7 @@ estos números se sacan con ord('A')
 def lowCaseInString(cadena):
     resultado=0
     for i in cadena:
-        if (i>=chr(97) and i<=chr(122)) or i==chr(241):
+        if isMinusculas(i)==True or i==chr(241):
             resultado+=1
     return resultado
 
@@ -168,6 +168,8 @@ estos números se sacan con ord('A')
 def upperCaseInString(cadena):
     resultado=0
     for i in cadena:
+        #No me vale usar la funcion isMinusculas() pq no controla que para el False sean solo
+        #los caracteres correspondientes a las mayúsculas
         if (i>=chr(65) and i<=chr(90)) or i==chr(209):
             resultado+=1
     return resultado
