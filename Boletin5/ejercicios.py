@@ -250,6 +250,7 @@ def palindrome(cadena):
     
     return cadenaSinEspacios==cadenaReves
 
+
 assert(palindrome('Ave')==False)
 assert(palindrome('lavan esa base naval')==True)
 assert(palindrome('el abad le dio arroz al zorro')==False)
