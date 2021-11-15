@@ -384,6 +384,7 @@ assert(buscaReemplaza("Hola me llamo Sandra", "hola", "Adios")=="Adios me llamo 
 assert(buscaReemplaza("Hola me llamo Sandra", "SANDRA", "Sofia")=="Hola me llamo Sofia")
 assert(buscaReemplaza("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me llamo Sandra")
 
+
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
