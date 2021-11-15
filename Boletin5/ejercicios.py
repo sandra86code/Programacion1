@@ -275,19 +275,22 @@ assert(palindrome('el abad le dio arroz al zorro')==False)
 #===============================================================================
 def quitarCaracter(cadena, caracter):
     resultado=''
-    encontrado = False
+    encontrado=False
+    cadena=convierteAMinusculas(cadena)
+    caracter=convierteAMinusculas(caracter)
     for i in cadena:
-        if i  == caracter and encontrado== False:
-            encontrado = True
+        if i==caracter and encontrado==False:
+            encontrado=True
         else:
-            resultado = resultado +i
+            resultado+=i
     return resultado
     
     
 assert(quitarCaracter("ohalla","h")=="oalla")
 assert(quitarCaracter("ohalla","a")=="ohlla")
+assert(quitarCaracter("ohalla","A")=="ohlla")
 assert(quitarCaracter("ohalla","l")=="ohala")
-
+assert(quitarCaracter("Ohalla","o")=="halla")
 
 #===============================================================================
 # Esta función busca si hay una palabra contenida en un texto (usando la función quitarCaracter().
@@ -394,7 +397,22 @@ assert(buscaReemplaza("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me lla
  Diseñar una función que determine la cantidad de vocales diferentes, que tiene una palabra
 o frase introducida por teclado. Por ejemplo, la cadena "Abaco", devolverá 2.
 '''
+def contarVocales(palabra):
+    cantidadVocales=0
+    vocales=["a","e","i","o","u"]
+    palabra=convierteAMinusculas(palabra)
+    for i in range (len(palabra)):
+        if palabra[i] in vocales:
+            cantidadVocales+=1
+            while palabra[i]==vocales[i]:
+                palabra=quitarCaracter(palabra, palabra[i])
+                print(palabra)
+    print(cantidadVocales)
+    return cantidadVocales
 
+assert(contarVocales("Abaco")==2)
+# assert(contarVocales("sd kg")==0)
+# assert(contarVocales("mUrcIelaGO")==5)
 
 '''
 # coding: utf-8 
