@@ -17,11 +17,8 @@ It should do if the string and character are lower case or upper case characters
 # False si el caracter no está en minúsculas
 #===============================================================================
 def isMinusculas(caracter):
-    isMinusculas=False
-    if ord(caracter)>=97 and ord(caracter)<=122:
-        isMinusculas=True
         
-    return isMinusculas
+    return ord(caracter)>=97 and ord(caracter)<=122
 
 
 #===============================================================================
@@ -98,13 +95,14 @@ assert(convierteAMinusculas('CadeNA')=='cadena')
 def convierteAMayusculas(cadena):
     cadenaConvertida=''
     for i in cadena:
-        #si i es un espacio o es mayúscula, lo acumulo en la cadena convertida
-        if i==' ' or isMinusculas(i)==False:
-            cadenaConvertida+=i
         #Si i es minúsculas, lo convierto a mayúsculas usando ord() y luego como esto es
         #un ordinal y yo necesito el string, uso chr() y lo acumulo en la cadena convertida
-        else:
+        if ord(i)>=97 and ord(i)<=122:
             cadenaConvertida+=chr(ord(i)-32)
+        #En el resto de casos, lo concateno
+        else:
+            cadenaConvertida+=i
+        
   
     return cadenaConvertida
 
@@ -134,7 +132,7 @@ estos números se sacan con ord('A')
 def lowCaseInString(cadena):
     resultado=0
     for i in cadena:
-        if isMinusculas(i)==True or i==chr(241):
+        if isMinusculas(i) or i==chr(241):
             resultado+=1
     return resultado
 
@@ -268,15 +266,66 @@ assert(palindrome('el abad le dio arroz al zorro')==False)
  es "hola", entonces si se encontrará y deberá devolver True, en caso 
  contrario deberá devolver False.
 '''
+
 #===============================================================================
-# Esta función 
-# Recibe 
+# Esta función elimina un caracter contenido en una cadena. Si hay coincidencias, 
+# solo quita el primer caracter, no los sucesivos.
+# Recibe dos variables de tipo String, una cadena de texto y un caracter
+# Devuelve: la cadena sin el caracter (primera coincidencia)
+#===============================================================================
+def quitarCaracter(cadena, caracter):
+    resultado=''
+    encontrado = False
+    for i in cadena:
+        if i  == caracter and encontrado== False:
+            encontrado = True
+        else:
+            resultado = resultado +i
+    return resultado
+    
+    
+assert(quitarCaracter("ohalla","h")=="oalla")
+assert(quitarCaracter("ohalla","a")=="ohlla")
+assert(quitarCaracter("ohalla","l")=="ohala")
+
+
+#===============================================================================
+# Esta función busca si hay una palabra contenida en un texto (usando la función quitarCaracter().
+# Recibe dos variables tipo cadena, un texto y una palabra
 # Devuelve:
-# 
+# True si la palabra está contenida en el texto
+# False si la palabra no está contenida en el texto
 #===============================================================================
-# def wordInText(palabra, texto):
-#
-#     return resultado
+def wordInText(texto, palabra):
+    textoEnPalabra=""
+    j=0
+    '''En este caso, comprueba que las letras de la palabra están, pero tienen que estar en orden consecutivo'''
+    # for i in range (len(texto)):
+    #     if texto[i]==palabra[j] and texto!=' ':
+    #         textoEnPalabra+=palabra[j]
+    #         j+=1
+            
+    ''' En este caso comprueba que las letras de la palabra están, sin importar el orden'''            
+    if len(palabra)<=len(texto):
+        for i in range (len(palabra)):
+            sonIguales=False
+            while j<len(texto) and sonIguales==False:
+                if palabra[i]==texto[j]:
+                    textoEnPalabra+=palabra[i]
+                    sonIguales=True
+                    texto=quitarCaracter(texto, texto[j])
+                else:
+                    j+=1
+                
+    return palabra==textoEnPalabra
+
+assert(wordInText("shybaoxlna", "hola")==True)
+assert(wordInText("sybaoxln", "holaa")==False)
+assert(wordInText("sybaoxlna", "hola")==False)
+assert(wordInText("mkeigunydo", "mundo")==True)
+assert(wordInText("odmnu", "mundo")==False)
+assert(wordInText("shyb aoxlna", "hola")==True)
+
 
 
 '''
@@ -289,13 +338,39 @@ assert(palindrome('el abad le dio arroz al zorro')==False)
 deberá buscar si existe la palabra que recibe como segundo parámetro y reemplazarla por la
 tercera.
 '''
+def textoAArray(texto):
+    arrayTexto=[]
+    palabra=""
+    for i in range (len(texto)):
+        if texto[i]==" " and texto[i+1]!=' ':
+            arrayTexto.append(convierteAMinusculas(palabra))
+            palabra==""
+        else:
+            palabra+=texto[i]
+            
+    return arrayTexto
 
+assert(textoAArray("Hola me llamo Sandra")==["hola", "me", "llamo", "sandra"])       
+    
 #===============================================================================
 # Esta función 
 # Recibe 
 # Devuelve:
 # 
 #===============================================================================
+
+# def reemplaza(texto, buscada, reemplazada):
+#     arrayTexto=[]
+#     palabra=""
+#     for i in range (len(texto)):
+#         if texto[i]==" " and texto[i+1]!=' ':
+#             arrayTexto.append(palabra)
+#             palabra==""
+#         else:
+#             palabra+=texto[i]
+#
+#     return textoReemplazo        
+        
 
 '''
 # coding: utf-8 
