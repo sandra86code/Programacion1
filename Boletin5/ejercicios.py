@@ -312,8 +312,8 @@ def wordInText(texto, palabra):
             while j<len(texto) and sonIguales==False:
                 if palabra[i]==texto[j]:
                     textoEnPalabra+=palabra[i]
-                    sonIguales=True
                     texto=quitarCaracter(texto, texto[j])
+                    sonIguales=True
                 else:
                     j+=1
                 
@@ -338,39 +338,51 @@ assert(wordInText("shyb aoxlna", "hola")==True)
 deberá buscar si existe la palabra que recibe como segundo parámetro y reemplazarla por la
 tercera.
 '''
+#===============================================================================
+# Esta función convierte una cadena de texto a un array, separando por palabras
+# Recibe una variable tipo string, que es una cadena de caracteres
+# Devuelve: un array de tipo string con las palabras separadas 
+# (sin contar puntos, espacios, comas, signos de admiración y de exclamacion)
+#===============================================================================
 def textoAArray(texto):
     arrayTexto=[]
     palabra=""
     for i in range (len(texto)):
-        if texto[i]==" " and texto[i+1]!=' ':
-            arrayTexto.append(convierteAMinusculas(palabra))
-            palabra==""
-        else:
+        if texto[i]==" ":
+            arrayTexto.append(palabra)
+            palabra=""
+        elif (texto[i]>=chr(48) and texto[i]<=chr(57)) or (texto[i]>=chr(65) and texto[i]<=chr(90)) or (texto[i]>=chr(97) and texto[i]<=chr(122)):
             palabra+=texto[i]
-            
+
+    arrayTexto.append(palabra)
+     
     return arrayTexto
 
-assert(textoAArray("Hola me llamo Sandra")==["hola", "me", "llamo", "sandra"])       
-    
-#===============================================================================
-# Esta función 
-# Recibe 
-# Devuelve:
-# 
-#===============================================================================
+assert(textoAArray("Hola me llamo Sandra")==["Hola", "me", "llamo", "Sandra"])       
 
-# def reemplaza(texto, buscada, reemplazada):
-#     arrayTexto=[]
-#     palabra=""
-#     for i in range (len(texto)):
-#         if texto[i]==" " and texto[i+1]!=' ':
-#             arrayTexto.append(palabra)
-#             palabra==""
-#         else:
-#             palabra+=texto[i]
-#
-#     return textoReemplazo        
+
+#===============================================================================
+# Esta función busca una palabra en el texto y, si la encuentra, la reemplaza por otra palabra
+# Recibe 3 variables de tipo string, un texto, una palabra y otra palabra
+# Devuelve:
+# El texto con la palabra reemplazada si encuentra la palabra buscada
+# El mismo texto que se ha introducido si no encuentra la palabra buscada
+#===============================================================================
+def buscaReemplaza(texto, buscada, reemplazada):
+    textoReemplazado=""
+    texto= textoAArray(texto)
+    for i in texto:
+        if convierteAMinusculas(i)==convierteAMinusculas(buscada):
+            textoReemplazado+=reemplazada
+        else:
+            textoReemplazado+=i
+        if i!=texto[-1]:
+                textoReemplazado+=" "           
+    return textoReemplazado       
         
+assert(buscaReemplaza("Hola me llamo Sandra", "hola", "Adios")=="Adios me llamo Sandra")
+assert(buscaReemplaza("Hola me llamo Sandra", "SANDRA", "Sofia")=="Hola me llamo Sofia")
+assert(buscaReemplaza("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me llamo Sandra")
 
 '''
 # coding: utf-8 
