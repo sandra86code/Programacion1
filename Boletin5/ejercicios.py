@@ -350,17 +350,18 @@ def textoAArray(texto):
     palabra=""
     for i in range (len(texto)):
         if texto[i]==" ":
-            arrayTexto.append(palabra)
+            if palabra!="":
+                arrayTexto.append(palabra)
             palabra=""
         elif (texto[i]>=chr(48) and texto[i]<=chr(57)) or (texto[i]>=chr(65) and texto[i]<=chr(90)) or (texto[i]>=chr(97) and texto[i]<=chr(122)):
             palabra+=texto[i]
+    if palabra!="":
+        arrayTexto.append(palabra)
 
-    arrayTexto.append(palabra)
-    
     return arrayTexto
 
 assert(textoAArray("Hola me llamo Sandra")==["Hola", "me", "llamo", "Sandra"])       
-assert(textoAArray("  Hola   me    llamo   Sandra  ")==['', '', 'Hola', '', '', 'me', '', '', '', 'llamo', '', '', 'Sandra', '', ''])       
+assert(textoAArray("  Hola   me    llamo   Sandra  ")==["Hola", "me", "llamo", "Sandra"])       
 
 
 #===============================================================================
@@ -372,19 +373,26 @@ assert(textoAArray("  Hola   me    llamo   Sandra  ")==['', '', 'Hola', '', '', 
 #===============================================================================
 def buscaReemplaza(texto, buscada, reemplazada):
     textoReemplazado=""
-    texto= textoAArray(texto)
+    texto=textoAArray(texto)
+    buscada= textoAArray(buscada)
     for i in texto:
-        if convertirAMinusculas(i)==convertirAMinusculas(buscada):
-            textoReemplazado+=reemplazada
-        else:
-            textoReemplazado+=i
-        if i!=texto[-1]:
+        j=0
+        isFound=False
+        while j<len(buscada) and isFound==False:
+            if convertirAMinusculas(i)==convertirAMinusculas(buscada[j]):
+                textoReemplazado+=reemplazada
+            else:
+                textoReemplazado+=i
+            if i!=texto[-1]:
                 textoReemplazado+=" "           
+    print(textoReemplazado)
     return textoReemplazado       
         
 assert(buscaReemplaza("Hola me llamo Sandra", "hola", "Adios")=="Adios me llamo Sandra")
-assert(buscaReemplaza("Hola me llamo Sandra", "SANDRA", "Sofia")=="Hola me llamo Sofia")
+assert(buscaReemplaza("Hola me llamo Sandra", "SANDRA", "Sofia Maria")=="Hola me llamo Sofia Maria")
 assert(buscaReemplaza("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me llamo Sandra")
+assert(buscaReemplaza("El perro marron tiene hambre", "perro marron", "gato angora de mi prima")=="El gato angora de mi prima tiene hambre")
+
 
 '''
 # coding: utf-8 
@@ -471,8 +479,7 @@ def contarPalabras(cadena):
     numPalabras=0
     cadena=textoAArray(cadena)
     for i in cadena:
-        if i!='':
-            numPalabras+=1
+        numPalabras+=1
     return numPalabras
 
 assert(contarPalabras("He estudiado mucho")==3)
