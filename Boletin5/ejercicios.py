@@ -68,7 +68,7 @@ assert(charactersInString('Stranger Things', 'H')==1)
 # Recibe una cadena
 # Devuelve: la cadena en minúsculas
 #===============================================================================
-def convierteAMinusculas(cadena):
+def convertirAMinusculas(cadena):
     cadenaConvertida=''
     #Recorro la cadena
     for i in cadena:
@@ -83,8 +83,8 @@ def convierteAMinusculas(cadena):
     return cadenaConvertida
 
 
-assert(convierteAMinusculas('La ONU es internacional')=='la onu es internacional')
-assert(convierteAMinusculas('CadeNA')=='cadena')
+assert(convertirAMinusculas('La ONU es internacional')=='la onu es internacional')
+assert(convertirAMinusculas('CadeNA')=='cadena')
 
 
 #===============================================================================
@@ -92,7 +92,7 @@ assert(convierteAMinusculas('CadeNA')=='cadena')
 # Recibe una cadena
 # Devuelve: la cadena en mayúsculas
 #===============================================================================
-def convierteAMayusculas(cadena):
+def convertirAMayusculas(cadena):
     cadenaConvertida=''
     for i in cadena:
         #Si i es minúsculas, lo convierto a mayúsculas usando ord() y luego como esto es
@@ -106,8 +106,8 @@ def convierteAMayusculas(cadena):
   
     return cadenaConvertida
 
-assert(convierteAMayusculas('La ONU es internacional')=='LA ONU ES INTERNACIONAL')
-assert(convierteAMayusculas('CadeNA')=='CADENA')
+assert(convertirAMayusculas('La ONU es internacional')=='LA ONU ES INTERNACIONAL')
+assert(convertirAMayusculas('CadeNA')=='CADENA')
 
 
 '''
@@ -276,8 +276,8 @@ assert(palindrome('el abad le dio arroz al zorro')==False)
 def quitarCaracter(cadena, caracter):
     resultado=''
     encontrado=False
-    cadena=convierteAMinusculas(cadena)
-    caracter=convierteAMinusculas(caracter)
+    cadena=convertirAMinusculas(cadena)
+    caracter=convertirAMinusculas(caracter)
     for i in cadena:
         if i==caracter and encontrado==False:
             encontrado=True
@@ -292,6 +292,8 @@ assert(quitarCaracter("ohalla","A")=="ohlla")
 assert(quitarCaracter("ohalla","l")=="ohala")
 assert(quitarCaracter("Ohalla","o")=="halla")
 
+
+
 #===============================================================================
 # Esta función busca si hay una palabra contenida en un texto (usando la función quitarCaracter().
 # Recibe dos variables tipo cadena, un texto y una palabra
@@ -299,36 +301,32 @@ assert(quitarCaracter("Ohalla","o")=="halla")
 # True si la palabra está contenida en el texto
 # False si la palabra no está contenida en el texto
 #===============================================================================
-def wordInText(texto, palabra):
-    textoEnPalabra=""
-    j=0
-    '''En este caso, comprueba que las letras de la palabra están, pero tienen que estar en orden consecutivo'''
-    # for i in range (len(texto)):
-    #     if texto[i]==palabra[j] and texto!=' ':
-    #         textoEnPalabra+=palabra[j]
-    #         j+=1
-            
-    ''' En este caso comprueba que las letras de la palabra están, sin importar el orden'''            
-    if len(palabra)<=len(texto):
-        for i in range (len(palabra)):
-            sonIguales=False
-            while j<len(texto) and sonIguales==False:
-                if palabra[i]==texto[j]:
-                    textoEnPalabra+=palabra[i]
-                    texto=quitarCaracter(texto, texto[j])
-                    sonIguales=True
-                else:
-                    j+=1
-                
-    return palabra==textoEnPalabra
+def encontrar(cadena,escondida):
+    #Recorrer cada una de las letras de escondida
+    isFound = True
+    for i in escondida:
+        #Para cada una de las letras de escondidas intento quitarla de cadena
+        #Si la puedo quitar es que está, por lo que paso a la siguiente
+        #Si no la puedo quitar, no está con lo cual me salgo y devuelve False
+        
+        #Función que me devuelve la cadena que recibe como argumento
+        #sin la primera ocurrencia que se encuentre de i
+        cadenaAux = quitarCaracter(cadena, i)
+        if cadenaAux == cadena:
+            isFound = False
+        cadena = cadenaAux
+    return isFound
 
-assert(wordInText("shybaoxlna", "hola")==True)
-assert(wordInText("sybaoxln", "holaa")==False)
-assert(wordInText("sybaoxlna", "hola")==False)
-assert(wordInText("mkeigunydo", "mundo")==True)
-assert(wordInText("odmnu", "mundo")==False)
-assert(wordInText("shyb aoxlna", "hola")==True)
-
+assert(encontrar("shybaoxlna", "hola")==True)
+assert(encontrar("shybaoxlna", "z")==False)
+assert(encontrar("shybaoxlna", "Z")==False)
+assert(encontrar("sybaoxln", "holaa")==False)
+assert(encontrar("sybaoxlna", "hola")==False)
+assert(encontrar("mkeigunydo", "mundo")==True)
+assert(encontrar("odmnu", "mundo")==True)
+assert(encontrar("shyb aoxlna", "hola")==True)
+assert(encontrar("", "hola")==False)
+assert(encontrar("odmnu", "")==True)
 
 
 '''
@@ -358,10 +356,11 @@ def textoAArray(texto):
             palabra+=texto[i]
 
     arrayTexto.append(palabra)
-     
+    
     return arrayTexto
 
 assert(textoAArray("Hola me llamo Sandra")==["Hola", "me", "llamo", "Sandra"])       
+assert(textoAArray("  Hola   me    llamo   Sandra  ")==['', '', 'Hola', '', '', 'me', '', '', '', 'llamo', '', '', 'Sandra', '', ''])       
 
 
 #===============================================================================
@@ -375,7 +374,7 @@ def buscaReemplaza(texto, buscada, reemplazada):
     textoReemplazado=""
     texto= textoAArray(texto)
     for i in texto:
-        if convierteAMinusculas(i)==convierteAMinusculas(buscada):
+        if convertirAMinusculas(i)==convertirAMinusculas(buscada):
             textoReemplazado+=reemplazada
         else:
             textoReemplazado+=i
@@ -387,7 +386,6 @@ assert(buscaReemplaza("Hola me llamo Sandra", "hola", "Adios")=="Adios me llamo 
 assert(buscaReemplaza("Hola me llamo Sandra", "SANDRA", "Sofia")=="Hola me llamo Sofia")
 assert(buscaReemplaza("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me llamo Sandra")
 
-
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
@@ -397,22 +395,26 @@ assert(buscaReemplaza("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me lla
  Diseñar una función que determine la cantidad de vocales diferentes, que tiene una palabra
 o frase introducida por teclado. Por ejemplo, la cadena "Abaco", devolverá 2.
 '''
-def contarVocales(palabra):
+#===============================================================================
+# Esta función nos dice la cantidad de vocales diferentes que tiene una palabra o frase
+# Recibe una variable string, que es una palabra o una frase
+# Devuelve: 
+# La cantidad de vocales diferentes en la palabra o frase
+#===============================================================================
+def contarVocalesDiferentes(cadena):
     cantidadVocales=0
     vocales=["a","e","i","o","u"]
-    palabra=convierteAMinusculas(palabra)
-    for i in range (len(palabra)):
-        if palabra[i] in vocales:
+    cadena=convertirAMinusculas(cadena)
+    for i in range (len(vocales)):
+        if vocales[i] in cadena:
             cantidadVocales+=1
-            while palabra[i]==vocales[i]:
-                palabra=quitarCaracter(palabra, palabra[i])
-                print(palabra)
-    print(cantidadVocales)
     return cantidadVocales
 
-assert(contarVocales("Abaco")==2)
-# assert(contarVocales("sd kg")==0)
-# assert(contarVocales("mUrcIelaGO")==5)
+assert(contarVocalesDiferentes("Abaco")==2)
+assert(contarVocalesDiferentes("sd kg")==0)
+assert(contarVocalesDiferentes("mUrcIelaGO")==5)
+
+
 
 '''
 # coding: utf-8 
@@ -426,8 +428,27 @@ al principio y todas las vocales al final de la misma, eliminando los blancos.
 Por ejemplo, pasándole la cadena "curso de programacion", una posible solución será
 "crsdprgrmcnuoeoaaio".
 '''
+#===============================================================================
+# Esta función reordena una cadena, colocando delante las consonantes y luego las vocales
+# Recibe una variable de tipo cadena, que puede ser una palabra o una frase
+# Devuelve:
+# La cadena reordenada
+#===============================================================================
+def reordenarCadena(cadena):
+    cadenaReordenada=""
+    vocales=["a","e","i","o","u"]
+    for i in cadena:
+        if convertirAMinusculas(i) not in vocales and i!=' ':
+            cadenaReordenada+=i
+    for i in cadena:
+        if convertirAMinusculas(i) in vocales:
+            cadenaReordenada+=i
+
+    return cadenaReordenada
 
 
+assert(reordenarCadena("curso de programacion")=="crsdprgrmcnuoeoaaio")
+assert(reordenarCadena("Nothing Else Matters")=="NthnglsMttrsoiEeae")
 
 '''
 # coding: utf-8 
@@ -440,3 +461,19 @@ como parámetro. Ten en cuenta que entre dos palabras puede haber más de un bla
 También al principio y al final de la frase puede haber blancos redundantes.
 Por ejemplo, si la cadena es "He estudiado mucho", debe devolver 3.
 '''
+#===============================================================================
+# Esta función cuenta el número de palabras que hay en una cadena
+# Recibe una variable de tipo String, una cadena de texto
+# Devuelve:
+# El número de palabras en una cadena
+#===============================================================================
+def contarPalabras(cadena):
+    numPalabras=0
+    cadena=textoAArray(cadena)
+    for i in cadena:
+        if i!='':
+            numPalabras+=1
+    return numPalabras
+
+assert(contarPalabras("He estudiado mucho")==3)
+assert(contarPalabras("  He    estudiado   mucho   ")==3)
