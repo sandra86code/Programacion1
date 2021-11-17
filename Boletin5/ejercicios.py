@@ -132,6 +132,7 @@ estos números se sacan con ord('A')
 def lowCaseInString(cadena):
     resultado=0
     for i in cadena:
+        #Si i está en minúsculas o es una ñ, acumulo
         if isMinusculas(i) or i==chr(241):
             resultado+=1
     return resultado
@@ -190,7 +191,6 @@ method should return how many of those characters are numbers.
 #CÓDIGO ASCII: 0-9 es [48-57]
 '''
 
-
 #===============================================================================
 # Esta función calcula cuántos caracteres numéricos hay en una cadena
 # Recibe una cadena
@@ -222,7 +222,6 @@ ignoring whites,. For example: "anilina" or "el abad le dio arroz al zorro".
 To simplify the problem, you can assume that simple characters are used, that is, without 
 tildes or diresis.
 '''
-
 
 #===============================================================================
 # Esta función comprueba si una palabra o frase es palíndroma (se lee igual al derecho que al revés)
@@ -274,15 +273,23 @@ assert(palindrome('el abad le dio arroz al zorro')==False)
 # Devuelve: la cadena sin el caracter (primera coincidencia)
 #===============================================================================
 def quitarCaracter(cadena, caracter):
+    #Variable acumuladora de tipo cadena
     resultado=''
+    #bandera que voy a utilizar en el bucle
     encontrado=False
+    #Convierto la cadena a minúsculas
     cadena=convertirAMinusculas(cadena)
+    #convierto el caracter a minúsculas
     caracter=convertirAMinusculas(caracter)
+    #Recorro la cadena caracter a caracter
     for i in cadena:
+        #Si i es igual al caracter y la bandera no se ha modificado, modifico la bandera
         if i==caracter and encontrado==False:
             encontrado=True
+        #Si la bandera ha sido ya modificada, acumulo el caracter de la cadena
         else:
             resultado+=i
+    
     return resultado
     
     
@@ -346,15 +353,25 @@ tercera.
 # (sin contar puntos, espacios, comas, signos de admiración y de exclamacion)
 #===============================================================================
 def textoAArray(texto):
+    #Lista vacía donde voy a ir metiendo las palabras
     arrayTexto=[]
+    #Variable acumuladora vacía de tipo string
     palabra=""
+    #Recorro el texto caracter a caracter
     for i in range (len(texto)):
+        #Si el caracter es un espacio y la variable palabra no está vacía, añado palabra a la lista
+        #y reinicio la variable palabra
         if texto[i]==" ":
             if palabra!="":
                 arrayTexto.append(palabra)
             palabra=""
+        #Para que no me tenga en cuenta los símbolos de puntuación varios, limito que solo acumule
+        #en la variable palabra las letras minúsculas, las mayúsculas y los números
         elif (texto[i]>=chr(48) and texto[i]<=chr(57)) or (texto[i]>=chr(65) and texto[i]<=chr(90)) or (texto[i]>=chr(97) and texto[i]<=chr(122)):
             palabra+=texto[i]
+    #Como en el rango añade cuando se encuentra un espacio, no va a tomar en cuenta la última palabra,
+    #por lo que la tengo que añadir al salir del bucle.
+    #Para controlar que no me incluya espacios varios de la cadena original, solo añado si palabra no está vacía
     if palabra!="":
         arrayTexto.append(palabra)
 
@@ -373,13 +390,21 @@ assert(textoAArray("  Hola   me    llamo   Sandra  ")==["Hola", "me", "llamo", "
 # El mismo texto que se ha introducido si no encuentra la palabra buscada
 #===============================================================================
 def buscaReemplaza(texto, buscada, reemplazada):
+    #Creo variable acumuladora vacía de tipo string, que es la que va a devolver
     textoReemplazado=""
+    #El texto lo convierto en una lista de palabras separadas por los espacios de la cadena
     texto=textoAArray(texto)
+    #Recorro cada uno de los items de la lista de palabras
     for i in texto:
+        #Si el item de la lista (en minúsculas) es igual que la palabra buscada (en minúsculas),
+        #acumulo la palabra reemplazada
         if convertirAMinusculas(i)==convertirAMinusculas(buscada):
             textoReemplazado+=reemplazada
+        #Si no hay coincidencia, acumulo la palabra de la lista
         else:
             textoReemplazado+=i
+        #Mientras que el item no sea el último (para que no me meta un espacio al final)
+        #le añado un espacio a la cadena
         if i!=texto[-1]:
             textoReemplazado+=" "
             
@@ -399,27 +424,47 @@ assert(buscaReemplaza("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me lla
 # El mismo texto que se ha introducido si no encuentra la palabra buscada
 #===============================================================================
 def searchReplace(texto, buscada, reemplazada):
+    #Compruebo que buscada (en minúsculas) esté en el texto (en minúsculas) 
     if convertirAMinusculas(buscada) in convertirAMinusculas(texto):
+        #Creo una variable acumuladora vacía de tipo string
         textoReemplazado=""
+        #Convierto el texto en una lista de palabras
         texto=textoAArray(texto)
+        #Convierto buscada en una lista de palabras
         buscada=textoAArray(buscada)
-        
+        #Creo la variable iteradora del bucle y la inicio a 0 
+        #(pq necesito recorrer la lista desde el index 0)
         j=0
+        #Inicio la bandera en Falso
         isFound=False
+        #El bucle recorre la lista texto hasta que encuentra coincidencia en el primer elemento.
+        #No me hace falta buscar coincidencia en los elementos sucesivos, porque ya lo hice con la
+        #estructura condicional
         while j<len(texto) and isFound==False:
+            #Si la primera palabra de buscada (en minúsculas) es igual a la primera palabra del texto
+            #en minúsculas, cambio la bandera para frenar el bucle y la posicion inicial (que usaré 
+            #eliminar y para reemplazar) es el valor de j.
+            #Calculo el valor de la posicion final sumando la posicion inicial a la longitud de la lista
+            #buscada
             if convertirAMinusculas(buscada[0])==convertirAMinusculas(texto[j]):
                 isFound=True
                 posInicial=j
                 posFinal=len(buscada)+posInicial
+            #Si no hay coincidencias, sigo buscando en el texto
             else:
                 j+=1
-        if isFound:
-            del texto[posInicial:posFinal]
-            texto.insert(posInicial, reemplazada)
-            for i in texto:
-                textoReemplazado+=i
-                if i!=texto[-1]:
-                    textoReemplazado+=" "
+        
+        #Elimino las palabras que coinciden en el texto usando las posicion inicial y final
+        del texto[posInicial:posFinal]
+        #Inserto en la posicion inicial la cadena reemplazada
+        texto.insert(posInicial, reemplazada)
+        #Recorro la nueva lista ya reemplazada para convertirla en cadena:
+        for i in texto:
+            textoReemplazado+=i
+            #Salvo que sea la palabra final, introduce un espacio
+            if i!=texto[-1]:
+                textoReemplazado+=" "
+    #Si buscada no está en el texto, el texto reemplazado es el texto (que es una cadena)
     else:
         textoReemplazado=texto
   
@@ -449,12 +494,19 @@ o frase introducida por teclado. Por ejemplo, la cadena "Abaco", devolverá 2.
 # La cantidad de vocales diferentes en la palabra o frase
 #===============================================================================
 def contarVocalesDiferentes(cadena):
+    #Creo una variable contadora y la inicializo a 0
     cantidadVocales=0
+    #Creo una lista con todas las vocales en minúsculas
     vocales=["a","e","i","o","u"]
+    #Convierto la cadena a minúsculas
     cadena=convertirAMinusculas(cadena)
+    #Recorro la lista de vocales, porque de esa manera no me va a tener en cuenta las
+    #vocales repetidas
     for i in range (len(vocales)):
+        #Si la vocal está en la cadena, me suma 1 en la variable acumuladora
         if vocales[i] in cadena:
             cantidadVocales+=1
+            
     return cantidadVocales
 
 assert(contarVocalesDiferentes("Abaco")==2)
@@ -482,12 +534,20 @@ Por ejemplo, pasándole la cadena "curso de programacion", una posible solución
 # La cadena reordenada
 #===============================================================================
 def reordenarCadena(cadena):
+    #Creo una variable acumuladora vacía de tipo string
     cadenaReordenada=""
+    #Como las vocales son menos, para diferenciar entre consonantes y vocales,
+    #creo una lista con las vocales en minúscula
     vocales=["a","e","i","o","u"]
+    #Recorro cada caracter de la cadena para incluir primero las consonantes
     for i in cadena:
+        #Si el caracter en minúsculas es una consonante (no está en vocales)
+        #y es diferente de un espacio, lo acumulo
         if convertirAMinusculas(i) not in vocales and i!=' ':
             cadenaReordenada+=i
+    #Recorro de nuevo la cadena para incluir en este caso las vocales al final
     for i in cadena:
+        #Si el caracter en minúsculas es una vocal, la acumulo
         if convertirAMinusculas(i) in vocales:
             cadenaReordenada+=i
 
@@ -515,10 +575,15 @@ Por ejemplo, si la cadena es "He estudiado mucho", debe devolver 3.
 # El número de palabras en una cadena
 #===============================================================================
 def contarPalabras(cadena):
+    #Creo una variable contadora y la inicializo a 0
     numPalabras=0
+    #Convierto la cadena en una lista de palabras (no tiene en cuenta si en la cadena hay espacios dobles,
+    #al principio o al final
     cadena=textoAArray(cadena)
+    #Recorro los items de la lista y sumo 1 a la variable contadora
     for i in cadena:
         numPalabras+=1
+        
     return numPalabras
 
 assert(contarPalabras("He estudiado mucho")==3)
