@@ -514,3 +514,5 @@ def contarPalabras(cadena):
 
 assert(contarPalabras("He estudiado mucho")==3)
 assert(contarPalabras("  He    estudiado   mucho   ")==3)
+
+
