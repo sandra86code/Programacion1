@@ -387,8 +387,14 @@ def buscaReemplaza(texto, buscada, reemplazada):
 assert(buscaReemplaza("Hola me llamo Sandra", "hola", "Adios")=="Adios me llamo Sandra")
 assert(buscaReemplaza("Hola me llamo Sandra", "SANDRA", "Sofia Maria")=="Hola me llamo Sofia Maria")
 assert(buscaReemplaza("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me llamo Sandra")
-# assert(buscaReemplaza("El perro marron tiene hambre", "perro marron", "gato angora de mi prima")=="El gato angora de mi prima tiene hambre")
 
+
+#===============================================================================
+# Esta función 
+# Recibe 
+# Devuelve:
+# 
+#===============================================================================
 def searchReplace(texto, buscada, reemplazada):
     if buscada in texto:
         textoReemplazado=""
