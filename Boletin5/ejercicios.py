@@ -365,7 +365,8 @@ assert(textoAArray("  Hola   me    llamo   Sandra  ")==["Hola", "me", "llamo", "
 
 
 #===============================================================================
-# Esta función busca una palabra en el texto y, si la encuentra, la reemplaza por otra palabra
+# Esta función busca una palabra en el texto y, si la encuentra, la reemplaza por otra palabra.
+# Solo funciona si buscada es una sola palabra
 # Recibe 3 variables de tipo string, un texto, una palabra y otra palabra
 # Devuelve:
 # El texto con la palabra reemplazada si encuentra la palabra buscada
@@ -390,13 +391,15 @@ assert(buscaReemplaza("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me lla
 
 
 #===============================================================================
-# Esta función 
-# Recibe 
+# Esta función busca una palabra en el texto y, si la encuentra, la reemplaza por otra palabra.
+# Funciona en todos los casos, tanto si buscada es 1 o varias palabras.
+# Recibe 3 variables de tipo string, un texto, una palabra y otra palabra
 # Devuelve:
-# 
+# El texto con la palabra reemplazada si encuentra la palabra buscada
+# El mismo texto que se ha introducido si no encuentra la palabra buscada
 #===============================================================================
 def searchReplace(texto, buscada, reemplazada):
-    if buscada in texto:
+    if convertirAMinusculas(buscada) in convertirAMinusculas(texto):
         textoReemplazado=""
         texto=textoAArray(texto)
         buscada=textoAArray(buscada)
@@ -404,7 +407,7 @@ def searchReplace(texto, buscada, reemplazada):
         j=0
         isFound=False
         while j<len(texto) and isFound==False:
-            if buscada[0]==texto[j]:
+            if convertirAMinusculas(buscada[0])==convertirAMinusculas(texto[j]):
                 isFound=True
                 posInicial=j
                 posFinal=len(buscada)+posInicial
@@ -419,10 +422,16 @@ def searchReplace(texto, buscada, reemplazada):
                     textoReemplazado+=" "
     else:
         textoReemplazado=texto
-        
+  
     return textoReemplazado
 
+assert(searchReplace("Hola me llamo Sandra", "hola", "Adios")=="Adios me llamo Sandra")
+assert(searchReplace("Hola me llamo Sandra", "SANDRA", "Sofia Maria")=="Hola me llamo Sofia Maria")
+assert(searchReplace("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me llamo Sandra")
 assert(searchReplace("El perro marron tiene hambre", "perro marron", "gato angora de mi prima")=="El gato angora de mi prima tiene hambre")    
+assert(searchReplace("El perro marron tiene hambre", "Perro Marron", "gato angora de mi prima")=="El gato angora de mi prima tiene hambre")
+assert(searchReplace("El Perro Marron tiene hambre", "perro marron", "gato angora de mi prima")=="El gato angora de mi prima tiene hambre")       
+assert(searchReplace("El perro marron tiene hambre", "zorro marron", "gato angora de mi prima")=="El perro marron tiene hambre")
 
 '''
 # coding: utf-8 
