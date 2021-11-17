@@ -374,25 +374,49 @@ assert(textoAArray("  Hola   me    llamo   Sandra  ")==["Hola", "me", "llamo", "
 def buscaReemplaza(texto, buscada, reemplazada):
     textoReemplazado=""
     texto=textoAArray(texto)
-    buscada= textoAArray(buscada)
     for i in texto:
-        j=0
-        isFound=False
-        while j<len(buscada) and isFound==False:
-            if convertirAMinusculas(i)==convertirAMinusculas(buscada[j]):
-                textoReemplazado+=reemplazada
-            else:
-                textoReemplazado+=i
-            if i!=texto[-1]:
-                textoReemplazado+=" "           
-    print(textoReemplazado)
-    return textoReemplazado       
+        if convertirAMinusculas(i)==convertirAMinusculas(buscada):
+            textoReemplazado+=reemplazada
+        else:
+            textoReemplazado+=i
+        if i!=texto[-1]:
+            textoReemplazado+=" "
+            
+    return textoReemplazado
         
 assert(buscaReemplaza("Hola me llamo Sandra", "hola", "Adios")=="Adios me llamo Sandra")
 assert(buscaReemplaza("Hola me llamo Sandra", "SANDRA", "Sofia Maria")=="Hola me llamo Sofia Maria")
 assert(buscaReemplaza("Hola me llamo Sandra", "Mercedes", "Sofia")=="Hola me llamo Sandra")
-assert(buscaReemplaza("El perro marron tiene hambre", "perro marron", "gato angora de mi prima")=="El gato angora de mi prima tiene hambre")
+# assert(buscaReemplaza("El perro marron tiene hambre", "perro marron", "gato angora de mi prima")=="El gato angora de mi prima tiene hambre")
 
+def searchReplace(texto, buscada, reemplazada):
+    if buscada in texto:
+        textoReemplazado=""
+        texto=textoAArray(texto)
+        buscada=textoAArray(buscada)
+        
+        j=0
+        isFound=False
+        while j<len(texto) and isFound==False:
+            if buscada[0]==texto[j]:
+                isFound=True
+                posInicial=j
+                posFinal=len(buscada)+posInicial
+            else:
+                j+=1
+        if isFound:
+            del texto[posInicial:posFinal]
+            texto.insert(posInicial, reemplazada)
+            for i in texto:
+                textoReemplazado+=i
+                if i!=texto[-1]:
+                    textoReemplazado+=" "
+    else:
+        textoReemplazado=texto
+        
+    return textoReemplazado
+
+assert(searchReplace("El perro marron tiene hambre", "perro marron", "gato angora de mi prima")=="El gato angora de mi prima tiene hambre")    
 
 '''
 # coding: utf-8 
