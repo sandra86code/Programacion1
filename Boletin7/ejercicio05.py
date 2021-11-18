@@ -15,7 +15,6 @@ Llamar a dicha función
 # Esta función devuelve una lista pero con el orden inverso de sus elementos
 # Recibe: una lista
 # Devuelve: la lista en orden invertida
-# 
 #===============================================================================
 def listaALaInversa(lista):
     listaInversa=[]
