@@ -76,7 +76,7 @@ Otro ejemplo sería recibiendo como entrada el número 41:
 porque al cifrar 11 nos debería dar 21 y no 1111).
 
 Como hemos visto en el ejemplo anterior el 11 produce 21 y no 1111. Es decir, esta última iteración
-d descifrado (1111 → 11) no era válida. Por lo que el resultado de descifrar 41 es 1111 y no 11.
+de descifrado (1111 → 11) no era válida. Por lo que el resultado de descifrar 41 es 1111 y no 11.
 
 ------------------------------------------------------------------------------------------
 
