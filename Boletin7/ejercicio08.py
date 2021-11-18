@@ -10,7 +10,6 @@ Escribir una función que:
     2.    Devuelva la sumatoria y el promedio de los valores.
     3.    Devuelva una lista con el factorial de cada uno de esos números.
 '''
-from ejercicio01 import lista
 
 #===============================================================================
 # Esta función calcula el factorial de un número 
