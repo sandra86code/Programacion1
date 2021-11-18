@@ -14,7 +14,8 @@ algoritmo que se ha usado para el cifrado y ahora está en tus manos el consegui
 números y sacar los DNI’s que tienen los extraterrestres. ¡La humanidad te necesita!
 
 El algoritmo de cifrado se basa en repetir los siguientes 5 pasos (una iteración de cifrado) un
-número aleatorio de veces. Veremos los pasos usando como ejemplo de entrada el 13112221:
+número aleatorio de veces. 
+Veremos los pasos usando como ejemplo de entrada el 13112221:
 
     1. El primer paso será separar la cadena de números agrupando los números en función de
     números iguales: 1 3 11 222 1
@@ -39,10 +40,11 @@ descifrar 1113213211.
 1113213211 → 11 13 21 32 11 → 1 x “1”, 1 x “3”, 2 x “1”, 3 x “2”, 1 x “1” → un “1”, un “3”, dos
 “1”, tres “2”, un “1” → 1 3 11 222 1 → 13112221
 
-Ahora bien, este es solo una iteración de descifrado. Puede haber más ¿Cuántas más? Todas las
-válidas ¿Cuándo una iteración es válida? Supongamos que queremos ejecutar una iteración de
-descifrado sobra A, lo cual produce B. Esta iteración será válida si al cifrar B nos da como resultado
-A.
+Ahora bien, este es solo una iteración de descifrado. Puede haber más. ¿Cuántas más? Todas las
+válidas. 
+¿Cuándo una iteración es válida? Supongamos que queremos ejecutar una iteración de descifrado 
+sobre A, lo cual produce B. 
+Esta iteración será válida si al cifrar B nos da como resultado A.
 
 -----------------------------------------------------------------------------------------
 
