@@ -92,17 +92,18 @@ def fechaLarga(day, month, year):
 # El programa se para si el día introducido es -1.
 #===============================================================================
 def menu():
-    dia=0
+    dia=int(input("Introduce el día de la fecha: "))
     while dia!=-1:
+    
+        mes=int(input("Introduce el mes de la fecha: "))
+        anyo=int(input("Introduce el año de la fecha: "))
+        
+        if compruebaFecha(dia,mes,anyo):
+            print(fechaLarga(dia, mes, anyo))
+        else:
+            print("Fecha incorrecta.")
+        
         dia=int(input("Introduce el día de la fecha: "))
-        if dia!=-1:
-            mes=int(input("Introduce el mes de la fecha: "))
-            anyo=int(input("Introduce el año de la fecha: "))
-            
-            if compruebaFecha(dia,mes,anyo):
-                print(fechaLarga(dia, mes, anyo))
-            else:
-                print("Fecha incorrecta.")
-
+        
 #Llamada a la función, ya que no tiene return    
 menu()

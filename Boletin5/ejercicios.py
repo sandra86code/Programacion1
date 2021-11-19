@@ -534,22 +534,24 @@ Por ejemplo, pasándole la cadena "curso de programacion", una posible solución
 # La cadena reordenada
 #===============================================================================
 def reordenarCadena(cadena):
-    #Creo una variable acumuladora vacía de tipo string
-    cadenaReordenada=""
+    #Creo las variables acumuladoras vacías de tipo string
+    cadenaConsonantes=""
+    cadenaVocales=""
     #Como las vocales son menos, para diferenciar entre consonantes y vocales,
     #creo una lista con las vocales en minúscula
     vocales=["a","e","i","o","u"]
     #Recorro cada caracter de la cadena para incluir primero las consonantes
     for i in cadena:
         #Si el caracter en minúsculas es una consonante (no está en vocales)
-        #y es diferente de un espacio, lo acumulo
+        #y es diferente de un espacio, lo acumulo en cadenaConsonantes
         if convertirAMinusculas(i) not in vocales and i!=' ':
-            cadenaReordenada+=i
-    #Recorro de nuevo la cadena para incluir en este caso las vocales al final
-    for i in cadena:
-        #Si el caracter en minúsculas es una vocal, la acumulo
-        if convertirAMinusculas(i) in vocales:
-            cadenaReordenada+=i
+            cadenaConsonantes+=i
+        #Si el caracter en minúsculas es una vocal y es diferente de un espacio, 
+        #lo acumulo en cadenaVocales
+        elif convertirAMinusculas(i) in vocales:
+            cadenaVocales+=i
+    #Sumo las cadenas y las guardo en cadenaReordenada
+    cadenaReordenada=cadenaConsonantes+cadenaVocales
 
     return cadenaReordenada
 

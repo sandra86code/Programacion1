@@ -61,18 +61,20 @@ def sumarNumeros(lista):
 #===============================================================================
 def isPrimo(num):
     i=2
-    esPrimo=True
     #Excluyo el 1 porque no es considera número primo y al no entrar por el bucle
     #while, esPrimo sería True, cosa que es errónea.
     if num==1:
         esPrimo=False
-    #Recorro los números entre 2 y la mitad del número y si tiene algún divisor
-    #cambio la bandera a False para que se frene el bucle
-    while i<=(num//2) and esPrimo==True:
-        if num%i==0:
-            esPrimo=False
-        else:
-            i+=1
+    #Para el resto de números, me hace el bucle desde 2 hasta la mitad del número
+    #y si tiene algún divisor, me cambia la bandera y frena el bucle
+    else:
+        esPrimo=True
+        while i<=(num//2) and esPrimo==True:
+            if num%i==0:
+                esPrimo=False
+            else:
+                i+=1
+    
             
     return esPrimo
 
