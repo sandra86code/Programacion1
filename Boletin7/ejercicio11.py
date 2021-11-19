@@ -20,7 +20,6 @@ def isMinusculas(caracter):
     return ord(caracter)>=97 and ord(caracter)<=122
 
 
-
 #===============================================================================
 # Esta función devuelve una cadena convertida a minúsculas (funcion cadena.lower())
 # Recibe una cadena
@@ -45,26 +44,35 @@ assert(convertirAMinusculas('La ONU es internacional')=='la onu es internacional
 assert(convertirAMinusculas('CadeNA')=='cadena')
 
 
+#===============================================================================
+# Esta función devuelve una lista con las palabras comunes de dos listas, sin
+# repetir ningún elemento
+# Recibe: dos listras de tipo string
+# Devuelve: una lista de tipo string con las palabras comunes
+#===============================================================================
 def listarElementosComunes(lista1, lista2):
     listaComunes=[]
-    if lista1>lista2:
-        listaMayor=lista1
-        listaMenor=lista2
-    else:
-        listaMayor=lista2
-        listaMenor=lista1
-        
-    for i in listaMenor:
+    #Bucle externo que recorre la lista1
+    i=0
+    while i<len(lista1):
         j=0
         itemFound=False
-        while j<len(listaMayor) and itemFound==False:
-            if convertirAMinusculas(listaMenor[i])==convertirAMinusculas(listaMayor[j]):
-                listaComunes.append(listaMenor[i])
-                itemFound=True
-            
+        #Bucle interno que se frena, con una bandera, en cuanto hay una coincidencia 
+        #para así no repetir palabra
+        while j<len(lista2) and itemFound==False:
+            #Si la palabra de la lista1 es igual a la palabra de la lista2,
+            #la introduzco en la listaComunes, cambio la bandera (freno el bucle)
+            #y aumento la i
+            if convertirAMinusculas(lista1[i])==convertirAMinusculas(lista2[j]):
+                if lista1[i] not in listaComunes:
+                    listaComunes.append(lista1[i])
+                    itemFound=True
+                    i+=1
             else:
                 j+=1
-    
+
+    print(listaComunes)
     return listaComunes
 
-assert(listarElementosComunes([""], [])==[])
+assert(listarElementosComunes(["perro", "sala", "perro", "zapato", "bidon", "almohada"], ["evidencia", "perro", "ruido", "rima", "almohada", "cenutrio"])==["perro", "almohada"])
+assert(listarElementosComunes(["perro", "sala", "perro", "zapato", "bidon", "almohada"], ["evidencia", "ruido", "rima", "raudo", "cenutrio"])==[])
