@@ -1,7 +1,7 @@
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
- @fecha: Oct 5, 2021
+ @fecha: 17 nov 2021
  @nombre: Ejercicios del año pasado - Ejercicio 17
  @enunciado: 
  Dada una cadena S y un carácter C, devolver un array de enteros representando la distancia más

@@ -1,7 +1,7 @@
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
- @fecha: Oct 5, 2021
+ @fecha: 17 nov 2021
  @nombre: Ejercicios del año pasado - Ejercicio 13
  @enunciado: 
 Escribe una función que, dada una lista de nombres y una letra, 

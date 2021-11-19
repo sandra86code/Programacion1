@@ -1,7 +1,7 @@
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
- @fecha: Oct 5, 2021
+ @fecha: 17 nov 2021
  @nombre: Examen Recuperación Python Junio 2021 - Ejercicio 1
  @enunciado: 
  Una institución financiera proporciona servicios profesionales a los bancos y factura a sus

@@ -1,7 +1,7 @@
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
- @fecha: Oct 5, 2021
+ @fecha: 17 nov 2021
  @nombre: Ejercicios del año pasado - Ejercicio 2
  @enunciado: 
  Realiza un programa que lea 10 números, debe imprimir los 10 números y después 

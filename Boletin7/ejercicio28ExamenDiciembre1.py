@@ -1,7 +1,7 @@
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
- @fecha: Oct 5, 2021
+ @fecha: 17 nov 2021
  @nombre: Examen 2 Diciembre 2020 - Ejercicio 1 
  @enunciado: 
  La primitiva es un tipo de sorteo bisemanal en el que se puede elegir 

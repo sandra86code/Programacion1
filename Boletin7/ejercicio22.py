@@ -1,7 +1,7 @@
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
- @fecha: Oct 5, 2021
+ @fecha: 17 nov 2021
  @nombre: Ejercicios del año pasado - Ejercicio 22
  @enunciado: 
  Crea un programa que cree 60 números aleatorios de 0 a 100 (usa una constante

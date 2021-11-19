@@ -1,7 +1,7 @@
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
- @fecha: Oct 5, 2021
+ @fecha: 17 nov 2021
  @nombre: Reto Censo Electoral
  @enunciado: CENSO ELECTORAL
 Acaban de pasar las elecciones generales del 10/11/19. Ha ganado el partido de Kodos. Se ha

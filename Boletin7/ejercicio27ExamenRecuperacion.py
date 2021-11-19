@@ -1,7 +1,7 @@
 '''
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
- @fecha: Oct 5, 2021
+ @fecha: 17 nov 2021
  @nombre: Examen Recuperación Python Junio 2021 - Ejercicio 4
  @enunciado: 
  Realizar una función que reciba como parámetro una cadena y devuelva true si la cadena empieza
