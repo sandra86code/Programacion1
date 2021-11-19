@@ -1,7 +1,7 @@
 '''
 Ejercicio que solicite nombre y lo guarde en una lista para imprimirlos
 luego.
-Después de cada nombre debe preguntar si quiere introducir más o no (s/n)
+DespuÃ©s de cada nombre debe preguntar si quiere introducir mÃ¡s o no (s/n)
 '''
 
 names=[]
