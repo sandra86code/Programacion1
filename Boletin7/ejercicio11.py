@@ -60,18 +60,22 @@ def listarElementosComunes(lista1, lista2):
         #Bucle interno que se frena, con una bandera, en cuanto hay una coincidencia 
         #para así no repetir palabra
         while j<len(lista2) and itemFound==False:
-            #Si la palabra de la lista1 es igual a la palabra de la lista2,
-            #la introduzco en la listaComunes, cambio la bandera (freno el bucle)
-            #y aumento la i
+            #Si la palabra de la lista1 es igual a la palabra de la lista2 y no está en 
+            #la listaComunes, la introduzco en la misma, cambio la bandera y aumento la i.
             if convertirAMinusculas(lista1[i])==convertirAMinusculas(lista2[j]):
                 if lista1[i] not in listaComunes:
                     listaComunes.append(lista1[i])
                     itemFound=True
                     i+=1
+                #Si coincide pero ya está en listaComunes, aumento la j
+                else:
+                    j+=1
+            #Si las palabras no coinciden, aumento la j
             else:
                 j+=1
+        #Si no ha encontrado coincidencia en la palabra al recorrer la lista2, aumento la i
+        i+=1
 
-    print(listaComunes)
     return listaComunes
 
 assert(listarElementosComunes(["perro", "sala", "perro", "zapato", "bidon", "almohada"], ["evidencia", "perro", "ruido", "rima", "almohada", "cenutrio"])==["perro", "almohada"])
