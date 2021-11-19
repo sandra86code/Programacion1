@@ -60,7 +60,7 @@ def listarElementosComunes(lista1, lista2):
         while j<len(listaMayor) and itemFound==False:
             if convertirAMinusculas(listaMenor[i])==convertirAMinusculas(listaMayor[j]):
                 listaComunes.append(listaMenor[i])
-                itemFound==True
+                itemFound=True
             
             else:
                 j+=1
