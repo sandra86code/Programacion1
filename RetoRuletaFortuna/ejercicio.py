@@ -60,135 +60,150 @@ def convertirAMinusculas(cadena):
 
 
 
-def mostrarFraseOculta(frase): #Funcionando
-    fraseOculta=""
-    for i in frase:
-        if i!=" ":
-            fraseOculta+="-"
-        else:
-            fraseOculta+=" "
+def acierto(frase, caracter, descubiertas): #Funcionando
     
-    return fraseOculta
-
-#assert(mostrarFraseOculta("El perro de San Roque no tiene rabo")=="-- ----- -- --- ----- -- ----- ----")
-
-
-def acierto(frase, caracter): #Funcionando
-    fraseDescubriendose=""
-
-    for i in frase:
-        if i!=" ":
-            if convertirAMinusculas(i)==caracter:
-                fraseDescubriendose+=i
+    for i in range (len(frase)):
+        if frase[i]!=" ":
+            if convertirAMinusculas(frase[i])==caracter or convertirAMinusculas(frase[i]) in descubiertas:
+                frase[i]=frase[i]
             else:
-                fraseDescubriendose+="-"
+                frase[i]="-"
         else:
-            fraseDescubriendose+=" "
+            frase[i]=" "
 
-    return fraseDescubriendose
+    return frase
 
 #assert(acierto("El perro de San Roque no tiene rabo", "e")=="E- -e--- -e --- ----e -- --e-e ----")
 
 
+def ocultarFrase(frase):
+    fraseOcultada=[]
+    for i in frase:
+        if i!=" ":
+            fraseOcultada.append("-")
+        else:
+            fraseOcultada.append(" ")
+            
+    return fraseOcultada
 
 
-def mostrarFraseOculta(fraseADescubrir):
-        
-    fraseOculta=mostrarFraseOculta(fraseADescubrir)
-    
-    return fraseOculta    
+#Creo la frase a descubrir
 
-
-
-def turnoVocal(frase, vocal):
-    
-    fraseADescubrir=descubriendoFrase()
-    fraseDescubierta=
-    vocal=input("Dime una vocal: ")
-    while vocal not in {"a", "e", "i", "o", "u"}:
-        print("No me has dado una vocal. Vuelve a intentarlo.")
-        vocal=input("Dime una vocal: ")
-    while vocal in mostrarFraseOculta(fraseADescubrir):
-        print("Esa vocal ya está descubierta.")
-        vocal=input("Dime una vocal: ")
-    if vocal in fraseADescubrir:
-        print("La frase incluye la %s" % vocal)
-        fraseADescubrir=acierto(fraseADescubrir, vocal)
-        print("FRASE EN PANEL:\n%s" % mostrarFraseOculta(fraseADescubrir))
-        sigueTurno=True
-    else:
-        print("La vocal no está en la frase.")
-        sigueTurno=False
-    
-    resultadosTurnoVocal=[sigueTurno, fraseDescubierta]
-    
-    return resultadosTurnoVocal
-
-
-
-
-        
-def turno(jugador, puntos):
+fraseAConvertir=["E", "l", " ", "p", "e", "r", "r", "o"]
+fraseReal=["E", "l", " ", "p", "e", "r", "r", "o"]
+descubiertas=[]
+      
+def turno(jugador, fraseAConvertir, fraseReal, puntos):
     
     sigueTurno=True
+    
 
-    while sigueTurno==True:
-        turno=input("%s es tu turno, ¿vocal o consonante? " %jugador)
-        while turno not in {"vocal", "consonante"}:
-            print("Respuesta errónea.")
+    while sigueTurno==True and fraseReal!=fraseAConvertir:
+        if puntos<50: 
+            print("%s es tu turno, aún no tienes dinero para comprar vocal." %jugador)
+            turno="consonante"
+        else:
             turno=input("%s es tu turno, ¿vocal o consonante? " %jugador)
-        
-        while turno=="vocal" and puntos>50:
-            print("No tiene puntos para comprar una vocal")
-        #    turnoConsonante(turno)
-        #     if sigueTurno[0]==False:
-        #         main()
-        #     else:
-        #         puntos+=50
+            while turno not in {"vocal", "consonante"}:
+                print("Respuesta errónea.")
+                turno=input("%s es tu turno, ¿vocal o consonante? " %jugador)
+            
             
         if turno=="vocal":
-            turnoVocal(mostrarFraseOculta(fraseADescubrir), turno)
-            if turnoVocal(frase, vocal)[0]==False:
-                main()
+            vocal=input("Dime una vocal: ")
+            while vocal not in {"a", "e", "i", "o", "u"}:
+                print("%s no es una vocal. Vuelve a intentarlo." % vocal)
+                vocal=input("Dime una vocal: ")
+            while vocal in descubiertas:
+                print("La vocal %s ya se ha dicho. Vuelve a intentarlo." % vocal)
+                vocal=input("Dime una vocal: ")
+            if vocal in fraseReal:
+                print("La frase incluye la %s\n" % vocal)
+                descubiertas.append(vocal)
+                fraseAConvertir=acierto(fraseReal, vocal, descubiertas)
+                print("FRASE EN PANEL:\n%s" % fraseAConvertir)
+                sigueTurno=True
+                puntos-=50
             else:
-                puntos+=-50
-        # else:
-        #     turnoConsonante(turno)
-        #     if sigueTurno==False:
-        #         main()
-        #     else:
-        #         puntos+=50
-
+                print("La vocal no está en la frase.\n")
+                descubiertas.append(vocal)
+                fraseAConvertir=acierto(fraseReal, vocal, descubiertas)
+                print("FRASE EN PANEL:\n%s" % fraseAConvertir)
+                sigueTurno=False
+                puntos-=50
+        else:
+            consonante=input("Dime una consonante: ")
+            while consonante in {" ", "a", "e", "i", "o", "u"} and len(consonante)!=1:
+                print("%s no es una consonante. Vuelve a intentarlo." % consonante)
+                consonante=input("Dime una consonante: ")
+            while consonante in descubiertas:
+                print("La consonante %s ya se ha dicho. Vuelve a intentarlo." % consonante)
+                consonante=input("Dime una consonante: ")
+            if consonante in fraseReal:
+                print("La frase incluye la %s\n" % consonante)
+                descubiertas.append(consonante)
+                fraseAConvertir=acierto(fraseReal, consonante, descubiertas)
+                print("FRASE EN PANEL:\n%s" % fraseAConvertir)
+                sigueTurno=True
+                puntos+=50
+                
+            else:
+                print("La consonante no está en la frase.\n")
+                descubiertas.append(consonante)
+                fraseAConvertir=acierto(fraseReal, consonante, descubiertas)
+                print("FRASE EN PANEL:\n%s" % fraseAConvertir)
+                sigueTurno=False
+                
+        fraseReal=["E", "l", " ", "p", "e", "r", "r", "o"]
+        
 
     return puntos
 
-def main(jugadores):
-    
-    fraseEnProceso=mostrarFraseOculta(fraseADescubrir)
-    # print(fraseEnProceso)
-    while fraseADescubrir!=fraseEnProceso:
-        for i in range (len(jugadores)):
-            puntos[i]=puntos[i]+turno(jugadores[i], puntos[i])
-    
-    
-    ganador=0
-    for i in range (len(puntos)):
-        if puntos[i]>ganador:
-            ganador=jugadores[i]
-    
-    print("Felicidades, %s, ha ganado el juego." %jugadores[i])
-    
-#Creo la frase a descubrir
-fraseADescubrir="El perro"
-
-
-#Creo los jugadores
-jugadores=[]
-for i in range(3):
-    nombre=input("Nombre del jugador %s: " %(i+1))
-    jugadores.append(nombre)
 
 #Creo los puntos
-puntos=[0,0,0]
 
-main(jugadores)
+    
+
+
+
+def jugadores():
+    puntos=[0,0,0]
+    
+    jugadores=[]
+    
+    for i in range(3):
+        nombre=input("Nombre del jugador %s: " %(i+1))
+        jugadores.append(nombre)
+    
+    fraseAConvertir=ocultarFrase(fraseReal)    
+    print("FRASE EN PANEL:\n%s" % (ocultarFrase(fraseReal)))
+    
+    bandera=False
+    frasesIguales=False
+    
+    while bandera==False:
+        i=0
+        while i<len(jugadores) and frasesIguales==False:
+            puntos[i]=turno(jugadores[i], fraseAConvertir, fraseReal, puntos[i])
+            print(puntos[i])
+            print("Puntos de %s: %s" %(jugadores[i],puntos[i]))
+            if fraseAConvertir==fraseReal and i!=0:
+                frasesIguales=True
+                bandera=True
+            else:
+                i+=1       
+        
+    puntosGanador=0
+    for i in range (len(puntos)):
+        if puntos[i]>puntosGanador:
+            puntosGanador=puntos[i]
+            ganador=jugadores[i]
+    
+    print("Felicidades, %s, ha ganado el juego." %ganador)
+
+
+jugadores()
+
+
+
+
