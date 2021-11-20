@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Examen 2 Diciembre 2020 - Ejercicio 1 
+ @nombre: Examen 2 Diciembre 2020 - Ejercicio 2
  @enunciado: 
  Realizar una función que reciba como parámetro una cadena que contenga un dni y 
 devuelva un True si el dni es válido y False en caso contrario. Para calcular la letra 
