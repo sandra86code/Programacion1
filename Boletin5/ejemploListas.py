@@ -1,17 +1,14 @@
-'''
-Ejercicio que solicite nombre y lo guarde en una lista para imprimirlos
-luego.
-Después de cada nombre debe preguntar si quiere introducir más o no (s/n)
-'''
+def listaALaInversa(lista):
+    listaInversa=[]
+    for i in range (1, len(lista)+1):
+        listaInversa.append(lista[-i])
 
-names=[]
+    return listaInversa
 
-respuesta='s'
-while respuesta=='s':
-    nombre=input("Introduce un nombre: ")
-    names.append(nombre)
-    respuesta=input("Quieres continuar? (s/n): ")
-    while respuesta not in ['s', 'n']:
-        respuesta=input("Quieres continuar? (s/n): ")
-
-print(names)
+listaNumeros=[]
+num=int(input("Introduce un numero (-1 para parar): "))
+while num!=-1:
+    listaNumeros.append(num)
+    num=int(input("Introduce un numero (-1 para parar): "))
+    
+print(listaALaInversa(listaNumeros))
