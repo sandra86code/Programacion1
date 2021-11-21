@@ -61,44 +61,43 @@ def convertirAMinusculas(cadena):
 
 
 def acierto(frase, caracter, descubiertas): #Funcionando
-    
+    fraseResultante=""
     for i in range (len(frase)):
         if frase[i]!=" ":
             if convertirAMinusculas(frase[i])==caracter or convertirAMinusculas(frase[i]) in descubiertas:
-                frase[i]=frase[i]
+                fraseResultante+=frase[i]
             else:
-                frase[i]="-"
+                fraseResultante+="-"
         else:
-            frase[i]=" "
+            fraseResultante+=" "
 
-    return frase
+    return fraseResultante
 
 #assert(acierto("El perro de San Roque no tiene rabo", "e")=="E- -e--- -e --- ----e -- --e-e ----")
 
 
-def ocultarFrase(frase):
-    fraseOcultada=[]
-    for i in frase:
-        if i!=" ":
-            fraseOcultada.append("-")
-        else:
-            fraseOcultada.append(" ")
-            
-    return fraseOcultada
+# def ocultarFrase(frase):
+#     fraseOcultada=[]
+#     for i in frase:
+#         if i!=" ":
+#             fraseOcultada.append("-")
+#         else:
+#             fraseOcultada.append(" ")
+#
+#     return fraseOcultada
 
 
-#Creo la frase a descubrir
 
-fraseAConvertir=["E", "l", " ", "p", "e", "r", "r", "o"]
-fraseReal=["E", "l", " ", "p", "e", "r", "r", "o"]
-descubiertas=[]
+
       
-def turno(jugador, fraseAConvertir, fraseReal, puntos):
+def turno(jugador, fraseAConvertir, fraseReal, puntos, descubiertas):
     
     sigueTurno=True
     
-
-    while sigueTurno==True and fraseReal!=fraseAConvertir:
+    resultado=[]
+    
+    
+    while sigueTurno==True and fraseAConvertir!=fraseReal:
         if puntos<50: 
             print("%s es tu turno, aún no tienes dinero para comprar vocal." %jugador)
             turno="consonante"
@@ -121,19 +120,19 @@ def turno(jugador, fraseAConvertir, fraseReal, puntos):
                 print("La frase incluye la %s\n" % vocal)
                 descubiertas.append(vocal)
                 fraseAConvertir=acierto(fraseReal, vocal, descubiertas)
-                print("FRASE EN PANEL:\n%s" % fraseAConvertir)
+                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
                 sigueTurno=True
                 puntos-=50
             else:
                 print("La vocal no está en la frase.\n")
                 descubiertas.append(vocal)
                 fraseAConvertir=acierto(fraseReal, vocal, descubiertas)
-                print("FRASE EN PANEL:\n%s" % fraseAConvertir)
+                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
                 sigueTurno=False
                 puntos-=50
         else:
             consonante=input("Dime una consonante: ")
-            while consonante in {" ", "a", "e", "i", "o", "u"} and len(consonante)!=1:
+            while consonante in {" ", "a", "e", "i", "o", "u"} or len(consonante)!=1:
                 print("%s no es una consonante. Vuelve a intentarlo." % consonante)
                 consonante=input("Dime una consonante: ")
             while consonante in descubiertas:
@@ -143,7 +142,7 @@ def turno(jugador, fraseAConvertir, fraseReal, puntos):
                 print("La frase incluye la %s\n" % consonante)
                 descubiertas.append(consonante)
                 fraseAConvertir=acierto(fraseReal, consonante, descubiertas)
-                print("FRASE EN PANEL:\n%s" % fraseAConvertir)
+                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
                 sigueTurno=True
                 puntos+=50
                 
@@ -151,13 +150,15 @@ def turno(jugador, fraseAConvertir, fraseReal, puntos):
                 print("La consonante no está en la frase.\n")
                 descubiertas.append(consonante)
                 fraseAConvertir=acierto(fraseReal, consonante, descubiertas)
-                print("FRASE EN PANEL:\n%s" % fraseAConvertir)
+                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
                 sigueTurno=False
                 
-        fraseReal=["E", "l", " ", "p", "e", "r", "r", "o"]
-        
 
-    return puntos
+    
+    resultado.append(fraseAConvertir)
+    resultado.append(puntos)    
+    resultado.append(descubiertas)
+    return resultado
 
 
 #Creo los puntos
@@ -169,14 +170,21 @@ def turno(jugador, fraseAConvertir, fraseReal, puntos):
 def jugadores():
     puntos=[0,0,0]
     
+    descubiertas=[]
+    
     jugadores=[]
     
     for i in range(3):
         nombre=input("Nombre del jugador %s: " %(i+1))
         jugadores.append(nombre)
     
-    fraseAConvertir=ocultarFrase(fraseReal)    
-    print("FRASE EN PANEL:\n%s" % (ocultarFrase(fraseReal)))
+    fraseReal="El perro"
+
+    fraseAConvertir=acierto(fraseReal, "", descubiertas)    
+    
+    print("FRASE EN PANEL:\n%s\n" % (fraseAConvertir))
+    
+    
     
     bandera=False
     frasesIguales=False
@@ -184,26 +192,29 @@ def jugadores():
     while bandera==False:
         i=0
         while i<len(jugadores) and frasesIguales==False:
-            puntos[i]=turno(jugadores[i], fraseAConvertir, fraseReal, puntos[i])
-            print(puntos[i])
-            print("Puntos de %s: %s" %(jugadores[i],puntos[i]))
-            if fraseAConvertir==fraseReal and i!=0:
+            resultado=turno(jugadores[i], fraseAConvertir, fraseReal, puntos[i], descubiertas)
+            fraseAConvertir=resultado[0]
+            puntos[i]=resultado[1]
+            descubiertas=resultado[2]
+            # print(puntos[i])
+            # print(fraseAConvertir)
+            # print(descubiertas)
+            # print(fraseReal)
+            # print("Puntos de %s: %s" %(jugadores[i],puntos[i]))
+            if fraseAConvertir==fraseReal:
                 frasesIguales=True
+                print(frasesIguales)
                 bandera=True
             else:
                 i+=1       
         
-    puntosGanador=0
-    for i in range (len(puntos)):
-        if puntos[i]>puntosGanador:
-            puntosGanador=puntos[i]
-            ganador=jugadores[i]
-    
-    print("Felicidades, %s, ha ganado el juego." %ganador)
+    # puntosGanador=0
+    # for i in range (len(puntos)):
+    #     if puntos[i]>puntosGanador:
+    #         puntosGanador=puntos[i]
+    #         ganador=jugadores[i]
+    #
+    # print("Felicidades, %s, ha ganado el juego." %ganador)
 
 
 jugadores()
-
-
-
-
