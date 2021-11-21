@@ -73,8 +73,6 @@ def ocultaYDesocultaFrase(frase, caracter, descubiertas): #Funcionando
 
     return frase
 
-#assert(ocultaYDesocultaFrase("El perro de San Roque no tiene rabo", "e")=="E- -e--- -e --- ----e -- --e-e ----")
-
 
 def ocultarFrase(frase):
     fraseOcultada=[]
@@ -159,9 +157,6 @@ def turno(jugador, fraseDescubierta, fraseADescubrir, puntos, descubiertas):
     resultado.append(puntos)    
     resultado.append(descubiertas)
     return resultado
-
-
-#Creo los puntos
 
     
 
