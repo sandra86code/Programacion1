@@ -59,8 +59,18 @@ def convertirAMinusculas(cadena):
     return cadenaConvertida
 
 
-
-def acierto(frase, caracter, descubiertas): #Funcionando
+#===============================================================================
+# Esta función comprueba si los caracteres de una frase (sin contar espacios) 
+# coinciden con un caracter o están en una lista de caracteres y los copia 
+# en una nueva frase, manteniendo su misma posición
+# Si son un espacio, también lo copia tal cual en la nueva frase, en la misma posición. 
+# Todos los demás caracteres diferentes al caracter, los sustituye por '-' en la
+# nueva frase
+# Recibe: una variable string (frase), otra variable string (un caracter, que puede
+# ser una vocal o una consonante), una lista de caracteres que ya se han usando.
+# Devuelve: la frase resultante, que es una variable de tipo string 
+#===============================================================================
+def ocultaYDesocultaFrase(frase, caracter, descubiertas):
     fraseResultante=""
     for i in range (len(frase)):
         if frase[i]!=" ":
@@ -73,148 +83,205 @@ def acierto(frase, caracter, descubiertas): #Funcionando
 
     return fraseResultante
 
-#assert(acierto("El perro de San Roque no tiene rabo", "e")=="E- -e--- -e --- ----e -- --e-e ----")
 
-
-# def ocultarFrase(frase):
-#     fraseOcultada=[]
-#     for i in frase:
-#         if i!=" ":
-#             fraseOcultada.append("-")
-#         else:
-#             fraseOcultada.append(" ")
-#
-#     return fraseOcultada
-
-
-
-
-      
-def turno(jugador, fraseAConvertir, fraseReal, puntos, descubiertas):
+#===============================================================================
+# Esta función comprueba si un caracter está en una frase
+# Si lo está, imprime que se encuentra, y si no lo esa, imprime lo contrario.
+# Luego descubre usa la función ocultaYDesoculta para mostrarla por el panel con
+# las coincidencias acertadas.
+# Recibe: un caracter (vocal o consonante), una frase (tipo string) y una lista 
+# de caracteres (vocales y consonantes)
+# Devuelve: la frase descubierta
+#===============================================================================
+def jugada(caracter, frase, descubiertas):
     
+    if caracter in frase:
+        print("La frase incluye la '%s'\n" % caracter)
+    else:
+        print("La '%s' no está en la frase.\n" % caracter)
+    
+    fraseDescubierta=ocultaYDesocultaFrase(frase, caracter, descubiertas)
+    print("FRASE EN PANEL:\n%s\n" % fraseDescubierta)
+    
+    return fraseDescubierta
+
+
+#===============================================================================
+# Esta función 
+# Recibe: un jugador, la frase ya descubierta, la frase que tenemos que descubrir
+# (3 variables de tipo string), los puntos del jugador (variable de tipo int) y
+# una lista con los caracteres ya dichos (lista de string)
+# Devuelve: una lista con: la frase descubierta (string) tras el turno, los puntos 
+# del jugador (int) tras el turno y la lista de caracteres ya dichos (lista de string)
+# tras el turno
+#===============================================================================      
+def turno(jugador, fraseDescubierta, fraseADescubrir, puntos, descubiertas):
+    #Bandera que frena el bucle
     sigueTurno=True
-    
+    #Creo la variable tipo lista vacía donde voy a acumular los resultados para devolverlos
     resultado=[]
-    
-    
-    while sigueTurno==True and fraseAConvertir!=fraseReal:
+    #Creo un bucle, que mientras tenga la bandera a True y las frases sean diferentes
+    #(se acabaría el juego) itera
+    while sigueTurno==True and fraseDescubierta!=fraseADescubrir:
+        #Si los puntos son menos de 50, no se puede comprar vocal, por lo que
+        #la variable turno solo puede ser una consonante
         if puntos<50: 
             print("%s es tu turno, aún no tienes dinero para comprar vocal." %jugador)
             turno="consonante"
+        #Si los puntos son mayor o igual que 50, doy la opción al jugador de elegir
+        #vocal o consonante
         else:
             turno=input("%s es tu turno, ¿vocal o consonante? " %jugador)
+            #Compruebo datos y, si son erróneos vuelvo a preguntarlos
             while turno not in {"vocal", "consonante"}:
                 print("Respuesta errónea.")
                 turno=input("%s es tu turno, ¿vocal o consonante? " %jugador)
             
-            
+        #Si el jugador ha elegido vocal, pregunto por la vocal    
         if turno=="vocal":
             vocal=input("Dime una vocal: ")
+            #Si no se recibe una vocal, vuelvo a preguntar
             while vocal not in {"a", "e", "i", "o", "u"}:
-                print("%s no es una vocal. Vuelve a intentarlo." % vocal)
+                print("La '%s' no es una vocal. Vuelve a intentarlo." % vocal)
                 vocal=input("Dime una vocal: ")
+            #Compruebo que la vocal no se haya dicho anteriormente, bien sea
+            #porque ha sido acierto o error, viendo si está en la lista que acumula
+            #los caracteres ya dichos.
+            #Si ya se ha dicho, vuelvo a preguntarla
             while vocal in descubiertas:
-                print("La vocal %s ya se ha dicho. Vuelve a intentarlo." % vocal)
+                print("La '%s' ya se ha dicho. Vuelve a intentarlo." % vocal)
                 vocal=input("Dime una vocal: ")
-            if vocal in fraseReal:
-                print("La frase incluye la %s\n" % vocal)
-                descubiertas.append(vocal)
-                fraseAConvertir=acierto(fraseReal, vocal, descubiertas)
-                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
+            #Acumulo la vocal en la lista de caracteres ya dichos
+            descubiertas.append(vocal)
+            #Si la fraseDescubierta ha sufrido modificaciones tras pasar por 
+            #la función jugada (es decir, ha habido acierto), la fraseDescubierta 
+            #se convierte en lo que devuelve dicha función y sigue el turno (bandera
+            #a True)
+            if fraseDescubierta!=jugada(vocal, fraseADescubrir, descubiertas):
+                fraseDescubierta=jugada(vocal, fraseADescubrir, descubiertas)
                 sigueTurno=True
-                puntos-=50
+            #Sino, cambio la bandera
             else:
-                print("La vocal no está en la frase.\n")
-                descubiertas.append(vocal)
-                fraseAConvertir=acierto(fraseReal, vocal, descubiertas)
-                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
                 sigueTurno=False
-                puntos-=50
+            #Resto 50 puntos a los puntos del jugador, que es lo que vale comprar
+            #vocal
+            puntos-=50
+        #Si el jugador elige consonante (o no tiene puntos para comprar vocal), pido
+        #la consonante    
         else:
             consonante=input("Dime una consonante: ")
+            #Compruebo que no sea ni vocal ni espacio y que su tamaño no sea de más de un
+            #caracter (de esta manera no descarto otros símbolos, como puntos, puntos y
+            #coma, números, etc.). Si los datos son incorrectos, vuelvo a pedir la consonante
             while consonante in {" ", "a", "e", "i", "o", "u"} or len(consonante)!=1:
-                print("%s no es una consonante. Vuelve a intentarlo." % consonante)
+                print("La '%s' no es una consonante. Vuelve a intentarlo." % consonante)
                 consonante=input("Dime una consonante: ")
+            #Compruebo que la consonante no se haya dicho anteriormente, bien sea
+            #porque ha sido acierto o error, viendo si está en la lista que acumula
+            #los caracteres ya dichos.
+            #Si ya se ha dicho, vuelvo a preguntarla
             while consonante in descubiertas:
-                print("La consonante %s ya se ha dicho. Vuelve a intentarlo." % consonante)
+                print("La '%s' ya se ha dicho. Vuelve a intentarlo." % consonante)
                 consonante=input("Dime una consonante: ")
-            if consonante in fraseReal:
-                print("La frase incluye la %s\n" % consonante)
-                descubiertas.append(consonante)
-                fraseAConvertir=acierto(fraseReal, consonante, descubiertas)
-                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
+            #Acumulo la vocal en la lista de caracteres ya dichos
+            descubiertas.append(consonante)
+            #Si la fraseDescubierta ha sufrido modificaciones tras pasar por 
+            #la función jugada (es decir, ha habido acierto), la fraseDescubierta 
+            #se convierte en lo que devuelve dicha función, sigue el turno (bandera
+            #a True) y sumo 50 puntos a los puntos del jugador
+            if fraseDescubierta!=jugada(consonante, fraseADescubrir, descubiertas):
+                fraseDescubierta=jugada(consonante, fraseADescubrir, descubiertas)
                 sigueTurno=True
                 puntos+=50
-                
+            #De lo contrario, cambio la bandera
             else:
-                print("La consonante no está en la frase.\n")
-                descubiertas.append(consonante)
-                fraseAConvertir=acierto(fraseReal, consonante, descubiertas)
-                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
                 sigueTurno=False
-                
 
-    
-    resultado.append(fraseAConvertir)
+    #Añado en la lista la fraseDescubierta, los puntos del jugador y la lista 
+    #de caracteres ya dichos    
+    resultado.append(fraseDescubierta)
     resultado.append(puntos)    
     resultado.append(descubiertas)
+    
     return resultado
 
 
-#Creo los puntos
 
-    
-
-
-
-def jugadores():
+#===============================================================================
+# Esta función es la principal del programa 
+# Recibe: no tiene parámetros de entrada
+# Devuelve: no tiene return
+#===============================================================================
+def main():
+    #Creo la lista con los puntos inicializados a 0 para los 3 jugadores
     puntos=[0,0,0]
-    
+    #Creo la lista vacía de caracteres que ya han sido dichos por los jugadores
     descubiertas=[]
-    
+    #Pregunto la frase que tienen que descubrir los jugadores
+    fraseADescubrir=input("Presentador, introduce la frase: ")
+    #Creo la frase sobre la que vamos a ir haciendo los cambios y le asigno el
+    #valor de la frase Real pasada por la funcion de ocultar y desocultar, para
+    #que me ponga todas las vocales y consonantes como "-"
+    fraseDescubierta=ocultaYDesocultaFrase(fraseADescubrir, "", descubiertas)  
+    #Creo la lista de jugadores
     jugadores=[]
-    
+    #Recorro la lista de jugadores, pregunto su nombre y los meto en la lista
     for i in range(3):
         nombre=input("Nombre del jugador %s: " %(i+1))
         jugadores.append(nombre)
     
-    fraseReal="El perro"
-
-    fraseAConvertir=acierto(fraseReal, "", descubiertas)    
+    #Imprimo la frase oculta    
+    print("FRASE EN PANEL:\n%s\n" % (fraseDescubierta))
     
-    print("FRASE EN PANEL:\n%s\n" % (fraseAConvertir))
-    
-    
-    
+    #Creo dos banderas para los bucles que van a recorrer la lista de jugadores
+    #y las inicializo a falso   
     bandera=False
     frasesIguales=False
-    
+    #El bucle externo me ayudará a que si llevamos al jugador 3 y, no se ha descubierto
+    #aún toda la frase, volverá al jugador 1 (ya que i vale 0), por eso solo le pongo 
+    #la bandera como
+    #condición de entrada
     while bandera==False:
+        #El bucle interno recorre la lista de jugadores y usa una bandera, por si la
+        #frase se descubre, cambia la bandera y acaba el juego
         i=0
         while i<len(jugadores) and frasesIguales==False:
-            resultado=turno(jugadores[i], fraseAConvertir, fraseReal, puntos[i], descubiertas)
-            fraseAConvertir=resultado[0]
+            #La función turno devuelve una lista de valores, por lo que los guardo
+            #en una variable de tipo lista
+            resultado=turno(jugadores[i], fraseDescubierta, fraseADescubrir, puntos[i], descubiertas)
+            #La nueva fraseDescubierta es el primer elemento de la lista
+            fraseDescubierta=resultado[0]
+            #Los puntos del jugador que tenga el turno son el segundo elemento de la lista
             puntos[i]=resultado[1]
+            #La lista de caracteres ya dichos son el tercer elemento de la lista
             descubiertas=resultado[2]
-            # print(puntos[i])
-            # print(fraseAConvertir)
-            # print(descubiertas)
-            # print(fraseReal)
-            # print("Puntos de %s: %s" %(jugadores[i],puntos[i]))
-            if fraseAConvertir==fraseReal:
+            #Si la frase que tienen ya descubierta es igual a la frase que tienen que
+            #descubrir, cambio las dos banderas y se frenan ambos bucles
+            if fraseDescubierta==fraseADescubrir:
                 frasesIguales=True
-                print(frasesIguales)
                 bandera=True
+            #Sino, aumento la i
             else:
                 i+=1       
-        
-    # puntosGanador=0
-    # for i in range (len(puntos)):
-    #     if puntos[i]>puntosGanador:
-    #         puntosGanador=puntos[i]
-    #         ganador=jugadores[i]
-    #
-    # print("Felicidades, %s, ha ganado el juego." %ganador)
+    
+    #Creo una variable para comparar con los puntos de cada jugador, la inicializo
+    #a 0 para que sea más pequeña (podría ser igual, por eso lo controlo más abajo)    
+    puntosGanador=0
+    #Recorro la lista de puntos y si los puntos del jugador son más que los puntos del ganador
+    #los puntos del ganador pasan a ser los puntos de ese jugador y el ganador se convierte
+    #en ese jugador. Si no ocurre esto, digo que el ganador es False, ya que no hay.
+    for i in range (len(puntos)):
+        if puntos[i]>puntosGanador:
+            puntosGanador=puntos[i]
+            ganador=jugadores[i]
+        else:
+            ganador=False
+    #Si el ganador es distinto de False, imprimo el mensaje con el jugador que ha ganado
+    #Si no, digo que no ha habido un ganador
+    if ganador!=False:    
+        print("Felicidades %s, ha ganado el juego." %ganador)
+    else:
+        print("No ha habido ganador en este juego.")
 
-
-jugadores()
+#Llamada la función principal, ya que no tiene argumentos
+main()
