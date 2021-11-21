@@ -231,7 +231,7 @@ def main():
         jugadores.append(nombre)
     
     #Imprimo la frase oculta    
-    print("FRASE EN PANEL:\n%s\n" % (fraseDescubierta))
+    print("\nFRASE EN PANEL:\n%s\n" % (fraseDescubierta))
     
     #Creo dos banderas para los bucles que van a recorrer la lista de jugadores
     #y las inicializo a falso   
