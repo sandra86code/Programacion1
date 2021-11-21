@@ -60,7 +60,7 @@ def convertirAMinusculas(cadena):
 
 
 
-def acierto(frase, caracter, descubiertas): #Funcionando
+def ocultaYDesocultaFrase(frase, caracter, descubiertas): #Funcionando
     
     for i in range (len(frase)):
         if frase[i]!=" ":
@@ -73,7 +73,7 @@ def acierto(frase, caracter, descubiertas): #Funcionando
 
     return frase
 
-#assert(acierto("El perro de San Roque no tiene rabo", "e")=="E- -e--- -e --- ----e -- --e-e ----")
+#assert(ocultaYDesocultaFrase("El perro de San Roque no tiene rabo", "e")=="E- -e--- -e --- ----e -- --e-e ----")
 
 
 def ocultarFrase(frase):
@@ -90,7 +90,7 @@ def ocultarFrase(frase):
 
 
       
-def turno(jugador, fraseAConvertir, fraseReal, puntos, descubiertas):
+def turno(jugador, fraseDescubierta, fraseADescubrir, puntos, descubiertas):
     
     sigueTurno=True
     
@@ -116,18 +116,18 @@ def turno(jugador, fraseAConvertir, fraseReal, puntos, descubiertas):
             while vocal in descubiertas:
                 print("La vocal %s ya se ha dicho. Vuelve a intentarlo." % vocal)
                 vocal=input("Dime una vocal: ")
-            if vocal in fraseReal:
+            if vocal in fraseADescubrir:
                 print("La frase incluye la %s\n" % vocal)
                 descubiertas.append(vocal)
-                fraseAConvertir=acierto(fraseReal, vocal, descubiertas)
-                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
+                fraseDescubierta=ocultaYDesocultaFrase(fraseADescubrir, vocal, descubiertas)
+                print("FRASE EN PANEL:\n%s\n" % fraseDescubierta)
                 sigueTurno=True
                 puntos-=50
             else:
                 print("La vocal no está en la frase.\n")
                 descubiertas.append(vocal)
-                fraseAConvertir=acierto(fraseReal, vocal, descubiertas)
-                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
+                fraseDescubierta=ocultaYDesocultaFrase(fraseADescubrir, vocal, descubiertas)
+                print("FRASE EN PANEL:\n%s\n" % fraseDescubierta)
                 sigueTurno=False
                 puntos-=50
         else:
@@ -138,24 +138,24 @@ def turno(jugador, fraseAConvertir, fraseReal, puntos, descubiertas):
             while consonante in descubiertas:
                 print("La consonante %s ya se ha dicho. Vuelve a intentarlo." % consonante)
                 consonante=input("Dime una consonante: ")
-            if consonante in fraseReal:
+            if consonante in fraseADescubrir:
                 print("La frase incluye la %s\n" % consonante)
                 descubiertas.append(consonante)
-                fraseAConvertir=acierto(fraseReal, consonante, descubiertas)
-                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
+                fraseDescubierta=ocultaYDesocultaFrase(fraseADescubrir, consonante, descubiertas)
+                print("FRASE EN PANEL:\n%s\n" % fraseDescubierta)
                 sigueTurno=True
                 puntos+=50
                 
             else:
                 print("La consonante no está en la frase.\n")
                 descubiertas.append(consonante)
-                fraseAConvertir=acierto(fraseReal, consonante, descubiertas)
-                print("FRASE EN PANEL:\n%s\n" % fraseAConvertir)
+                fraseDescubierta=ocultaYDesocultaFrase(fraseADescubrir, consonante, descubiertas)
+                print("FRASE EN PANEL:\n%s\n" % fraseDescubierta)
                 sigueTurno=False
                 
 
     
-    resultado.append(fraseAConvertir)
+    resultado.append(fraseDescubierta)
     resultado.append(puntos)    
     resultado.append(descubiertas)
     return resultado
