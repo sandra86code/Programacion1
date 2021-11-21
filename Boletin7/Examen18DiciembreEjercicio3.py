@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Examen 18 Diciembre 2020 - Ejercicio 23
+ @nombre: Examen 18 Diciembre 2020 - Ejercicio 3
  @enunciado: 
 Realizar una función que dada una fecha en formato 12 horas nos devuelva la fecha en formato 24
 horas.
