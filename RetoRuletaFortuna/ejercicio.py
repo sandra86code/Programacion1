@@ -26,6 +26,15 @@ En ambos casos se deberá informar si la consonante o vocal dicha esté y mostra
 vocales o consonantes descubiertas y volver a preguntar.
 
 Si no está la vocal o consonante, deberá pasar el turno al siguiente jugador, así hasta que termine el juego.
+
+
+Puedes hacer este reto como quieras, pero para ayudarte te dejo aquí un fichero con algunas funciones o métodos 
+que te recomiendo y una que te dice cómo leer las frases de un fichero (La frase puede contener mayúsculas, 
+minúsculas, espacios en blanco, comas, puntos, punto y coma y el usuario podría dar las vocales en minúsculas y 
+en mayúsculas). 
+
+Por otro lado te recomiendo crear una lista para los nombres de los jugadores y otra lista para la puntuación de 
+los jugadores.
 '''
 #===============================================================================
 # Esta función calcula si un caracter es minúsculas

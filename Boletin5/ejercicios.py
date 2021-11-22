@@ -361,9 +361,8 @@ def textoAArray(texto):
     for i in range (len(texto)):
         #Si el caracter es un espacio y la variable palabra no está vacía, añado palabra a la lista
         #y reinicio la variable palabra
-        if texto[i]==" ":
-            if palabra!="":
-                arrayTexto.append(palabra)
+        if texto[i]==" " and palabra!="":
+            arrayTexto.append(palabra)
             palabra=""
         #Para que no me tenga en cuenta los símbolos de puntuación varios, limito que solo acumule
         #en la variable palabra las letras minúsculas, las mayúsculas y los números
