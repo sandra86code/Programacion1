@@ -208,11 +208,11 @@ def turno(jugador, fraseDescubierta, fraseADescubrir, puntos, descubiertas):
 
     #Añado en la lista la fraseDescubierta, los puntos del jugador y la lista 
     #de caracteres ya dichos    
-    # resultado.append(fraseDescubierta)
-    # resultado.append(puntos)    
-    # resultado.append(descubiertas)
+    resultado.append(fraseDescubierta)
+    resultado.append(puntos)    
+    resultado.append(descubiertas)
     
-    return [fraseDescubierta,puntos,descubiertas]
+    return resultado
 
 
 
