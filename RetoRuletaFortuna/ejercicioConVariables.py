@@ -212,7 +212,7 @@ def turno(jugador, fraseDescubierta, fraseADescubrir, puntos, descubiertas):
     resultado.append(puntos)    
     resultado.append(descubiertas)
     
-    return resultado
+    return [fraseDescubierta,puntos,descubiertas]
 
 
 

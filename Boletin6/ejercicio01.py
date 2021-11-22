@@ -16,7 +16,7 @@ ofrezca al usuario la posibilidad de:
 Realiza las opciones con funciones.
 '''
 #Importo la librería random para crear los números aleatorios
-import random
+from random import randint
 
 #===============================================================================
 # Esta función sustituye el valor de un elemento de una lista de números por otro
@@ -108,7 +108,7 @@ def esNumMayor(lista):
 def listaNumerosAleatorios():
     numerosAleatorios=[]
     for i in range(100):
-        num=random.randint(-1000, 1000)
+        num=randint(-1000, 1000)
         numerosAleatorios.append(num)
     
     return numerosAleatorios
