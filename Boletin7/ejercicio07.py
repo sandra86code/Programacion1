@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Ejercicios del año pasado - Ejercicio 21
+ @nombre: Ejercicios del año pasado - Ejercicio 7
  @enunciado: 
  Crea un programa que pregunte cuántos elementos tendremos en un array de
 enteros. Posteriormente se preguntarán tantos números como haya indicado el

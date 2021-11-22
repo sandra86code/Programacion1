@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Ejercicios del año pasado - Ejercicio 10
+ @nombre: Boletin 6 - Ejercicio 10
  @enunciado: 
 Escribe una función para pasar un número de binario a decimal y de decimal a binario.
 '''

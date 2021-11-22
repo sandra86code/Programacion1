@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Ejercicios del año pasado - Ejercicio 3
+ @nombre: Boletin 6 - Ejercicio 3
  @enunciado: 
 Realizar un programa que solicite la fecha como tres datos numéricos 
 (día, mes y año). 

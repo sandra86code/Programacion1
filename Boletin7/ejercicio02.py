@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Ejercicios del año pasado - Ejercicio 16
+ @nombre: Ejercicios del año pasado - Ejercicio 2
  @enunciado: 
  Implementar la función primerosN que reciba un entero positivo n como único argumento. Luego la
 función debe imprimir los primeros n cuadrados perfectos que no sean números pares. Por ejemplo,

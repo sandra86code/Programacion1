@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Ejercicios del año pasado - Ejercicio 15
+ @nombre: Ejercicios del año pasado - Ejercicio 1
  @enunciado: 
  Encriptar un mensaje usando el método de “la cifra del cesar”, que consiste en desplazar cada letra,
 considerando la posición de cada una en el alfabeto, una determinada cantidad de lugares. Por

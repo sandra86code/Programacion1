@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Ejercicios del año pasado - Ejercicio 2
+ @nombre: Boletin 6 - Ejercicio 2
  @enunciado: 
  Realiza un programa que lea 10 números, debe imprimir los 10 números y después 
  desplazarlos una posición, de tal forma que el último pase a la primera posición, 

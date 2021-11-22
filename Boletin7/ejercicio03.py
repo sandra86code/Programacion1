@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Ejercicios del año pasado - Ejercicio 17
+ @nombre: Ejercicios del año pasado - Ejercicio 3
  @enunciado: 
  Dada una cadena S y un carácter C, devolver un array de enteros representando la distancia más
 corta desde cada carácter en la cadena hasta la posición del carácter C.

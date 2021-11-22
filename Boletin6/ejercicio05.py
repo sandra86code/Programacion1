@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Ejercicios del año pasado - Ejercicio 5
+ @nombre: Boletin 6 - Ejercicio 5
  @enunciado: 
 Realizar un función que reciba una lista y devuelva una nueva lista cuyo 
 contenido sea igual a la original pero invertida. 

@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Ejercicios del año pasado - Ejercicio 12
+ @nombre: Boletin 6 - Ejercicio 12
  @enunciado: 
 Escribe una función que reciba dos listas y devuelva los elementos que 
 pertenecen a una o a otra, pero sin repetir ninguno (unión de conjuntos).

@@ -2,7 +2,7 @@
 # coding: utf-8 
  @autor: Sandra Ruiz Jimenez
  @fecha: 17 nov 2021
- @nombre: Ejercicios del año pasado - Ejercicio 4
+ @nombre: Boletin 6 - Ejercicio 4
  @enunciado: 
 Lee por teclado números y guardalo en una lista, el proceso finaliza cuando metamos un número negativo. 
  Muestra el máximo de los números guardado en la lista, muestra los números pares.
