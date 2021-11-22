@@ -37,30 +37,36 @@ Por otro lado te recomiendo crear una lista para los nombres de los jugadores y 
 los jugadores.
 '''
 
-# # Importo la librería para generar un número aleatorio
-# from random import uniform
-#
-#
-# # Método que devuelve el refrán o frase que se va a usar para que los jugadores
-# # la acierten.
-#
-# def refran():
-#     f = open ('ruleta.txt','r')
-#     mensaje = f.read()
-#     f.close()
-#     # ahora mismo lo que tenemos en mensaje es una cadena con todo 
-#     # el fichero. Las líneas estarán separadas por \n
-#
-#     # Pasar el mensaje a un array o lista en el que cada elemento sea una
-#     # linea o frase
-#
-#
-#
-#     # Generar un número aleatorio entre 0 y uno menos de la longitud de la lista
-#
-#
-#     # Devolver ese elemento
-#     return refran
+# Importo la librería para generar un número aleatorio
+from random import randint
+
+
+# Método que devuelve el refrán o frase que se va a usar para que los jugadores
+# la acierten.
+
+def refran():
+    f = open ('ruleta.txt','r')
+    mensaje = f.read()
+    f.close()
+    # ahora mismo lo que tenemos en mensaje es una cadena con todo 
+    # el fichero. Las líneas estarán separadas por \n
+    
+    # Pasar el mensaje a un array o lista en el que cada elemento sea una
+    # linea o frase
+    cadena=""
+    listaRefranes=[]
+    for i in mensaje:
+        if i!="\n":
+            cadena+=i
+            
+
+
+    # Generar un número aleatorio entre 0 y uno menos de la longitud de la lista
+    
+    
+
+    # Devolver ese elemento
+    return refran
 #
 # # Oculta el refrán. Método que recibe una cadena y devuelve la cadena cambiando 
 # # las letras por guion medio, ten encuenta que los espacio, las comas, los puntos y los
