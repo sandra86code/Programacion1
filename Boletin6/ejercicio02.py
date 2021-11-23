@@ -33,16 +33,30 @@ def desplazarIzquierda(lista):
 # Devuelve: otra lista de números
 # 
 #===============================================================================    
-def desplazarDerecha(lista):
-    listaDesplazada=[]
-    #Primero, introduzco en la nueva lista el último elemento
-    listaDesplazada.append(lista[-1])
-    #Recorro la lista, item a item, menos el último elemento y los meto en la nueva lista
-    for i in range (len(lista)-1):
-        listaDesplazada.append(lista[i])
-    
-    return listaDesplazada
+# def desplazarDerecha(lista):
+#     listaDesplazada=[]
+#     #Primero, introduzco en la nueva lista el último elemento
+#     listaDesplazada.append(lista[-1])
+#     #Recorro la lista, item a item, menos el último elemento y los meto en la nueva lista
+#     for i in range (len(lista)-1):
+#         listaDesplazada.append(lista[i])
+#
+#     return listaDesplazada
 
+#CON EL WHILE
+def desplazarDerecha(lista):
+    final=lista[-1]
+    i=1
+    while i<len(lista):
+        lista[-i]=lista[(-i)-1]
+        i+=1
+    lista[0]=final
+
+    return lista
+    
+assert(desplazarDerecha([1,2,3,4,5])==[5,1,2,3,4])    
+    
+    
 
 #===============================================================================
 # Esta función lee 10 números que el usuario introduce y los mete en una lista
