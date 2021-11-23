@@ -1,16 +1,16 @@
-TEMA 1 - PROGRAMACIÓN ESTRUCTURADA
+TEMA 1 - PROGRAMACIÃ“N ESTRUCTURADA
 
 	+ Boletin 0. Ejercicios de Edublocks
 	
 
 
-TEMA 2 - PROGRAMACIÓN MODULAR
+TEMA 2 - PROGRAMACIÃ“N MODULAR
 	
-	+ Boletin 1. Variables, condicionales, operadores lógicos y operadores matemáticos
+	+ Boletin 1. Variables, condicionales, operadores lÃ³gicos y operadores matemÃ¡ticos
 	
-	+ Boletin 2. Bucles y ejercicios de repaso del año anterior
+	+ Boletin 2. Bucles y ejercicios de repaso del aÃ±o anterior
 	
-	+ Examen 1. Variables, condicionales, operadores lógicos, relacionales y matemáticos y bucles  
+	+ Examen 1. Variables, condicionales, operadores lÃ³gicos, relacionales y matemÃ¡ticos y bucles  
 	
 	+ Boletin 3. Funciones
 	
@@ -20,12 +20,12 @@ TEMA 2 - PROGRAMACIÓN MODULAR
 	
 	+ Boletin 6. Listas y recorrer variables tipo cadenas
 	
-	+ Boletin 7 (no mandado en clase). Ejercicios de repaso del año anterior, incluidos los examenes.
+	+ Boletin 7 (no mandado en clase). Ejercicios de repaso del aÃ±o anterior, incluidos los examenes.
 	
 
 RETOS
 
-	+ Reto Censo Electoral (no mandado en clase). Reto del año pasado de la otra clase
+	+ Reto Censo Electoral (no mandado en clase). Reto del aÃ±o pasado de la otra clase
 	
 	+ Reto Ruleta Fortuna (no obligatorio).
 	
