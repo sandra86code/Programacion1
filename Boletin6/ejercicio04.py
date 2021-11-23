@@ -32,10 +32,10 @@ def listaPares (lista):
 def numMayor(lista):
     #Inicializo la variable a 0 porque va a ser siempre menor que cualquier número de
     #la lista, que son todos números positivos
-    numMayor=0
-    for i in lista:
-        if i>numMayor:
-            numMayor=i
+    numMayor=lista[0]
+    for i in range (1, len(lista)):
+        if lista[i]>numMayor:
+            numMayor=lista[i]
             
     return numMayor
 
@@ -50,7 +50,7 @@ def numMayor(lista):
 # 3. Muestra una lista solo con los números pares
 #===============================================================================
 def leeNumeros():
-    num=int(input("Introduce un número: "))
+    num=int(input("Introduce un número (negativo): "))
     listaNumeros=[]
     while num>0:
         listaNumeros.append(num)

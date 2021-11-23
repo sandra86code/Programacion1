@@ -38,6 +38,8 @@ def convertirAMinusculas(cadena):
             cadenaConvertida+=i
         #Si i es mayúsculas, lo convierto a minúsculas usando ord() y luego como esto es
         #un ordinal y yo necesito el string, uso chr() y lo acumulo en la cadena convertida
+        elif ord(i)==209:
+            cadenaConvertida+=chr(241)
         else:
             cadenaConvertida+=chr(ord(i)+32)
   
@@ -46,6 +48,7 @@ def convertirAMinusculas(cadena):
 
 assert(convertirAMinusculas('La ONU es internacional')=='la onu es internacional')
 assert(convertirAMinusculas('CadeNA')=='cadena')
+assert(convertirAMinusculas('Eres la caÑa')=='eres la caña')
 
 
 #===============================================================================
@@ -63,7 +66,7 @@ def convertirAMayusculas(cadena):
         #En el resto de casos, lo concateno
         #Si es 'ñ' lo convierto en 'Ñ'
         elif ord(i)==241:
-            cadenaConvertida+=chr(ord(209))
+            cadenaConvertida+=chr(209)
         #En el resto de casos, lo concateno
         else:
             cadenaConvertida+=i
@@ -93,24 +96,26 @@ def desplazarCaracter(caracter, desplazamiento):
     elif ordinalCaracterDesplazado==111:
         caracterDesplazado="ñ"
     elif ordinalCaracterDesplazado<=122:
-        caracterDesplazado=chr(ordinalCaracterDesplazado)
-
+        if ord(caracter)>=111:
+            caracterDesplazado=chr(ordinalCaracterDesplazado)
+        else:
+            caracterDesplazado=chr(ordinalCaracterDesplazado-1)
     print(caracterDesplazado)
     return caracterDesplazado
 
-# assert(desplazarCaracter("a", 3)=="d")
-# assert(desplazarCaracter("l", 2)=="n")
-# assert(desplazarCaracter("l", 4)=="o")
-# assert(desplazarCaracter("z", 4)=="d")
-# assert(desplazarCaracter("z", 20)=="s")
-# assert(desplazarCaracter("l", 3)=="ñ")
-# assert(desplazarCaracter("f", 9)=="ñ")
-# assert(desplazarCaracter("a", -5)=="v")
-# assert(desplazarCaracter("ñ", 3)=="q")
-# assert(desplazarCaracter("ñ", -4)=="k")
-# assert(desplazarCaracter("ñ", 12)=="a")
-# assert(desplazarCaracter("a", -15)=="m")
-# assert(desplazarCaracter("o", 2)=="q")
+assert(desplazarCaracter("a", 3)=="d")
+assert(desplazarCaracter("l", 2)=="n")
+assert(desplazarCaracter("l", 4)=="o")
+assert(desplazarCaracter("z", 4)=="d")
+assert(desplazarCaracter("z", 20)=="s")
+assert(desplazarCaracter("l", 3)=="ñ")
+assert(desplazarCaracter("f", 9)=="ñ")
+assert(desplazarCaracter("a", -5)=="v")
+assert(desplazarCaracter("ñ", 3)=="q")
+assert(desplazarCaracter("ñ", -4)=="k")
+assert(desplazarCaracter("ñ", 12)=="a")
+assert(desplazarCaracter("a", -15)=="m")
+assert(desplazarCaracter("o", 2)=="q")
 
 
 
