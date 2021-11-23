@@ -65,16 +65,14 @@ def sumaNumeros(lista):
 # Devuelve: el número menor de la lista
 #===============================================================================
 def esNumMenor(lista):
-    #Creo una variable y le asigno un número mayor a cualquiera de los items de
-    #la lista (en este caso el random está a 1000, por eso es el 1001).
-    #De esta manera, cualquier item va a ser menor que esta variable.
-    numMenor=1001
-    #Recorro los elementos de la lista
-    for i in lista:
+    
+    numMenor=lista[0]
+    #Recorro el resto de los elementos de la lista
+    for i in range (1, len(lista)):
         #Si el elemento (número) es menor que el número almacenado en numMenor,
         #el nuevo numMenor es dicho número
-        if i<numMenor:
-            numMenor=i
+        if lista[i]<numMenor:
+            numMenor=lista[i]
    
     return numMenor
 
@@ -85,16 +83,13 @@ def esNumMenor(lista):
 # Devuelve:el número menor de la lista
 #===============================================================================
 def esNumMayor(lista):
-    #Creo una variable y le asigno un número menor a cualquiera de los items de
-    #la lista (en este caso el random está a -1000, por eso es el -1001).
-    #De esta manera, cualquier item va a ser mayor que esta variable.
-    numMayor=-1001
-    #Recorro los elementos de la lista
-    for i in lista:
+    numMayor=lista[0]
+    #Recorro el resto de los elementos de la lista
+    for i in range (1, len(lista)):
         #Si el elemento (número) es mayor que el número almacenado en numMayor,
         #el nuevo numMayor es dicho número
-        if i>numMayor:
-            numMayor=i
+        if lista[i]>numMayor:
+            numMayor=lista[i]
    
     return numMayor
 
@@ -108,52 +103,16 @@ def esNumMayor(lista):
 def listaNumerosAleatorios():
     numerosAleatorios=[]
     for i in range(100):
-        num=randint(-1000, 1000)
-        numerosAleatorios.append(num)
+        numerosAleatorios.append(randint(-1000, 1000))
     
     return numerosAleatorios
 
 
-#===============================================================================
-# Esta función representa el menú secundario del programa (menú de opciones)
-# Recibe una opción y una lista de números 
-# Devuelve: no tiene return, sino que imprime un mensaje para cada una de las opciones
-#===============================================================================
-def menuOpciones(opcion, lista):
-   
-    if opcion==1:
-        mensaje="El número mayor es: %s \n" % esNumMayor(lista)
-    elif opcion==2:
-        mensaje="El número menor es: %s \n" % esNumMenor(lista)
-    elif opcion==3:
-        mensaje="La suma de los números es: %s \n" % sumaNumeros(lista)
-    elif opcion==4:
-        mensaje="La media de los números es: %s \n" % mediaNumeros(lista)
-    elif opcion==5:
-        #Pido los nuevos datos
-        nuevoNum=int(input("Dime el nuevo número: "))
-        posicion=int(input("En qué posición quieres sustituirlo (0-99): "))
-        #Comprobación de datos
-        while posicion<0 or posicion>99:
-            print("Posición errónea. Tiene que estar entre 0 y 99. Vuelve a intentarlo.")
-            posicion=int(input("En qué posición quieres sustituirlo (0-99): "))
-        mensaje="La nueva lista es: %s \n" % sustituirNumero(lista, nuevoNum, posicion)
-    else:
-        mensaje="Los números son: %s \n" % lista
-    
-    #Imprimo el mensaje
-    print(mensaje)
-    #Llamo al menú principal, para que se vuelva a ejecutar el programa en bucle
-    menu()
-    
 
 #===============================================================================
 # Esta función representa el menú principal del programa
 # Recibe: no tiene parámetros de entrada
-# Devuelve: no tiene parámetros de salida
-# 1. Muestra el menú
-# 2. Pregunta la opción
-# 3. Muestra el resultado
+# Devuelve: el menú
 #===============================================================================    
 def menu():
     menu="Menú de opciones:\n"\
@@ -164,23 +123,53 @@ def menu():
         "5. Sustituir el valor de un elemento por otro número.\n"\
         "6. Mostrar todos los números.\n"\
         "7. Salir"
-        
-    print(menu)
+    
+    return menu
+
+
+def leerOpcion():
     
     opcion=int(input("Elige una opción: "))
     while opcion<1 and opcion>7:
         print("Opción incorrecta. Vuelve a intentarlo")
         opcion=int(input("Elige una opción: "))
-    #Mientras que la opción sea diferente a 7, llama a la función del menú de opciones
-    if opcion!=7:    
-        menuOpciones(opcion, lista)
-    #Si la opción es la 7, muestra un mensaje de despedida
+    
+    return opcion
+        
+
+print(menu())
+
+numerosAleatorios=[]
+for i in range(100):
+    numerosAleatorios.append(randint(-1000, 1000))
+    
+opcion = leerOpcion()
+
+while opcion!=7:    
+    if opcion==1:
+        mensaje="El número mayor es: %s \n" % esNumMayor(numerosAleatorios)
+    elif opcion==2:
+        mensaje="El número menor es: %s \n" % esNumMenor(numerosAleatorios)
+    elif opcion==3:
+        mensaje="La suma de los números es: %s \n" % sumaNumeros(numerosAleatorios)
+    elif opcion==4:
+        mensaje="La media de los números es: %s \n" % mediaNumeros(numerosAleatorios)
+    elif opcion==5:
+        #Pido los nuevos datos
+        nuevoNum=int(input("Dime el nuevo número: "))
+        posicion=int(input("En qué posición quieres sustituirlo (0-99): "))
+        #Comprobación de datos
+        while posicion<0 or posicion>99:
+            print("Posición errónea. Tiene que estar entre 0 y 99. Vuelve a intentarlo.")
+            posicion=int(input("En qué posición quieres sustituirlo (0-99): "))
+        mensaje="La nueva lista es: %s \n" % sustituirNumero(numerosAleatorios, nuevoNum, posicion)
     else:
-        print("Hasta la próxima.")
+        mensaje="Los números son: %s \n" % numerosAleatorios  
+    
+    print(mensaje)
+        
+    print(menu())
+    opcion=leerOpcion()
 
-#Creo una lista de números aleatorios fuera del menú principal, para que para cualquier
-#opción use la misma lista de números y no la reinicialice cada vez        
-lista=listaNumerosAleatorios()
-
-#Llamada a la función, ya que no tiene return
-menu()
+print("Hasta la próxima.")    
+    
