@@ -15,6 +15,8 @@
 # True si la lista está ordenada
 # False si la lista no está ordenada
 #===============================================================================
+
+#RECORRIENDO LISTA HACIA ATRÁS
 def esOrdenada(lista):
     #Como quiero recorrer la cadena al revés (-1,-2,-3, etc.), inicio i a 1
     i=1
@@ -26,13 +28,35 @@ def esOrdenada(lista):
         #la lista no está ordenada
         if lista[-i]<lista[-i-1]:
             ordenada=False
-        #De lo contrario, aumento i para otra iteración del bucle
-        else:
-            i+=1
-        
+        #Aumento i para otra iteración del bucle
+        i+=1
+
     return ordenada
 
+'''
+#RECORRIENDO LISTA HACIA ADELANTE
+def esOrdenada(lista):
+    i=0
+    #Bandera
+    ordenada=True
+    #Recorro el bucle mientras que i [1,len(lista)) y la bandera no cambie
+    while i<len(lista)-1 and ordenada==True:
+        #Si el item es mayor que el item posterior, cambia la bandera, pues
+        #la lista no está ordenada
+        if lista[i]>lista[i+1]:
+            ordenada=False
+        #Aumento i para otra iteración del bucle
+        i+=1
+        
+    return ordenada
+'''
+
+#El 10 como string va antes que el 2, pq compara dígito a dígito
 assert(esOrdenada([10,2,3,4,5,6,7])==False)
+assert(esOrdenada(["10","2","3","4","5","6","7"])==True)
 assert(esOrdenada([1,2,3,4,5,6,7])==True)
+assert(esOrdenada([1,2,3,4,5,7,6])==False)
 assert(esOrdenada(["a", "e", "i", "o", "u"])==True)
 assert(esOrdenada(["amado", "almendra", "izar", "oro", "ulular"])==False)
+assert(esOrdenada(["1","4","8","10", "a", "e", "i", "o", "u"])==False)
+
