@@ -78,37 +78,69 @@ assert(convertirAMayusculas('CadeNA')=='CADENA')
 assert(convertirAMayusculas('Niño')=='NIÑO')
 
 
+#===============================================================================
+# Esta función crea una lista con las letras del alfabeto
+# Recibe: no tiene parámetros de entrada
+# Devuelve: una lista con las letras del alfabeto ordenadas alfabéticamente, valga la redundancia
+#===============================================================================
 def creaAlfabeto():
     alfabeto=[]
     for i in range(27):
+        #Si la posición es anterior a la 14 (lugar de la ñ), me aumenta el código ASCII desde la a
         if i<14:
             alfabeto.append(chr(97+i))
+        #Si la posición es posterior a la 14 (lugar de la ñ), sigue desde o a z
         elif i>14:
             alfabeto.append(chr(97+i-1))
+        #Si la posición es la 14, introduce la "ñ"
         else:
             alfabeto.append(chr(241))
 
     return alfabeto
 
 
+#===============================================================================
+# Esta función desplaza cada caracter de una cadena de caracteres una serie de 
+# posiciones en orden alfabético. Si llega al final, vuelve a empezar por la a.
+# El desplazamiento puede ser hacia la izquierda (negativo) o hacia la derecha
+# (positivo)
+# Recibe: una cadena de caracteres y un entero que indica el desplazamiento 
+# (negativo hacia la izquierda, positivo hacia la derecha)
+# Devuelve: la cadena desplazada
+# 
+#===============================================================================
 def desplazaCaracteresDeString(cadena, desplazamiento):
+    #Creo el alfabeto y lo guardo en una variable
     alfabeto=creaAlfabeto()
+    #Creo la variable acumuladora para almacenar las letras
     cadenaDesplazada=""
+    #Si el desplazamiento es positivo, me desplazamiento final
+    #será el resto de la división entera del desplazamiento entre
+    #el tamaño del alfabeto (27)
+    if desplazamiento>0:
+        desplazamiento=desplazamiento%len(alfabeto)
+    #Como Python hace el resto de números negativos de una forma peculiar,
+    #si el desplazamiento es negativo, el desplazamiento es el valor absoluto
+    #del desplazamiento entre el tamaño del alfabeto (27) y luego el resultado
+    #de esa operación lo cambio de signo
+    else:
+        desplazamiento=abs(desplazamiento)%len(alfabeto)
+        desplazamiento*=-1
+    #Recorro la cadena
     for i in range (len(cadena)):
+        #Recorro el alfabeto
         for j in range (len(alfabeto)):
+            #Si el caracter de la cadena coincide con el caracter del alfabeto,
+            #añado a la cadenaDesplazada la posición del caracter del alfabeto que
+            #sean la posición de la coincidencia más el desplazamiento
             if cadena[i]==alfabeto[j]:
-                if desplazamiento>0:
-                    toTheEnd=len(alfabeto)-1-j
-                else:
-                    toTheEnd=j
-                while desplazamiento>toTheEnd:
-                    desplazamiento-=len()
-                    
                 cadenaDesplazada+=alfabeto[j+desplazamiento]
-                
+            #Si no hay esa coincidencia, compruebo que no sea porque el caracter
+            #de la cadena esté en mayúsculas, así que lo convierto en minúsculas,
+            #hago la comparación y luego añado el caracter correspondiente desplazado
+            #pero convertido a minúsculas (ya que mi alfabeto está en minúsculas)
             elif convertirAMinusculas(cadena[i])==alfabeto[j]:
                 cadenaDesplazada+=convertirAMayusculas(alfabeto[j+desplazamiento])
-    # print(cadenaDesplazada)
     
     return cadenaDesplazada       
             
@@ -116,6 +148,10 @@ def desplazaCaracteresDeString(cadena, desplazamiento):
 
 assert(desplazaCaracteresDeString("HOLA", 2)=="JQNC")
 assert(desplazaCaracteresDeString("hola", 2)=="jqnc")
+assert(desplazaCaracteresDeString("HOLA", 27)=="HOLA")
+assert(desplazaCaracteresDeString("hola", 28)=="ipmb")
+assert(desplazaCaracteresDeString("HOLA", -5)=="CKGV")
+assert(desplazaCaracteresDeString("hola", -28)=="gñkz")
 
 
     
