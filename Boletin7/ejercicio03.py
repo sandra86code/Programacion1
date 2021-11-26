@@ -23,51 +23,65 @@ Precondiciones:
 '''
 
 
-def posicionCercanaDePosicion(cadena,posicion):
-    listaPosiciones=[]
-    for i in range(len(cadena)):
-        listaPosiciones.append(posicion-i)
+def calculaPosiciones(cadena, posicion):
+    resultado=""
+    for i in range (len(cadena)):
+        if i==posicion:
+            resultado+="0"
+        else:
+            var=posicion-int(i)
+            resultado+=str(var)
 
-    return listaPosiciones
+    return resultado
 
-
-def posicionMasCercana(cadena, caracter):
-    listaPosicionesCaracter=[]
+def posicionesCaracterEnCadena(cadena, caracter):
+    posicionesCaracter=[]
     for i in range (len(cadena)):
         if cadena[i]==caracter:
-            listaPosicionesCaracter.append(i)
+            posicionesCaracter.append(i)
     
-    for i in range (len(listaPosicionesCaracter)):
-        listaPosiciones=posicionCercanaDePosicion(cadena, listaPosicionesCaracter[i])
         
-    return listaPosicionesCaracter
+    return posicionesCaracter
 
+assert(posicionesCaracterEnCadena("algoritmo", "o")==[3, 8])
+assert(posicionesCaracterEnCadena("abcdefga", "a")==[0, 7])
 
-#Pido los datos de la cadena
-cadena=input("Introduce una frase o palabra (en minúsculas): ")
-#Compruebo que la precondición de la longitud de la cadena sea correcta y sino
-#vuelvo a pedir los datos
-while len(cadena)<0 or len(cadena)>10000:
-    print("Error. La cadena debe tener una longitud entre 1 y 10000.")
+def main():
+    #Pido los datos de la cadena
     cadena=input("Introduce una frase o palabra (en minúsculas): ")
-
-#Pido los datos del caracter
-caracter=input("Introduce un caracter para hacer la comprobacion: ")
-#Compruebo que el caracter sea una sola letra y que esté en la cadena. 
-#En caso contrario, vuelvo a pedirlo.
-while len(caracter)!=1 or caracter not in cadena:
-    print("Error. El caracter debe ser una única letra y encontrarse en la cadena.")
+    #Compruebo que la precondición de la longitud de la cadena sea correcta y sino
+    #vuelvo a pedir los datos
+    while len(cadena)<0 or len(cadena)>10000:
+        print("Error. La cadena debe tener una longitud entre 1 y 10000.")
+        cadena=input("Introduce una frase o palabra (en minúsculas): ")
+    
+    #Pido los datos del caracter
     caracter=input("Introduce un caracter para hacer la comprobacion: ")
+    #Compruebo que el caracter sea una sola letra y que esté en la cadena. 
+    #En caso contrario, vuelvo a pedirlo.
+    while len(caracter)!=1 or caracter not in cadena:
+        print("Error. El caracter debe ser una única letra y encontrarse en la cadena.")
+        caracter=input("Introduce un caracter para hacer la comprobacion: ")
+    
+    #Convierto la cadena y el caracter a minúsculas
+    cadena=cadena.lower()
+    caracter=caracter.lower()
 
-#Convierto la cadena y el caracter a minúsculas
-cadena=cadena.lower()
-caracter=caracter.lower()
+    posiciones=posicionesCaracterEnCadena(cadena, caracter)
+    for i in range (len(posiciones)-1):
+        resultadoActual=calculaPosiciones(cadena,posiciones[i])
+        print(resultadoActual)
+        resultadoAComparar=calculaPosiciones(cadena,posiciones[i+1])
+        print(resultadoAComparar)
+        # for i in range (len(resultadoActual)):
 
-#Imprimo el resultado
-print(posicionMasCercana(cadena, caracter))
+            # if resultadoActual[i]>resultadoAComparar[i]:
+            #     resultadoAComparar[i]=resultadoActual[i]
+    # print(resultadoAComparar)            
+        
+main()
 
 
 
-# assert(posicionMasCercana("algoritmo", "o")==[3, 2, 1, 0, 1, 2, 2, 1, 0])
-# assert(posicionMasCercana("abcdefga", "a")==[0, 1, 2, 3, 3, 2, 1, 0])
+
 
