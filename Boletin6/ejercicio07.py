@@ -20,16 +20,25 @@ debiendo tener por lo menos un valor en común (ejemplo: 2-5 encaja con 5-6).
 # Si encajan, el mensaje "Las fichas encajan"
 # Si no encjana, el mensaje "Las fichas no encajan"
 #===============================================================================
-def encajan(ficha1, ficha2):
-    if ficha1[0]==ficha2[0] or ficha1[1]==ficha2[0] or ficha1[0]==ficha2[1] or ficha1[1]==ficha2[1]:
-        mensaje="Las fichas encajan"
+def encajan(fichas):
+    if len(fichas)!=2:
+        mensaje="Error en el número de fichas"
     else:
-        mensaje="Las fichas no encajan"
+        ficha1=fichas[0]
+        ficha2=fichas[1]
+        
+        if ficha1[0]==ficha2[0] or ficha1[1]==ficha2[0] or ficha1[0]==ficha2[1] or ficha1[1]==ficha2[1]:
+            mensaje="Las fichas encajan"
+        else:
+            mensaje="Las fichas no encajan"
 
     return mensaje
 
-assert(encajan([3,4], [2,5])=="Las fichas no encajan")
-assert(encajan([2,4], [2,5])=="Las fichas encajan")
-assert(encajan([0,6], [4,0])=="Las fichas encajan")
-assert(encajan([0,6], [6,5])=="Las fichas encajan")
-assert(encajan([4,3], [1,3])=="Las fichas encajan")
+
+assert(encajan([[3,4]])=="Error en el número de fichas")
+assert(encajan([[3,4], [4,3], [7,8]])=="Error en el número de fichas")
+assert(encajan([[3,4], [2,5]])=="Las fichas no encajan")
+assert(encajan([[2,4], [2,5]])=="Las fichas encajan")
+assert(encajan([[0,6], [4,0]])=="Las fichas encajan")
+assert(encajan([[0,6], [6,5]])=="Las fichas encajan")
+assert(encajan([[4,3], [1,3]])=="Las fichas encajan")
