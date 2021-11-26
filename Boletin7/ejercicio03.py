@@ -30,6 +30,7 @@ def posicionCercanaDePosicion(cadena,posicion):
 
     return listaPosiciones
 
+
 def posicionMasCercana(cadena, caracter):
     listaPosicionesCaracter=[]
     for i in range (len(cadena)):
