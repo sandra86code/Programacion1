@@ -15,30 +15,33 @@ debiendo tener por lo menos un valor en común (ejemplo: 2-5 encaja con 5-6).
 
 #===============================================================================
 # Esta función comprueba si dos fichas de dominó encajan 
-# Recibe: dos listas de 2 valores cada una
-# Devuelve: 
-# Si encajan, el mensaje "Las fichas encajan"
-# Si no encjana, el mensaje "Las fichas no encajan"
+# Recibe: una lista compuesta por dos listas
+# Devuelve:
+# Si la lista no está compuesta por dos listas, el mensaje "Error en el número de fichas"
+# Si encajan, True
+# Si no encjana, False
 #===============================================================================
 def encajan(fichas):
     if len(fichas)!=2:
-        mensaje="Error en el número de fichas"
+        encontrado="Error en el número de fichas"
     else:
         ficha1=fichas[0]
         ficha2=fichas[1]
         
-        if ficha1[0]==ficha2[0] or ficha1[1]==ficha2[0] or ficha1[0]==ficha2[1] or ficha1[1]==ficha2[1]:
-            mensaje="Las fichas encajan"
-        else:
-            mensaje="Las fichas no encajan"
+        i=0
+        encontrado=False
+        while i<len(ficha1) and encontrado==False:
+            if ficha1[i] in ficha2:
+                encontrado=True
+            i+=1
 
-    return mensaje
+    return encontrado
 
 
 assert(encajan([[3,4]])=="Error en el número de fichas")
 assert(encajan([[3,4], [4,3], [7,8]])=="Error en el número de fichas")
-assert(encajan([[3,4], [2,5]])=="Las fichas no encajan")
-assert(encajan([[2,4], [2,5]])=="Las fichas encajan")
-assert(encajan([[0,6], [4,0]])=="Las fichas encajan")
-assert(encajan([[0,6], [6,5]])=="Las fichas encajan")
-assert(encajan([[4,3], [1,3]])=="Las fichas encajan")
+assert(encajan([[3,4], [2,5]])==False)
+assert(encajan([[2,4], [2,5]])==True)
+assert(encajan([[0,6], [4,0]])==True)
+assert(encajan([[0,6], [6,5]])==True)
+assert(encajan([[4,3], [1,3]])==True)
