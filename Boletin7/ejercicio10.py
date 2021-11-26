@@ -54,14 +54,33 @@ Número 7:
 7 7 7 7 7 7 7 7 7 7 7 7 7
 '''
 
+def convierteCuadrado(lista):
+    cuadrado=""
+    for fila in range (len(lista)):
+        fila=lista[fila]
+        for j in range (len(fila)-1):
+            cuadrado+=str(fila[j])
+            cuadrado+=" "
+        cuadrado+=str(fila[-1])
+        cuadrado+="\n"
+    
+    return cuadrado
+           
+    
 
 def insertaEnCuadrado(numero, cuadrado):
     
-    for fila in range (len(cuadrado)):
-        fila=cuadrado[fila]
-        for columna in range (len(fila)):
-            fila[columna]=num
-
+    i=0
+    while i<=len(cuadrado)//2:
+        if i==0:
+            cuadrado[i]
+        for j in range (len(cuadrado[i])):
+            if j!=i:
+                cuadrado[i][j]=numero-i
+        i+=1
+    # for i in range (1, len(cuadrado)//2+1): 
+    #     cuadrado[-i][-i]=numero-i+1
+            
     return cuadrado
 
 
@@ -82,5 +101,5 @@ while num<=0:
     print("El número debe ser un entero positivo (mayor que 0).")
     num=int(input("Introduce un número entero positivo: "))
     
-print(insertaEnCuadrado(num, creaCuadrado(num)))
+print(convierteCuadrado(insertaEnCuadrado(num, creaCuadrado(num))))
 
