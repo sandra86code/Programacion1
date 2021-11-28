@@ -69,25 +69,19 @@ def convierteCuadrado(lista):
     
 
 def insertaEnCuadrado(numero, cuadrado):
-    
-    iteracion=0
     fila=0
     while fila<len(cuadrado):
-        bandera=False
         columna=0
-        while columna<len(cuadrado[fila]) and bandera==False:
-            cuadrado[fila][columna]=numero
-            if not cuadrado[fila][-1]:
-                columna+=1
-            else:
-                iteracion+=1
-                bandera=True
+        while columna<len(cuadrado[fila]):
+            cuadrado[0+columna][0+columna]=numero-columna
+
+
             
+            # if fila-columna==0:
+            #     numero-=1
+            #     cuadrado[fila][columna]=numero
+            columna+=1
         fila+=1
-        numero-=1
-            
-    # for i in range (1, len(cuadrado)//2+1): 
-    #     cuadrado[-i][-i]=numero-i+1
             
     return cuadrado
 
