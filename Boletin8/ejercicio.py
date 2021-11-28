@@ -5,27 +5,27 @@
  @nombre: Notas Alumnos
  @enunciado: 
  Vamos a escribir un ejercicio para que un profesor almacene las notas de las asignaturas de los
-alumnos, para ello vamos a crear un menú con las siguientes opciones:
+alumnos, para ello vamos a crear un menÃº con las siguientes opciones:
     1. Dar de alta un alumno/a
     2. Dar de alta una asignatura de un alumno/a
-    3. Añadir una nota de una asignatura de un alumno/a
+    3. AÃ±adir una nota de una asignatura de un alumno/a
     4. Ver las notas que un alumno/a tienen en una asignatura.
-    5. Ver la nota que un alumno/a tendría en una asignatura suponiéndole la nota máxima
-    6. Ver la nota que un alumno/a tendría en una asignatura suponiéndole la nota media.
+    5. Ver la nota que un alumno/a tendrÃ­a en una asignatura suponiÃ©ndole la nota mÃ¡xima
+    6. Ver la nota que un alumno/a tendrÃ­a en una asignatura suponiÃ©ndole la nota media.
     7. Ver todas las notas de una asignatura de un alumno/a
     8. Ver todas las notas de todas las asignaturas de un alumno/a
     9. Ver todas las notas de todas las asignaturas de todos los alumnos/a
     10. Salir
 
 Para realizar el programa vamos a tener un array o lista de alumnos, un array o lista de listas de
-asignaturas y un array o listas de listas de notas de asignaturas es decir sería algo como:
+asignaturas y un array o listas de listas de notas de asignaturas es decir serï¿½a algo como:
 
 Lista de alumnos/as:
 0                            |  1                                    | 2                        | 3
 Inma                         |  Juan                                 | Pepe                     | Pablo
 
 Lista de asignaturas de los alumnos/as:
-Lengua     Mates     Infor   |  Infor.   Mates     Inglés   Lengua   | Ciencias                 | Inglés     Francés
+Lengua     Mates     Infor   |  Infor.   Mates     InglÃ©s   Lengua   | Ciencias                 | InglÃ©s     FrancÃ©s
 0          1         2       |  0        1         2        3        | 0                        | 0          1
 
 Lista de notas de las asignaturas de los alumnos/as
