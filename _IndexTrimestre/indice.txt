@@ -22,7 +22,9 @@ TEMA 2 - PROGRAMACIÓN MODULAR
 	
 	+ Boletin 7 (no mandado en clase). Ejercicios de repaso del año anterior, incluidos los examenes.
 	
-
+	+ Boletin 8. Ejercicio de alumnos, asignaturas y notas
+	
+	
 RETOS
 
 	+ Reto Censo Electoral (no mandado en clase). Reto del año pasado de la otra clase.
