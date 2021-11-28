@@ -18,7 +18,7 @@ alumnos, para ello vamos a crear un menú con las siguientes opciones:
     10. Salir
 
 Para realizar el programa vamos a tener un array o lista de alumnos, un array o lista de listas de
-asignaturas y un array o listas de listas de notas de asignaturas es decir ser�a algo como:
+asignaturas y un array o listas de listas de notas de asignaturas es decir sería algo como:
 
 Lista de alumnos/as:
 0                            |  1                                    | 2                        | 3
