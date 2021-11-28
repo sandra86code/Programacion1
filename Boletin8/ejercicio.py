@@ -32,15 +32,27 @@ Lista de notas de las asignaturas de los alumnos/as
 [10, 9]   [10,9,8]   [10]    |  [8]     [5,6,2,4]  [5]      [8]      | [4,5]                    | [7]        [1,4]
 
 '''
+from future.backports.test.pystone import FALSE
 
 
-
+#===============================================================================
+# Esta función da de alta a un alumno en el sistema
+# Recibe 
+# Devuelve:
+# 
+#===============================================================================
 def annadirAlumno(nombre):
     listaAlumnos.append(nombre)
     listaAsignaturas.append([])
     listaNotas.append([])
     
 
+#===============================================================================
+# Esta función da de alta una asignatura a un alumno matriculado
+# Recibe 
+# Devuelve:
+# 
+#===============================================================================
 def annadirAsignaturaAlumno(nombreAlumno, nombreAsignatura):
     if nombreAlumno in listaAlumnos:
         pos = listaAlumnos.index(nombreAlumno)
@@ -49,24 +61,28 @@ def annadirAsignaturaAlumno(nombreAlumno, nombreAsignatura):
         return True
     else:
         return False
+
+
+def annadirNotaAsignaturaAlumno(nombreAlumno, nombreAsignatura, notaAlumno):
     
+    if nombreAlumno in listaAlumnos and nombreAsignatura in listaAsignaturas:
+        
+        return True
+    else:
+        
+        return False 
+
 listaAlumnos=[]
 listaAsignaturas=[]
 listaNotas=[]
 
-nombre = input("Introduce un alumno")
-annadirAlumno(nombre)
-nombre = input("Introduce un alumno")
-annadirAlumno(nombre)
-print(listaAlumnos)
-print(listaAsignaturas)
-print(listaNotas)
 
 for i in range(5):
-    nombreAlum = input("Introduce un alumno que quieres matricular")
-    nombreAsig = input("Introduce la asignatura")
+    nombreAlum = input("Introduce un alumno que quieres matricular: ")
+    annadirAlumno(nombreAlum)
+    nombreAsig = input("Introduce la asignatura: ")
     if annadirAsignaturaAlumno(nombreAlum, nombreAsig) == False:
-        print("Alumno no matriculado")
+        print("Alumno no matriculado.")
     
 
 
