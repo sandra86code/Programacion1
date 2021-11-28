@@ -99,7 +99,7 @@ def comprobarLetra(refranOculto, refran, letra):
     numAciertos=0
     refranComprobado=""
     for i in range (len(refran)):
-        if refran[i]==letra.lower() or refran[i]==letra.upper():
+        if letra not in refranOculto and refran[i]==letra.lower() or refran[i]==letra.upper():
             refranComprobado+=refran[i]
             numAciertos+=1
         else:
@@ -167,7 +167,7 @@ def turno(jugador, refran, refranOculto, puntos):
             refranOculto=jugada[0]
             aciertos=jugada[1]
             if aciertos==0:
-                print("La '%s' no se encuentra en el refrán." % consonante)
+                print("La '%s' no se encuentra en el refrán o ya está descubierta." % consonante)
                 sigueTurno=False
             else:
                 sigueTurno=True
