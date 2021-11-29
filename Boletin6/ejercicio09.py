@@ -25,18 +25,33 @@ def multiplosDeNum(numeros, num):
 
 
 #===============================================================================
-# Esta función comprueba qué elementos de una lista de números son mayores o iguales
+# Esta función comprueba qué elementos de una lista de números son mayores
 # que otro número.
 # Recibe: una lista de números y un número entero
-# Devuelve: una lista con los números mayores o iguales
+# Devuelve: una lista con los números mayores que un número
 #===============================================================================
-def mayoresIgualesQueNum(numeros, num):
-    numMayoresIguales=[]
+def mayoresQueNum(numeros, num):
+    numMayores=[]
     for i in numeros:
-        if i>=num:
-            numMayoresIguales.append(i)
+        if i>num:
+            numMayores.append(i)
             
-    return numMayoresIguales
+    return numMayores
+
+
+#===============================================================================
+# Esta función comprueba qué elementos de una lista de números son iguales
+# que otro número.
+# Recibe: una lista de números y un número entero
+# Devuelve: una lista con los números iguales al número
+#===============================================================================
+def igualesQueNum(numeros, num):
+    numIguales=[]
+    for i in numeros:
+        if i==num:
+            numIguales.append(i)
+            
+    return numIguales
 
 
 #===============================================================================
@@ -74,7 +89,8 @@ def main():
         numK=int(input("Introduce el número para comparar (distinto de 0): "))
     
     print("Los números menores que %s son: %s" % (numK, menoresQNum(lista, numK)))
-    print("Los números mayores o iguales que %s son: %s" % (numK, mayoresIgualesQueNum(lista, numK)))
+    print("Los números mayores que %s son: %s" % (numK, mayoresQueNum(lista, numK)))
+    print("Los números iguales que %s son: %s" % (numK, igualesQueNum(lista, numK)))
     print("Los números múltiplos de %s son: %s" % (numK, multiplosDeNum(lista, numK)))
 
 #Llamada a la función, ya que no tiene return
