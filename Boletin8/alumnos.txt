@@ -1,0 +1,7 @@
+*Sandra
+Mates,10,8,5
+Lengua
+Ingles,10,9,8
+*Inma
+Mates
+Ingles,5,4
