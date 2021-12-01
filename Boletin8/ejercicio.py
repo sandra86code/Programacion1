@@ -71,6 +71,7 @@ def matricularAlumno(alumno, asignatura):
         estaMatriculado=False
     else:   
         listaAsignaturas[pos].append(asignatura)
+        listaNotas[pos].append([])
         estaMatriculado=True
     
     return estaMatriculado
