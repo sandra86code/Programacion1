@@ -53,9 +53,6 @@ def darAltaAlumno(nombre):
     listaAsignaturas.append([])
     listaNotas.append([])
     
-    print(listaAlumnos)
-    print(listaAsignaturas)
-    print(listaNotas)
 
 #===============================================================================
 # AltaAsignaturaAlumno
@@ -65,7 +62,7 @@ def darAltaAlumno(nombre):
 # 
 #===============================================================================
 def matricularAlumno(alumno, asignatura):
-
+    
     pos = listaAlumnos.index(alumno)
     if asignatura in listaAsignaturas[pos]:
         estaMatriculado=False
@@ -73,9 +70,8 @@ def matricularAlumno(alumno, asignatura):
         listaAsignaturas[pos].append(asignatura)
         listaNotas[pos].append([])
         estaMatriculado=True
-    
-    return estaMatriculado
 
+    return estaMatriculado
 
 
 #===============================================================================
@@ -86,10 +82,14 @@ def matricularAlumno(alumno, asignatura):
 # 
 #===============================================================================
 def ponerNotas(alumno, asignatura, nota):
-    pos = listaAlumnos.index(alumno)
-    if alumno in listaAlumnos and asignatura in listaAsignaturas:
-        listaNotas[pos].append(nota)
-        estaMatriculado=True
+    if alumno in listaAlumnos:
+        pos = listaAlumnos.index(alumno)
+        if asignatura in listaAsignaturas[pos]:
+            posAsig=listaAsignaturas[pos].index(asignatura)
+            listaNotas[pos][posAsig].append(nota)
+            estaMatriculado=True
+        else:
+            estaMatriculado=False
     else:
         estaMatriculado=False
         
@@ -108,13 +108,14 @@ def getNotas(linea):
     
     nota=""
     while i<len(linea):
-        if linea==",":
+        if linea[i]==",":
             notas.append(int(nota))
             nota=""
         else:
-            nota+=i
+            nota+=linea[i]
         i+=1
-
+    if nota!="":
+        notas.append(int(nota))
     
     return notas
         
@@ -126,9 +127,10 @@ def getAsignatura(linea):
     while i<len(linea) and bandera==False:
         if linea[i]!=",":
             asignatura+=linea[i]
+            i+=1
         else:
             bandera=True
-    
+
     return asignatura
 
 
@@ -159,8 +161,8 @@ def leerFichero():
             else:
                 asignatura=getAsignatura(linea)
                 matricularAlumno(alumno,asignatura)
-                listaNotas=getNotas(linea)
-                for nota in listaNotas:
+                notas=getNotas(linea)
+                for nota in notas:
                     ponerNotas(alumno,asignatura,nota)
             linea=""
         else:
@@ -172,12 +174,19 @@ def leerFichero():
     else:
         asignatura=getAsignatura(linea)
         matricularAlumno(alumno,asignatura)
-        listaNotas=getNotas(linea)
-        for nota in listaNotas:
+        notas=getNotas(linea)
+        for nota in notas:
             ponerNotas(alumno,asignatura,nota)
     
-
 leerFichero()
+
+
+def getNotasAsignatura(alumno, asignatura):
+    posAlumno=listaAlumnos.index(alumno)
+    posAsignatura=listaAsignaturas[posAlumno].index(asignatura)
+    notas=listaNotas[posAlumno][posAsignatura]
+    
+    return notas
 
 
 #===============================================================================
@@ -191,7 +200,7 @@ def menuSecundario(opcion, listaAlumnos, listaAsignaturas, listaNotas):
     if opcion==1:
         nombreAlumno = input("Introduce el nombre del alumno/a que quieres matricular: ")
         if nombreAlumno not in listaAlumnos:
-            listaAlumnos=darAltaAlumno(nombreAlumno)
+            darAltaAlumno(nombreAlumno)
             mensaje="El/La alumno/a %s ha sido dado de alta en el sistema." % (nombreAlumno)
         else:
             mensaje="Error. El/La alumno/a %s ya está dado de alta en el sistema." % (nombreAlumno)
@@ -200,7 +209,7 @@ def menuSecundario(opcion, listaAlumnos, listaAsignaturas, listaNotas):
         if nombreAlumno not in listaAlumnos:
             mensaje="Error. El/La alumno/a %s no está dado de alta en el sistema." % (nombreAlumno)
         else:    
-            nombreAsignatura=int(input("¿De qué asignatura quiere matricular al alumno/a %s" %nombreAlumno))
+            nombreAsignatura=input("¿De qué asignatura quiere matricular al alumno/a %s" %nombreAlumno)
             if matricularAlumno(nombreAlumno, nombreAsignatura):
                 mensaje="La asignatura %s ha sido dado de alta para el/la alumno/a %s." % (nombreAsignatura, nombreAlumno)
             else:
@@ -208,18 +217,85 @@ def menuSecundario(opcion, listaAlumnos, listaAsignaturas, listaNotas):
    
     elif opcion==3:
         nombreAlumno = input("Introduce el nombre del alumno/a al que quieres darle de alta una asignatura: ")
-        
-    # elif opcion==4:
-    #
-    # elif opcion==5:
-    #
-    # elif opcion==6:
-    #
+        if nombreAlumno not in listaAlumnos:
+            mensaje="Error. El/La alumno/a %s no está dado de alta en el sistema." % (nombreAlumno)
+        else:
+            nombreAsignatura=input("¿De qué asignatura quiere matricular al alumno/a %s" %nombreAlumno)
+            if matricularAlumno(nombreAlumno, nombreAsignatura)==False:
+                nota=int(input("¿Qué nota (1-10) desea añadir? "))
+                ponerNotas(nombreAlumno, nombreAsignatura, nota)
+            else:
+                mensaje="Error. El alumno %s no está matriculado en la asignatura %s." % (nombreAlumno, nombreAsignatura)
+    elif opcion==4:
+        nombreAlumno = input("Introduce el nombre del alumno/a al que quieres darle de alta una asignatura: ")
+        if nombreAlumno not in listaAlumnos:
+            mensaje="Error. El/La alumno/a %s no está dado de alta en el sistema." % (nombreAlumno)
+        else:
+            nombreAsignatura=input("¿De qué asignatura quiere matricular al alumno/a %s" %nombreAlumno)
+            if matricularAlumno(nombreAlumno, nombreAsignatura)==False:
+                mensaje=getNotasAsignatura(nombreAlumno, nombreAsignatura)
+            else:
+                mensaje="Error. El alumno %s no está matriculado en la asignatura %s." % (nombreAlumno, nombreAsignatura)
+    elif opcion==5:
+        nombreAlumno = input("Introduce el nombre del alumno/a al que quieres darle de alta una asignatura: ")
+        if nombreAlumno not in listaAlumnos:
+            mensaje="Error. El/La alumno/a %s no está dado de alta en el sistema." % (nombreAlumno)
+        else:
+            nombreAsignatura=input("¿De qué asignatura quiere matricular al alumno/a %s" %nombreAlumno)
+            if matricularAlumno(nombreAlumno, nombreAsignatura)==False:
+                notas=getNotasAsignatura(nombreAlumno, nombreAsignatura)
+                notaMayor=notas[0]
+                for i in notas:
+                    if i>notaMayor:
+                        notaMayor=i
+                mensaje="La nota máxima del alumno %s en la asignatura %s es un %s." %(nombreAlumno, nombreAsignatura, notaMayor)
+            else:
+                mensaje="Error. El alumno %s no está matriculado en la asignatura %s." % (nombreAlumno, nombreAsignatura)
+    elif opcion==6:
+        nombreAlumno = input("Introduce el nombre del alumno/a al que quieres darle de alta una asignatura: ")
+        if nombreAlumno not in listaAlumnos:
+            mensaje="Error. El/La alumno/a %s no está dado de alta en el sistema." % (nombreAlumno)
+        else:
+            nombreAsignatura=input("¿De qué asignatura quiere matricular al alumno/a %s" %nombreAlumno)
+            if matricularAlumno(nombreAlumno, nombreAsignatura)==False:
+                notas=getNotasAsignatura(nombreAlumno, nombreAsignatura)
+                sumaNotas=0
+                for i in notas:
+                    sumaNotas+=i
+                mensaje="La nota media del alumno %s en la asignatura %s es un %s." %(nombreAlumno, nombreAsignatura, (sumaNotas/len(notas)))
+            else:
+                mensaje="Error. El alumno %s no está matriculado en la asignatura %s." % (nombreAlumno, nombreAsignatura)
     # elif opcion==7:
     #
-    # elif opcion==8:
-    #
-    # else:
+
+    elif opcion==8:
+        nombreAlumno = input("Introduce el nombre del alumno/a: ")
+        if nombreAlumno not in listaAlumnos:
+            mensaje="Error. El/La alumno/a %s no está dado de alta en el sistema." % (nombreAlumno)
+        else:
+            posAlumno=listaAlumnos.index(nombreAlumno)
+            mensaje=""
+            for i in range (len(listaAsignaturas[posAlumno])):
+                mensaje+="Asignatura: %s \n" % listaAsignaturas[posAlumno][i]
+                listaNotasAsignatura=listaNotas[posAlumno][i]
+                if len(listaNotasAsignatura)>0:
+                    for nota in listaNotasAsignatura:
+                        mensaje+="    Nota: %s\n" % nota
+                else:
+                    mensaje+="    No hay notas asignadas a esta asignatura.\n"
+    
+    else:
+        mensaje=""
+        for i in range (len(listaAlumnos)):
+            mensaje+="\nALUMNO/A: %s\n" % (listaAlumnos[i])
+            for j in range (len(listaAsignaturas[i])):
+                mensaje+="    Asignatura: %s \n" % listaAsignaturas[i][j]
+                listaNotasAsignatura=listaNotas[i][j]
+                if len(listaNotasAsignatura)>0:
+                    for nota in listaNotasAsignatura:
+                        mensaje+="        Nota: %s\n" % nota
+                else:
+                    mensaje+="        No hay notas asignadas a esta asignatura.\n"
         
     return mensaje
 
@@ -229,7 +305,7 @@ def menuPrincipal():
     menu="1. Dar de alta un alumno/a.\n"\
         "2. Dar de alta una asignatura de un alumno/a.\n"\
         "3. Añadir una nota de una asignatura de un alumno/a.\n"\
-        "4. Ver las notas que un alumno/a tienen en una asignatura..\n"\
+        "4. Ver las notas que un alumno/a tienen en una asignatura.\n"\
         "5. Ver la nota que un alumno/a tendría en una asignatura suponiéndole la nota máxima.\n"\
         "6. Ver la nota que un alumno/a tendría en una asignatura suponiéndole la nota media.\n"\
         "7. Ver todas las notas de una asignatura de un alumno/a.\n"\
@@ -264,9 +340,7 @@ def main():
         
         if opcion!=10:
             print(menuSecundario(opcion, listaAlumnos, listaAsignaturas, listaNotas))
-            print(listaAlumnos)
-            print(listaAsignaturas)
-            print(listaNotas)
+
             
     print("Hasta la próxima.")
 
