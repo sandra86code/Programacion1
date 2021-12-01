@@ -188,14 +188,18 @@ def volcarFichero():
         for posAlumno in range(len(listaAlumnos)):
             f.write("*"+listaAlumnos[posAlumno])
             if len(listaAsignaturas[posAlumno])>0:
+                f.write("\n")
                 for posAsignatura in range(len(listaAsignaturas[posAlumno])):
-                    linea="\n"+(listaAsignaturas[posAlumno])[posAsignatura]
+                    linea=(listaAsignaturas[posAlumno])[posAsignatura]
                     for nota in (listaNotas[posAlumno])[posAsignatura]:
                         linea +=","+str(nota)
-                    if (listaNotas[posAlumno])[-1]:
+                    if listaAsignaturas[posAlumno][posAsignatura]==listaAsignaturas[posAlumno][-1] and listaAlumnos[posAlumno]==listaAlumnos[-1]:
                         f.write(linea)
+                        
                     else:
-                        f.write(linea+"\n")      
+                        f.write(linea+"\n")
+            elif listaAlumnos[posAlumno]!=listaAlumnos[-1]:
+                f.write("\n")
             
     finally:
         f.close()
