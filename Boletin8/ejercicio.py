@@ -181,6 +181,25 @@ def leerFichero():
 leerFichero()
 
 
+
+def volcarFichero():
+    f = open('alumnos.txt', 'w')
+    try:
+        for posAlumno in range(len(listaAlumnos)):
+            f.write("*"+listaAlumnos[posAlumno]+"\n")
+            for posAsignatura in range(len(listaAsignaturas[posAlumno])):
+                linea = (listaAsignaturas[posAlumno])[posAsignatura]
+                for nota in (listaNotas[posAlumno])[posAsignatura]:
+                    linea +=","+str(nota)
+                f.write(linea+"\n")
+    finally:
+        f.close()
+    
+            
+volcarFichero()
+
+
+
 def getNotasAsignatura(alumno, asignatura):
     posAlumno=listaAlumnos.index(alumno)
     posAsignatura=listaAsignaturas[posAlumno].index(asignatura)
@@ -224,6 +243,7 @@ def menuSecundario(opcion, listaAlumnos, listaAsignaturas, listaNotas):
             if matricularAlumno(nombreAlumno, nombreAsignatura)==False:
                 nota=int(input("¿Qué nota (1-10) desea añadir? "))
                 ponerNotas(nombreAlumno, nombreAsignatura, nota)
+                mensaje="Nota añadida"
             else:
                 mensaje="Error. El alumno %s no está matriculado en la asignatura %s." % (nombreAlumno, nombreAsignatura)
     elif opcion==4:
@@ -341,7 +361,8 @@ def main():
         if opcion!=10:
             print(menuSecundario(opcion, listaAlumnos, listaAsignaturas, listaNotas))
 
-            
+    
+    volcarFichero()        
     print("Hasta la próxima.")
 
 

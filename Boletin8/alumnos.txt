@@ -1,7 +1,10 @@
 *Sandra
-Mates,10,8,5
-Lengua
-Ingles,10,9,8
-*Inma
 Mates
-Ingles,5,4
+Lengua,10,8,9
+Ingles,7,10
+*Inma
+Lengua
+Informatica,10,10
+Ingles,6,7
+*Juan
+Lengua,3
