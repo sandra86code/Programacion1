@@ -1,16 +1,16 @@
-*Sandra
-Mates
-Lengua,10,8,9
+*Sandra Ruiz
+Matematicas
+Lengua y literatura,10,8,9
 Ingles,7,10
-*Mercedes
-Mates
-Lengua,10,8,9
+*Mercedes Castellanos
+Matematicas
+Frances,10,8,9
 Ingles,7,10
-*Juan
-*Maria
-*Inma
-Mates
-Lengua,10,8,9
+*Juan Sanchez
+Informatica
+*Maria Perez
+Musica,4,2
+*Inma Olias
+Matematicas
 Ingles,7,10
-*Sofia
-*Pablo
+*Pablo Jimenez
