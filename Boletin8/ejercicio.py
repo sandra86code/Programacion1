@@ -186,12 +186,17 @@ def volcarFichero():
     f = open('alumnos.txt', 'w')
     try:
         for posAlumno in range(len(listaAlumnos)):
-            f.write("*"+listaAlumnos[posAlumno]+"\n")
-            for posAsignatura in range(len(listaAsignaturas[posAlumno])):
-                linea = (listaAsignaturas[posAlumno])[posAsignatura]
-                for nota in (listaNotas[posAlumno])[posAsignatura]:
-                    linea +=","+str(nota)
-                f.write(linea+"\n")
+            f.write("*"+listaAlumnos[posAlumno])
+            if len(listaAsignaturas[posAlumno])>0:
+                for posAsignatura in range(len(listaAsignaturas[posAlumno])):
+                    linea="\n"+(listaAsignaturas[posAlumno])[posAsignatura]
+                    for nota in (listaNotas[posAlumno])[posAsignatura]:
+                        linea +=","+str(nota)
+                    if (listaNotas[posAlumno])[-1]:
+                        f.write(linea)
+                    else:
+                        f.write(linea+"\n")      
+            
     finally:
         f.close()
     

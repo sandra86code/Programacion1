@@ -7,4 +7,4 @@ Lengua
 Informatica,10,10
 Ingles,6,7
 *Juan
-Lengua,3
+*Maria
