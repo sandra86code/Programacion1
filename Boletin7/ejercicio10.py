@@ -5,7 +5,7 @@
  @nombre: Cuadrado de números
  @enunciado: 
  Cuadrado de números:
-Crea un programa que lea del teclado un número y genere un cuadrado con el patrón siguiente
+Crea un programa que lea del teclado un número y genere un mitadSuperior con el patrón siguiente
 donde cada elemento está separado por un espacio.
 
 Resultados de ejemplo:
@@ -54,84 +54,93 @@ Número 7:
 7 7 7 7 7 7 7 7 7 7 7 7 7
 '''
 
-
+#===============================================================================
+# Esta función convierte una lista de números de x posiciones en un cuadrado de 
+# formato string
+# de x filas
+# Recibe: una lista de números
+# Devuelve: el cuadrado en formato string
+#===============================================================================
+def convierteCuadrado(lista):
     
+    cuadrado=""
+    #Recorro la lista para acceder a cada una de las sublistas
+    for fila in range (len(lista)):
+        fila=lista[fila]
+        #Recorro cada una de las sublistas hasta la posición -1 por
+        #el tema del espacio
+        for j in range (len(fila)-1):
+            #Acumulo el número en formato string en la fila del cuadrado
+            #y le añado un espacio detrás
+            cuadrado+=str(fila[j])
+            cuadrado+=" "
+        #Añado el último elemento
+        cuadrado+=str(fila[-1])
+        #Hago el salto de línea
+        cuadrado+="\n"
+
+    return cuadrado
 
 
+#===============================================================================
+# Esta función inserta los números enteros en el cuadrado vacío (lista con sublistas)
+# Recibe: un número de tipo entero y el cuadrado, que es una lista con sublistas anidadas
+# vacías
+# Devuelve: la lista con las sublistas anidadas pero con números enteros dentro 
+#===============================================================================
+def insertaEnCuadrado(num, cuadrado):
+    #Un bucle que va desde 0 hasta el número-1
+    for i in range (num):
+        #Calculo la cantidad de veces que se repite el mismo número (que va decreciendo)
+        #en cada fila. Dicha cantidad también decrece en 1.
+        cantidad=2*(num-i)-1
+        #Este bucle va a llenar los números entre el inicio de la lista y los números que se
+        #repiten. Aumenta en 1 con cada iteración y los números tb decrecen en 1.
+        for j in range(i):
+            cuadrado[i].append(num-j)
+        #Este bucle llena la cantidad central de números repetidos en la fila, la cantidad de
+        #veces de la variable de arriba. Va decreciendo en 2 por fila
+        for k in range(cantidad):
+            cuadrado[i].append(num-i)
+        #Este bucle va a llenar los números entre el inicio de la lista y los números que se
+        #repiten. Aumenta en 1 con cada iteración y los números aumentan en 1.
+        for l in range(i):
+            cuadrado[i].append(num-i+l+1)
+    
+    #Hasta aquí he llenado la mitad del cuadrado (las listas)+1, por lo que ahora necesito llenar
+    #la otra mitad, por lo que recorro el cuadrado hasta su mitad-1 (resultado de la división entera)
+    #y cada fila del principio +1 será la fila del final -1
+    for n in range (len(cuadrado)//2):
+        #Como empieza en 0 la iteración y necesito que la primera por el final sea la -1, pues le resto
+        #-1 a -n
+        cuadrado[-n-1]=cuadrado[n]
+
+    return cuadrado
+
+#===============================================================================
+# Esta función crea el cuadrado con listas llena de sublistas, una por cada fila
+# del cuadrado
+# Recibe: un número entero
+# Devuelve: la lista con sus sublistas vacías
+#===============================================================================
+def creaCuadrado(numero):
+    #Calculo el número de filas que siempre será el doble del número -1
+    numFilas=numero+(numero-1)
+    cuadradoVacio=[]
+    #Añado una lista por cada fila
+    for i in range (numFilas):
+        cuadradoVacio.append([])
+        
+    return cuadradoVacio
 
 
-
-
-# def convierteCuadrado(lista):
-#     cuadrado=""
-#     for fila in range (len(lista)):
-#         fila=lista[fila]
-#         for j in range (len(fila)-1):
-#             cuadrado+=str(fila[j])
-#             cuadrado+=" "
-#         cuadrado+=str(fila[-1])
-#         cuadrado+="\n"
-#
-#     return cuadrado
-#
-#
-#
-# def insertaEnCuadrado(numero, cuadrado):
-#     i=0
-#     while i<len(cuadrado):
-#         fila=numero-i
-#         columna=2*numero-i
-#         cuadrado[fila][columna]
-#     #
-#     #
-#     #
-#     #         # if fila-columna==0:
-#     #         #     numero-=1
-#     #         #     cuadrado[fila][columna]=numero
-#     #         columna+=1
-#     #     fila+=1
-#
-#     return cuadrado
-#
-#
-# def creaCuadrado(numero):
-#     numFilas=numero+(numero-1)
-#     numColumnas=numFilas
-#     cuadrado=[]
-#     for i in range (numFilas):
-#         cuadrado.append([])
-#         for j in range (numColumnas):
-#             cuadrado[i].append([])
-#
-#     return cuadrado
-
-
+#Pido y compruebo datos
 num=int(input("Introduce un número entero positivo: "))
 while num<=0:
     print("El número debe ser un entero positivo (mayor que 0).")
     num=int(input("Introduce un número entero positivo: "))
 
-numero=num
-cuadrado=""
-for i in range (num):
-    cantidad=2*(num-i)-1
-    for j in range(i):
-        cuadrado+=str(num-j)
-    for k in range(1, cantidad+1):
-        cuadrado+=str(num-i)
-    for l in range(i):
-        cuadrado+=str(numero-i+l+1)
-    cuadrado+="\n"
-for m in range (2, num+1):
-    cantidad=2*m-1
-    for n in range(m-2):
-        cuadrado+=str(numero-m+n+1)
-    for o in range(1, cantidad+1):
-        cuadrado+=str(m)
-    # for p in range(i):
-    #     cuadrado+=str(num-p)
-    cuadrado+="\n"
-    
-print(cuadrado)
-# print(convierteCuadrado(insertaEnCuadrado(num, creaCuadrado(num))))
-
+#Imprimo los resultados llamado a las funciones creadas con los datos proporcionados 
+# por el usuario
+print("\n"+convierteCuadrado(insertaEnCuadrado(num, creaCuadrado(num))))
+
