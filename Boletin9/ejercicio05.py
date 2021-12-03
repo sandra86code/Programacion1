@@ -11,12 +11,12 @@
  y deberemos realizar un programa con el siguiente menú:
 
     1. Llenar surtidor.
-    2. LLegada de coche
-    3. Ver puntos
+    2. Llegada de coche.
+    3. Ver puntos.
     4. Comprobar ventas.
     5. Ver surtidores.
-    6. Asignar precio de gasolina
-    7. Asignar precio de diesel
+    6. Asignar precio de gasolina.
+    7. Asignar precio de diesel.
     8. Salir.
 
 Cuando se pulse la opción 1, nos deberá preguntar qué cantidad se va añadir al depósito del surtidor 
@@ -27,8 +27,9 @@ Con la opción 2 se deberá preguntar la matrícula del coche (se deberá compro
 4 números y 3 letras), si el coche ya ha estado en nuestra gasolinera debemos ver si es diesel o gasolina, 
 preguntarle cuánto dinero quiere gastar en gasolina o diesel (Tendrá que ser cómo mínimo 10 euros y cómo 
 máximo dos decimales) quiere y asignarle el surtidor adecuado. Se debe asignar el surtido más lleno de los 
-dos disponibles. Si el coche no ha estado en nuestra gasolinera nunca debemos preguntar si es diesel o 
-gasolina, almacenarlo para no tener que preguntarle más veces, preguntar cantidad y asignarle el surtidor. 
+dos disponibles. 
+Si el coche no ha estado en nuestra gasolinera nunca debemos preguntar si es diesel o gasolina, 
+almacenarlo para no tener que preguntarle más veces, preguntar cantidad y asignarle el surtidor. 
 En ambos casos se deberá almacenar el dinero gastado ya que vamos a ir dandole puntos según el dinero que 
 se ha gastado en la gasolinera.
 

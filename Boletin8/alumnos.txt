@@ -14,3 +14,5 @@ Musica,4,2
 Matematicas
 Ingles,7,10
 *Pablo Jimenez
+*Manuel Gijon
+Musica

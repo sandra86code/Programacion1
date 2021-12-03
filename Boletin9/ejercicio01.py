@@ -15,14 +15,29 @@ Ampliación: modifica el programa anterior para que tanto la cantidad que se inc
 como el regalo inicial cambien en cada programa.
 '''
 
-
+#===============================================================================
+# Esta función calcula el dinero total (numero entero) que ha recibido una persona 
+# en su cumpleaños dependiendo de su edad y de un incremento
+# Recibe: edad, dinero e incremento, que son 3 variables de tipo entero.
+# Devuelve: el dinero total recibido (un entero)
+#===============================================================================
 def calcularTotalDinero(edad, dinero, incremento):
     
+    dineroYear=dinero
+    dineroTotal=dinero
     for i in range(2, edad+1):
-        dinero+=incremento
+        dineroYear+=incremento
+        dineroTotal+=dineroYear
     
-    return dinero
+    return dineroTotal
 
+
+#===============================================================================
+# Esta función es el menú principal de la función, que pide los datos e imprime
+# el resultado
+# Recibe: no tiene parámetros de entrada
+# Devuelve: no tiene return
+#===============================================================================
 def main():
     
     edad=int(input("Introduce la edad de Juan: "))
@@ -32,6 +47,6 @@ def main():
     
     dineroInicial=20
     incremento=15
-    print("El dinero total que recibe Juan con %s años es %s: " % (edad, calcularTotalDinero(edad, dineroInicial, incremento)))
+    print("El dinero total que recibe Juan con %s años es %s €." % (edad, calcularTotalDinero(edad, dineroInicial, incremento)))
 
 main()
