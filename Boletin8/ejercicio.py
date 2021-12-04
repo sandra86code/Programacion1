@@ -272,13 +272,23 @@ def getAsignaturasAlumno(alumno):
     return listaAsignaturas[posAlumno]
 
 
-
+#===============================================================================
+# Esta función recibe un mensaje y lo imprime
+# Recibe: un mensaje (cadena de texto)
+# Devuelve: no tiene return
+#===============================================================================
 def mostrarMensaje(mensaje):
     
     print(mensaje)
     
     
-    
+#===============================================================================
+# Esta función da de alta a un alumno (lo añade a la lista de alumnos, le añade
+# una lista vacía en la lista de asignaturas, y le añade una lista vacía dentro 
+# de otra lista vacía en la lista de notas) si no está previamente dado de alta.
+# Pide el nombre del alumno.
+# Luego llama a la función que imprime mensaje correspondiente.
+#===============================================================================    
 def pedirAlumnoMatricular():
     
     nombreAlumno = input("Nombre del alumno/a que quieres dar de alta: ")
@@ -289,7 +299,12 @@ def pedirAlumnoMatricular():
         mostrarMensaje("Error. %s ya estaba dado/a de alta." % (nombreAlumno))
         
 
-
+#===============================================================================
+# Esta función da de alta una asignatura a un alumno, siempre y cuando el alumno
+# esté ya dado de alta y no esté matriculado previamente en esa asignatura.
+# Pide el nombre del alumno y luego el nombre de la asignatura.
+# Luego llama a la función que imprime mensaje correspondiente.
+#===============================================================================
 def pedirAsignaturaMatricular():
     
     nombreAlumno = input("Nombre del alumno/a: ")
@@ -303,7 +318,12 @@ def pedirAsignaturaMatricular():
             mostrarMensaje("Error. %s ya estaba matriculado/a en la asignatura %s." % (nombreAlumno, nombreAsignatura))
   
 
- 
+#===============================================================================
+# Esta función añade una nota a un alumno en una asignatura, siempre y cuando
+# el alumno esté dado de alta y esté matriculado en la asignatura.
+# Pide el nombre del alumno y luego el nombre de la asignatura.
+# Luego llama a la función que imprime mensaje correspondiente.
+#=============================================================================== 
 def pedirAnnadirNota():
     
     nombreAlumno = input("Nombre del alumno/a: ")
@@ -319,7 +339,12 @@ def pedirAnnadirNota():
             mostrarMensaje("Error. %s no está matriculado/a en la asignatura %s, primero debe darlo/a de alta." % (nombreAlumno, nombreAsignatura))
                 
     
-                
+#===============================================================================
+# Esta función muestra las notas de un alumno en una asignatura, siempre y cuando
+# el alumno esté dado de alta y esté matriculado en un asignatura.
+# Pide el nombre del alumno, luego el nombre de la asignatura y luego la nota
+# Luego llama a la función que imprime mensaje correspondiente.
+#===============================================================================               
 def mostrarNotasAlumnoEnAsignatura():
     
     nombreAlumno = input("Nombre del alumno/a: ")
@@ -339,7 +364,12 @@ def mostrarNotasAlumnoEnAsignatura():
             mostrarMensaje("Error. %s no está matriculado/a en la asignatura %s." % (nombreAlumno, nombreAsignatura))
      
 
-     
+#===============================================================================
+# Esta función muestra la nota máxima de un alumno en una asignatura, siempre y 
+# cuando el alumno esté dado de alta y esté matriculado en un asignatura.
+# Pide el nombre del alumno y luego el nombre de la asignatura.
+# Luego llama a la función que imprime mensaje correspondiente.
+#===============================================================================     
 def getNotaMaximaAlumno():
     
     nombreAlumno = input("Nombre del alumno/a: ")
@@ -358,7 +388,12 @@ def getNotaMaximaAlumno():
             mostrarMensaje("Error. %s no está matriculado/a en la asignatura %s." % (nombreAlumno, nombreAsignatura))
     
     
-
+#===============================================================================
+# Esta función muestra la nota media de un alumno en una asignatura, siempre y 
+# cuando el alumno esté dado de alta y esté matriculado en un asignatura.
+# Pide el nombre del alumno y luego el nombre de la asignatura.
+# Luego llama a la función que imprime mensaje correspondiente.
+#===============================================================================     
 def getNotaMedia():
     
     nombreAlumno = input("Nombre del alumno/a: ")
@@ -376,6 +411,12 @@ def getNotaMedia():
             mostrarMensaje("Error. %s no está matriculado/a en la asignatura %s." % (nombreAlumno, nombreAsignatura))
         
 
+#===============================================================================
+# Esta función muestra las asignaturas en las que está matriculado un alumno, 
+# siempre y cuando el alumno esté dado de alta.
+# Pide el nombre del alumno.
+# Luego llama a la función que imprime mensaje correspondiente.
+#===============================================================================      
 def mostrarAsignaturasAlumno():
     
     nombreAlumno = input("Nombre del alumno/a: ")
@@ -391,6 +432,12 @@ def mostrarAsignaturasAlumno():
             mostrarMensaje("%s no está matriculado/a en ninguna asignatura." % (nombreAlumno))
             
 
+#===============================================================================
+# Esta función muestra las notas de un alumno por asignatura, siempre y cuando
+# el alumno esté dado de alta.
+# Pide el nombre del alumno.
+# Luego llama a la función que imprime mensaje correspondiente.
+#===============================================================================
 def mostrarNotasAlumno():
     
     nombreAlumno = input("Nombre del alumno/a: ")
@@ -411,6 +458,11 @@ def mostrarNotasAlumno():
             mostrarMensaje("%s no está matriculado/a en ninguna asignatura." % (nombreAlumno))
 
 
+#===============================================================================
+# Esta función muestra las notas de cada asignatura de cada uno de los alumnos 
+# dados de alta.
+# Luego llama a la función que imprime mensaje correspondiente.
+#===============================================================================
 def mostrarContenidoSistema():
     
     for i in range (len(listaAlumnos)):
@@ -426,16 +478,8 @@ def mostrarContenidoSistema():
 
                       
 #===============================================================================
-# Esta función es el menú secundario del programa, en el que dependiendo de la
-# opción introducida por el usuario, se piden o no datos adicionales, se procesan 
-# datos y se devuelven los resultados de dicho procesamiento. Puede incluir
-# modificaciones en las listas (alumnos, asignaturas, notas) o no.
-# Recibe: la opcion (entero), la lista de alumnos (lista de string), la lista de 
-# asignaturas (una lista de string por cada alumno que componen una lista que las 
-# engloba) y una lista de notas (una lista de enteros por cada asignatura, que engloba
-# otra lista mayor correspondiente a todas las asignaturas de un alumno y que, a su vez,
-# se engloban en otra mayor, correspondientes a todos los alumnos).
-# Devuelve: un mensaje con el resultado de cada opcion
+# Esta función gestiona el menú de opciones del programa.
+# Con cada opción, llama a la función correspondiente.
 #===============================================================================
 def gestionarMenu(opcion):
     
@@ -503,11 +547,12 @@ def main():
     
     opcion=1
     
+    #Mientras que la opción no sea 10 (salida)
     while opcion!=10:
         print(linea)
         print(bienvenida)
         print(menu())
-    
+        
         opcion=int(input("¿Qué opción desea? "))
         while opcion<1 or opcion>10:
             print("Opción incorrecta. Vuelve a intentarlo.")
@@ -515,12 +560,14 @@ def main():
         
         print(linea)
         
+        #Llamamos a la función que gestiona el menú con cada una de las opciones
         gestionarMenu(opcion)
 
-    
+    #Cuando salgamos del bucle (opcion==10), llamamos a la función que vuelca
+    #la información en el fichero e imprimimos un mensaje    
     volcarFichero()        
     print("Hasta la próxima.")
 
 
-    
 main()
+
