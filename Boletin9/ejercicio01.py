@@ -24,7 +24,7 @@ como el regalo inicial cambien en cada programa.
 def calcularTotalDinero(edad, dinero, incremento):
     
     dineroYear=dinero
-    dineroTotal=dinero
+    dineroTotal=dineroYear
     for i in range(2, edad+1):
         dineroYear+=incremento
         dineroTotal+=dineroYear
