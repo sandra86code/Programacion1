@@ -2,7 +2,7 @@ def listaALaInversa(lista):
     listaInversa=[]
     for i in range (1, len(lista)+1):
         listaInversa.append(lista[-i])
-    
+
     return listaInversa
 
 
