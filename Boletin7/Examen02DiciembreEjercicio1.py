@@ -32,6 +32,7 @@ from random import randint
 # Devuelve: el número de coincidencias (aciertos) entre ambas
 #===============================================================================
 def calcularAciertosPrimitiva(ganadora,apuesta):
+    
     aciertos=0
     for i in range (len(ganadora)):
         for j in range (len(apuesta)):
@@ -40,12 +41,14 @@ def calcularAciertosPrimitiva(ganadora,apuesta):
     
     return aciertos
 
+
 #===============================================================================
 # Esta función crea una lista de 6 números aleatorios entre 1 y 49 sin repetir
 # ninguno 
 # Devuelve: la lista con los 6 números
 #===============================================================================
 def crearCombinacionAleatoria():
+    
     combinacion=[]
     for i in range (6):
         num=randint(1,49)
@@ -63,6 +66,7 @@ def crearCombinacionAleatoria():
 # Devuelve: la lista con los 6 números
 #===============================================================================
 def crearApuesta():
+    
     apuesta=[]
     for i in range(6):
         num=int(input("Elige un número de 1 al 49: "))
@@ -74,6 +78,7 @@ def crearApuesta():
         apuesta.append(num)
        
     return apuesta
+
 
 #===============================================================================
 # Esta función es la principal del programa.
