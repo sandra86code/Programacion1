@@ -18,3 +18,38 @@ se testee que funciona bien la función en todos los posibles casos.
 
 ** Considera sólo palabras cuyas letras tengan una sola ocurrencia.
 '''
+
+#===============================================================================
+# Esta función comprueba si dos palabras son anagramas (con las letras de una
+# se puede componer la otra palabra). Solo tiene en cuenta palabras cuyas
+# letras tengan una sola ocurrencia.
+# Recibe: dos palabras (variables strings)
+# Devuelve:
+# True si son anagramas
+# False si no son anagramas
+#===============================================================================
+def esAnagrama(palabra1, palabra2):
+    
+    #Compruebo que la longitud de las dos palabras sean igual
+    if len(palabra1)==len(palabra2):
+        #Recorro la primera palabra
+        for i in range (len(palabra1)):
+            j=0
+            anagrama=False
+            #Recorro la segunda palabra
+            while j<len(palabra2) and anagrama==False:
+                #Si las letras coinciden, cambio la bandera y freno el bucle
+                if palabra1[i]==palabra2[j]:
+                    anagrama=True
+                j+=1              
+    #Si la longitud de las dos palabras no es igual, no pueden ser anagramas.
+    else:
+        anagrama=False
+        
+    return anagrama
+
+
+assert(esAnagrama("riesgo", "sergio")==True)
+assert(esAnagrama("riosga", "sergio")==False)
+assert(esAnagrama("riosgae", "sergio")==False)
+assert(esAnagrama("riosga", "sergioz")==False)
