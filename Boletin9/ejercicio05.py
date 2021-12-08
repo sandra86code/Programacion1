@@ -117,9 +117,7 @@ def comprobarValidezMatricula(matricula):
             #Comprobamos si los primero 4 caracteres son números (ASCII). Si no lo son,
             #cambiamos la bandera y se frena el bucle. 
             if i<4:
-                if ord(matricula[i])>=ord("0") and ord(matricula[i])<=ord("9"):
-                    matriculaCorrecta=True
-                else:
+                if ord(matricula[i])<ord("0") or ord(matricula[i])>ord("9"):
                     matriculaCorrecta=False
             #Comprobamos que los 3 últimos caracteres (del total de 7) son letras mayúsculas
             #(ASCII). Si no lo son, cambiamos la bandera y se frena el bucle.
