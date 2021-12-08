@@ -25,6 +25,41 @@ un empleado finaliza 45 días antes, su pago de incentivo se calcula de la sigui
 
 Realizar un programa que solicite el nombre del empleado y el número de días que ha terminado
 antes y muestre el siguiente mensaje:
-El empleado <nombre del empleado> debe recibir <bonificacion> euros, por <días>
-trabajados de menos en el proyecto
+"El empleado <nombre del empleado> debe recibir <bonificacion> euros, por <días>
+trabajados de menos en el proyecto"
 '''
+
+def calcularBonificacion(dias):
+    diasRestantes=dias
+    bonificacion=0
+    if dias>=50:
+        diasRestantes=dias-50
+        bonificacion+=diasRestantes*30
+    if dias>=41:
+        diasRestantes-=8
+        bonificacion+=diasRestantes*20
+    if dias>=33:
+        
+        bonificacion+=diasRestantes*10
+    if dias>=1:
+        diasRestantes-=32
+        bonificacion+=dias*5
+
+
+    
+        
+    return bonificacion
+
+
+def main():
+    empleado=input("Introduce el nombre del empleado: ")
+    dias=int(input("Introduce el número de días terminados antes de fecha: "))
+    while dias<0:
+        print("Datos incorrectos. Debe introducir un valor mayor o igual que 0.")
+        dias=int(input("Introduce el número de días terminados antes de fecha: "))
+        
+    bonificacion=calcularBonificacion(dias)
+    print("El empleado %s debe recibir %s euros, por %s días trabajados de menos en el proyecto." % (empleado, bonificacion, dias))
+    
+
+main()
