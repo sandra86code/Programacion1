@@ -4,14 +4,20 @@
  @fecha: 17 nov 2021
  @nombre: Reto Censo Electoral
  @enunciado: CENSO ELECTORAL
-Acaban de pasar las elecciones generales del 10/11/19. Ha ganado el partido de Kodos. Se ha
-filtrado que un grupo de extraterrestres se han infiltrado entre la sociedad y han sido los que han
-votado mayoritariamente a Kodos. Como Kodos y Kang quieren someternos a todos, tú y tu grupo
-de amigos hackers decidís hacer algo al respecto. Robáis la lista de votos por correo (ya que al ser
-verdes y con tentáculos estáis casi seguros que todos habrán votado por correo). Pero la lista está
-cifrada y en vez del DNI cada voto se referencia por un número (un hash). Conseguís robar el
-algoritmo que se ha usado para el cifrado y ahora está en tus manos el conseguir descifrar esos
-números y sacar los DNI’s que tienen los extraterrestres. ¡La humanidad te necesita!
+
+Acaban de pasar las elecciones generales del 10/11/19. Ha ganado el partido de Kodos. 
+
+Se ha filtrado que un grupo de extraterrestres se han infiltrado entre la sociedad y 
+han sido los que han votado mayoritariamente a Kodos. 
+
+Como Kodos y Kang quieren someternos a todos, tú y tu grupo de amigos hackers decidís 
+hacer algo al respecto. Robáis la lista de votos por correo (ya que al ser verdes y 
+con tentáculos estáis casi seguros que todos habrán votado por correo). 
+Pero la lista está cifrada y en vez del DNI cada voto se referencia por un número 
+(un hash). 
+Conseguís robar el algoritmo que se ha usado para el cifrado y ahora está en tus manos 
+el conseguir descifrar esos números y sacar los DNI’s que tienen los extraterrestres. 
+¡La humanidad te necesita!
 
 El algoritmo de cifrado se basa en repetir los siguientes 5 pasos (una iteración de cifrado) un
 número aleatorio de veces. 
@@ -48,9 +54,9 @@ Esta iteración será válida si al cifrar B nos da como resultado A.
 
 -----------------------------------------------------------------------------------------
 
-Mejor vemos esto con un ejemplo. Al recibir como entrada el número 1211, nuestro algoritmo
-(después de ejecutar todas las iteraciones de descifrad válidas) tendría que dar como resultado 1 ya
-que:
+Mejor vemos esto con un ejemplo. 
+Al recibir como entrada el número 1211, nuestro algoritmo (después de ejecutar todas las 
+iteraciones de descifrad válidas) tendría que dar como resultado 1 ya que:
 
 1211 → 1 x “2”, 1 x “1” → un “2”, un “1” → 2 1→ 21 (primera iteración de descifrado. Es válida
 porque al cifrar 21 nos da 1211).
@@ -86,4 +92,54 @@ A continuación mostramos estos datos de ejemplo para que puedas comprobar tu al
     1211               1
     111321             111
     22                 22
+    
 '''
+
+
+def cifra(descifrado):
+    clave=""
+    cantidad=1
+    for i in range(len(descifrado)-1):
+        if descifrado[i]==descifrado[i+1]:
+            cantidad+=1
+        elif descifrado[i]!=descifrado[i+1]:
+            clave+=str(cantidad)+descifrado[i]
+            cantidad=1
+    clave+=str(cantidad)+descifrado[-1]
+    
+    return clave
+
+assert(cifra("1111")=="41")
+assert(cifra("21")=="1211")
+assert(cifra("13112221")=="1113213211")
+
+
+def descifra (clave):
+    descifrado=""
+    for i in range (0,(len(clave)),2):
+        cantidad=int(clave[i])
+        numero=int(clave[i+1])
+        for j in range (cantidad):
+            descifrado+=str(numero)
+    
+    return descifrado
+
+assert(descifra("41")=="1111")
+assert(descifra("1211")=="21")
+
+
+def main():
+    
+    clave=input("Introduce la clave a desencriptar: ")
+        
+    claveDescifrada=descifra(clave)
+    claveComprobada=cifra(claveDescifrada)
+    
+    while clave==claveComprobada:
+        clave=descifra(clave)
+        claveComprobada=cifra(claveDescifrada)
+        
+    print("El DNI es %s" % claveDescifrada)
+
+main()
+        
