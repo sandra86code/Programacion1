@@ -30,12 +30,10 @@ def sumaNumerosDeCadena (cadena, numero):
                 suma+=int(i)
             elif numero==1 and int(i)%2==1:
                 suma+=int(i)
-        else:
-            suma=False
 
-    print(suma)
     return suma
 
 assert(sumaNumerosDeCadena("22abc53", 1)==8)
 assert(sumaNumerosDeCadena("22abc53", 0)==4)
-assert(sumaNumerosDeCadena("weabc", 0)==False)
+assert(sumaNumerosDeCadena("22abc68", 1)==0)
+assert(sumaNumerosDeCadena("31abc53", 0)==0)
