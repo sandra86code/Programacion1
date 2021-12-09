@@ -29,37 +29,49 @@ antes y muestre el siguiente mensaje:
 trabajados de menos en el proyecto"
 '''
 
+#===============================================================================
+# Esta función calcula la bonificación que debe recibir un empleado según el número
+# de días que ha terminado por adelantado su trabajo
+# Recibe: el número de días (entero positivo)
+# Devuelve: la bonificación (entero positivo)
+# 
+#===============================================================================
 def calcularBonificacion(dias):
-    diasRestantes=dias
-    bonificacion=0
-    if dias>=50:
-        diasRestantes=dias-50
-        bonificacion+=diasRestantes*30
-    if dias>=41:
-        diasRestantes-=8
-        bonificacion+=diasRestantes*20
-    if dias>=33:
-        
-        bonificacion+=diasRestantes*10
-    if dias>=1:
-        diasRestantes-=32
-        bonificacion+=dias*5
-
-
     
-        
+    diasRestantes=dias
+    
+    if dias<33:
+        bonificacion = dias*5
+    elif dias<41:
+        diasRestantes-=32
+        bonificacion = 32*5 + diasRestantes*10
+    elif dias<50:
+        diasRestantes-=40
+        bonificacion = 32*5 + 8*10 + diasRestantes*20
+    else:
+        diasRestantes-=49
+        bonificacion = 32*5 + 8*10 + 9*20 + diasRestantes*30
+
     return bonificacion
 
 
+#===============================================================================
+# Esta función es la principal del programa
+# Recibe 
+# Devuelve:
+# 
+#===============================================================================
 def main():
+    
+    #Pido los datos y los valido
     empleado=input("Introduce el nombre del empleado: ")
     dias=int(input("Introduce el número de días terminados antes de fecha: "))
     while dias<0:
         print("Datos incorrectos. Debe introducir un valor mayor o igual que 0.")
         dias=int(input("Introduce el número de días terminados antes de fecha: "))
-        
-    bonificacion=calcularBonificacion(dias)
-    print("El empleado %s debe recibir %s euros, por %s días trabajados de menos en el proyecto." % (empleado, bonificacion, dias))
+    
+    #Imprimo la bonificación del empleado para ese número de días
+    print("El empleado %s debe recibir %s euros, por %s días trabajados de menos en el proyecto." % (empleado, calcularBonificacion(dias), dias))
     
 
 main()
