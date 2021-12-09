@@ -116,17 +116,20 @@ assert(cifra("13112221")=="1113213211")
 
 def descifra (clave):
     descifrado=""
-    for i in range (0,(len(clave)),2):
-        cantidad=int(clave[i])
-        numero=int(clave[i+1])
-        for j in range (cantidad):
-            descifrado+=str(numero)
-    
+    if len(clave)>1:
+        for i in range (0,(len(clave)),2):
+            cantidad=int(clave[i])
+            numero=int(clave[i+1])
+            for j in range (cantidad):
+                descifrado+=str(numero)
+    else:
+        descifrado=clave
+        
     return descifrado
 
 assert(descifra("41")=="1111")
 assert(descifra("1211")=="21")
-
+assert(descifra("11")=="1")
 
 def main():
     
@@ -136,7 +139,8 @@ def main():
     claveComprobada=cifra(claveDescifrada)
     
     while clave==claveComprobada:
-        clave=descifra(clave)
+        clave=claveDescifrada
+        claveDescifrada=descifra(claveDescifrada)
         claveComprobada=cifra(claveDescifrada)
         
     print("El DNI es %s" % claveDescifrada)
