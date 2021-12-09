@@ -24,7 +24,8 @@ TEMA 2 - PROGRAMACIÓN MODULAR
 	
 	+ Boletin 8. Ejercicio de alumnos, asignaturas y notas
 	
-	+ Boletin 9. Ejercicios simulacro examen año pasado (grupo A) + Ejercicio surtidor con listas.
+	+ Boletin 9. Ejercicios simulacro examen año pasado (grupo A) (ejercicios 1-4) + Ejercicio surtidor 
+	con listas (ejercicio 5).
 	
 	
 RETOS
