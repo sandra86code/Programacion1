@@ -24,12 +24,16 @@ adecuado.
 #===============================================================================
 def sumaNumerosDeCadena (cadena, numero):
     suma=0
+    coincidencias=0
     for i in cadena:
         if i>=chr(48) and i<=chr(57):
             if numero==0 and int(i)%2==0:
                 suma+=int(i)
             elif numero==1 and int(i)%2==1:
                 suma+=int(i)
+            coincidencias+=1
+    if coincidencias==0:
+        suma=False 
 
     return suma
 
@@ -37,3 +41,5 @@ assert(sumaNumerosDeCadena("22abc53", 1)==8)
 assert(sumaNumerosDeCadena("22abc53", 0)==4)
 assert(sumaNumerosDeCadena("22abc68", 1)==0)
 assert(sumaNumerosDeCadena("31abc53", 0)==0)
+assert(sumaNumerosDeCadena("deabc", 0)==False)
+assert(sumaNumerosDeCadena("deabc", 1)==False)
