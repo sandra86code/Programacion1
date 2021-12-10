@@ -31,13 +31,19 @@ def comprobarSolidezPassword(password):
         digito=0
         
         while i<len(password) and esSolida==False:
+            #Código asci para letras en mayúscula
             if password[i]>=chr(65) and password[i]<=chr(90):
                 mayuscula=1
+            #Código asci para letras en minúscula
             elif password[i]>=chr(97) and password[i]<=chr(122):
                 minuscula=1
+            #Código asci para números, por eso no uso else, pq sino entraría cualquier
+            #otro caracter, no solo los números
             elif password[i]>=chr(48) and password[i]<=chr(57):
                 digito=1
             
+            #Si las tres banderas han cambiado, se cambia la bandera
+            #y se frena el bucle
             if mayuscula==1 and minuscula==1 and digito==1:
                 esSolida=True
             
