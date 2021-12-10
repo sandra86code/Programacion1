@@ -109,14 +109,20 @@ assert(cortaPalabras(["Llego", "mañana", "alrededor", "del", "mediodía"],4)==[
 #===============================================================================
 def pasarDeCadenaAArray(cadena):
     lista=[]
+    #palabra donde voy a ir acumulando los caracteres
     palabra=""
     for i in range (len(cadena)):
+        #Si el caracter es diferente a un espacio, acumulo el caracter
         if cadena[i]!=" ":
             palabra+=cadena[i]
+        #Si el caracter es un espacio y la palabra está vacía (comprobación para
+        #dobles espacios, sino meterá palabras vacías en la lista), añado la palabra
+        #a la lista y reinicio la palabra
         elif cadena[i]==" " and palabra!="":
             lista.append(palabra)
             palabra=""
-    #Por si no hay espacios al final y no ha añadido la última palabra en el bucle.
+    #Por si no hay espacios al final y no ha añadido la última palabra en el bucle,
+    #la añado al final
     if palabra!="":
         lista.append(palabra)
  
@@ -129,6 +135,9 @@ assert(pasarDeCadenaAArray(" Llego   mañana alrededor  del mediodía  ")==["Lle
 assert(pasarDeCadenaAArray(" Llego mañana alrededor del mediodía")==["Llego", "mañana", "alrededor", "del", "mediodía"])
 
 
+#===============================================================================
+# Esta función es la principal del programa
+#===============================================================================
 def main():
     
     #Pido datos
