@@ -19,7 +19,7 @@ más caracteres, y entre ellos al menos hay una mayúscula, una minúscula y un 
 # una mayúscula, una minúscula y un dígito).
 #===============================================================================
 def comprobarSolidezPassword(password):
-    
+
     esSolida=False
     if len(password)>=8:
         i=0
@@ -29,7 +29,7 @@ def comprobarSolidezPassword(password):
         mayuscula=0
         minuscula=0
         digito=0
-        
+
         while i<len(password) and esSolida==False:
             #Código asci para letras en mayúscula
             if password[i]>=chr(65) and password[i]<=chr(90):
@@ -41,15 +41,15 @@ def comprobarSolidezPassword(password):
             #otro caracter, no solo los números
             elif password[i]>=chr(48) and password[i]<=chr(57):
                 digito=1
-            
+
             #Si las tres banderas han cambiado, se cambia la bandera
             #y se frena el bucle
             if mayuscula==1 and minuscula==1 and digito==1:
                 esSolida=True
-            
+
             i+=1
-         
-    
+
+
     return esSolida
 
 
@@ -59,3 +59,61 @@ assert(comprobarSolidezPassword("abcdeFGGD")==False)
 assert(comprobarSolidezPassword("123abde.")==False)
 assert(comprobarSolidezPassword("123ABE.H")==False)
 
+
+
+'''
+CORRECCIÓN DEL EJERCICIO CON UNA SEGUNDA FUNCIÓN PARA COMPROBAR EL CÓDIGO ASCII:
+
+def esTipoCaracter(caracter, valorInicial, valorFinal):
+    
+    return caracter>=chr(valorInicial) and caracter<=chr(valorFinal)
+
+
+
+def comprobarSolidezPassword(password):
+    
+    esSolida=False
+    if len(password)>=8:
+        i=0
+        mayuscula=0
+        minuscula=0
+        digito=0
+        
+        while i<len(password) and esSolida==False:
+            if esTipoCaracter(password[i], 65, 90):
+                mayuscula=1
+            else:
+                esSolida=False
+            
+            if esTipoCaracter(password[i], 97, 122):
+                minuscula=1
+            else:
+                esSolida=False
+            
+            if esTipoCaracter(password[i], 48, 57):
+                digito=1
+            else:
+                esSolida=False
+            #Si las tres banderas han cambiado, se cambia la bandera
+            #y se frena el bucle
+            if mayuscula==1 and minuscula==1 and digito==1:
+                esSolida=True
+                mensaje="La contraseña es fuerte."
+            else:
+                mensaje="La contraseña es débil."
+            
+            i+=1
+    else:
+        mensaje="La contraseña es débil."     
+    
+    
+    return mensaje
+
+
+assert(comprobarSolidezPassword("1abdFk.")=="La contraseña es débil.")
+assert(comprobarSolidezPassword("1abdFk2.")=="La contraseña es fuerte.")
+assert(comprobarSolidezPassword("abcdeFGGD")=="La contraseña es débil.")
+assert(comprobarSolidezPassword("123abde2")=="La contraseña es débil.")
+assert(comprobarSolidezPassword("123ABE.H")=="La contraseña es débil.")
+
+'''
